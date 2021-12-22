@@ -1,16 +1,13 @@
-type ScreenType = 'light' | 'dark';
-type Themes = 'beige' | 'green' | 'mint' | 'pink' | 'yellow';
-
-type ThemeType = {
+type Themes = {
   [index in ScreenType]: {
-    [index in Themes]: {
+    [index in ThemeType]: {
       text: string;
       background: string;
     };
   };
 };
 
-export const Primary: ThemeType = {
+export const Theme: Themes = {
   light: {
     beige: {
       text: '#213747',

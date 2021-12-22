@@ -37,7 +37,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
-        fonts: ['Nanum Gothic Coding'],
+        fonts: ['Nanum Gothic Coding', 'Material Icons'],
         display: 'swap',
       },
     },

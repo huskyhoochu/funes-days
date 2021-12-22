@@ -52,6 +52,27 @@ const GlobalStyle = css`
     font-size: 14px;
     letter-spacing: 1.25px;
   }
+
+  /* Material Icons */
+  /* https://google.github.io/material-design-icons/#icon-font-for-the-web */
+  .material-icons-outlined {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+  }
 `;
 
 export default GlobalStyle;

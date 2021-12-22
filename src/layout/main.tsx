@@ -1,10 +1,11 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { RecoilRoot } from 'recoil';
 import { Global } from '@emotion/react';
+import { cx } from '@emotion/css';
 import FaviconPackage from '@/components/atoms/faviconPackage';
 import GlobalStyle from '@/styles/global';
 import { ContainerClass } from '@/styles/container';
-import { cx } from '@emotion/css';
 import { ThemeClass } from './classes';
 
 interface Props {
@@ -14,14 +15,16 @@ interface Props {
 
 const MainLayout: React.FC<Props> = ({ title, children }) => {
   return (
-    <main className={cx([ContainerClass, ThemeClass])}>
-      <Helmet>
-        <title>{`${title} | funes-days`}</title>
-      </Helmet>
-      <FaviconPackage />
-      <Global styles={GlobalStyle} />
-      {children}
-    </main>
+    <RecoilRoot>
+      <main className={cx([ContainerClass, ThemeClass])}>
+        <Helmet>
+          <title>{`${title} | funes-days`}</title>
+        </Helmet>
+        <FaviconPackage />
+        <Global styles={GlobalStyle} />
+        {children}
+      </main>
+    </RecoilRoot>
   );
 };
 
