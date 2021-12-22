@@ -1,54 +1,7 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# Funes Days
 
-## 🚀 Quick start
+### Summary
 
-1.  **Create a Gatsby site.**
+푸네스는 보르헤스의 소설 <기억의 천재 푸네스>에 등장하는 무한한 기억력을 가진 소년입니다. 어릴 적 낙마 사고 이후 한번 본 것이라면 그 어떠한 것도 잊지 못하는 병에 걸려 헛간에 스스로를 가둔 채 살다 죽게 되는데요. 엊그제 본 개와 오늘 본 개의 털이 자라난 모습의 차이점을 보고 두 개가 완전히 다른 개라고 생각하게 되고, 한번 본 라틴어 사전을 완벽하게 외워 라틴어 시를 짓기도 하며, 유년 시절의 기억을 정리하는 데 몇 년의 시간을 허비하기도 합니다. 하루하루 기억력이 사그라드는 제게 있어서 그의 무한한 기억력이 틀림없이 불행으로 이어질 걸 알면서도 한편으론 부럽기도 했는데요. 여러분은 어떠신가요?
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
-
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
-
-2.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
-
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.js` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+이 블로그는 그의 무한한 기억력을 조금이나마 따라잡기 위해 만들어졌습니다.
