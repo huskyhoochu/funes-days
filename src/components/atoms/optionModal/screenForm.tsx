@@ -1,9 +1,9 @@
 import React from 'react';
-import { ScreenFormClass } from './classes';
 import { useRecoilState } from 'recoil';
 import { screenState } from '@/store/theme';
 import useTheme from '@/hooks/useTheme';
-import SelectedChecker from '@/components/atoms/optionModal/selectedChecker';
+import { ScreenFormClass } from './classes';
+import SelectedChecker from './selectedChecker';
 
 const ScreenForm: React.FC = () => {
   const [, , theme] = useTheme();

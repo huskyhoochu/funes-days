@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import ModalTemplate from '@/components/templates/modal';
 import ScreenForm from '@/components/atoms/optionModal/screenForm';
 import { OptionModalClass } from './classes';
+import ThemeForm from '@/components/atoms/optionModal/themeForm';
 
 interface Props {
   isOpen: boolean;
@@ -16,6 +17,7 @@ const OptionModal: React.FC<Props> = ({ isOpen, onToggle }) => {
         <ModalTemplate onToggle={onToggle} title="옵션">
           <div className={OptionModalClass}>
             <ScreenForm />
+            <ThemeForm />
           </div>
         </ModalTemplate>
       )}
