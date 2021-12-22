@@ -3,11 +3,15 @@ import { useRecoilValue } from 'recoil';
 import { screenState, themeState } from '@/store/theme';
 import { ThemeClassBuilder } from '@/styles/theme';
 
-const useTheme = (): string => {
+const useTheme = (): [string, ScreenType, ThemeType] => {
   const screen = useRecoilValue(screenState);
   const theme = useRecoilValue(themeState);
 
-  return useMemo(() => ThemeClassBuilder(screen, theme), [screen, theme]);
+  const ThemeClass = useMemo(
+    () => ThemeClassBuilder(screen, theme),
+    [screen, theme],
+  );
+  return [ThemeClass, screen, theme];
 };
 
 export default useTheme;

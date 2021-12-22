@@ -14,7 +14,7 @@ export interface MainLayoutProps {
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ title, children }) => {
-  const ThemeClass = useTheme();
+  const [ThemeClass] = useTheme();
 
   return (
     <>

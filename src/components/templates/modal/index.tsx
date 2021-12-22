@@ -11,7 +11,7 @@ interface Props {
 }
 
 const ModalTemplate: React.FC<Props> = ({ onToggle, title, children }) => {
-  const ThemeClass = useTheme();
+  const [ThemeClass] = useTheme();
 
   return (
     <motion.div

@@ -7,7 +7,7 @@ import OptionModal from '@/components/atoms/optionModal';
 import { useCycle } from 'framer-motion';
 
 const Header: React.FC = () => {
-  const ThemeClass = useTheme();
+  const [ThemeClass] = useTheme();
   const [isOpen, setIsOpen] = useCycle<boolean>(false, true);
 
   const toggleOptionModal = () => {
