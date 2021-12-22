@@ -15,12 +15,6 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-offline',
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        icon: 'src/images/icon.png',
-      },
-    },
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     {
@@ -38,6 +32,14 @@ module.exports = {
         path: './src/pages/',
       },
       __key: 'pages',
+    },
+    'gatsby-plugin-tsconfig-paths',
+    {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: ['Nanum Gothic Coding'],
+        display: 'swap',
+      },
     },
   ],
 };

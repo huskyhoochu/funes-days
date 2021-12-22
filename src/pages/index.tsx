@@ -1,9 +1,15 @@
-import * as React from 'react';
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import BeigeDark from '@/images/green-light.png';
 
 const IndexPage = () => {
   return (
     <main>
-      <h1>hello</h1>
+      <Helmet>
+        <title>hello</title>
+        <link rel="icon" href={BeigeDark} type="image/png" />
+      </Helmet>
+      <p style={{ fontFamily: 'Nanum Gothic Coding' }}>hello 안녕</p>
     </main>
   );
 };
