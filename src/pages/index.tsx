@@ -4,7 +4,9 @@ import MainLayout from '@/layout/main';
 const IndexPage = () => {
   return (
     <MainLayout title="main">
-      <p style={{ fontFamily: 'Nanum Gothic Coding' }}>hello 안녕</p>
+      <div style={{ height: '100vh' }}>
+        <h3>hello 안녕</h3>
+      </div>
     </MainLayout>
   );
 };
