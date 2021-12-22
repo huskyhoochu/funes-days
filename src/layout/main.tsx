@@ -14,14 +14,14 @@ export interface MainLayoutProps {
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ title, children }) => {
-  const [ThemeClass] = useTheme();
+  const [ThemeClass, screen, theme] = useTheme();
 
   return (
     <>
       <Helmet>
         <title>{`${title} | funes-days`}</title>
       </Helmet>
-      <FaviconPackage />
+      <FaviconPackage screen={screen} theme={theme} />
       <Global styles={GlobalStyle} />
       <Header />
       <main className={cx([ContainerClass, ThemeClass])}>{children}</main>
