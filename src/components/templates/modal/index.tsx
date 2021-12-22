@@ -1,5 +1,7 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { ModalClass } from './classes';
+import { NormalShowingVariants } from '@/framer/variants';
 
 export interface ModalProps {
   onToggle: () => void;
@@ -9,7 +11,13 @@ export interface ModalProps {
 
 const ModalTemplate: React.FC<ModalProps> = ({ onToggle, title, children }) => {
   return (
-    <div className={ModalClass}>
+    <motion.div
+      className={ModalClass}
+      variants={NormalShowingVariants}
+      initial="hide"
+      animate="show"
+      exit="hide"
+    >
       <div className="modal-background" />
       <div className="modal-body">
         <div className="title-group">
@@ -20,7 +28,7 @@ const ModalTemplate: React.FC<ModalProps> = ({ onToggle, title, children }) => {
         </div>
         <div className="content">{children}</div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
