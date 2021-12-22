@@ -8,12 +8,12 @@ import { ContainerClass } from '@/styles/container';
 import Header from '@/components/atoms/header';
 import useTheme from '@/hooks/useTheme';
 
-interface Props {
+export interface MainLayoutProps {
   title: string;
   children: React.ReactNode;
 }
 
-const MainLayout: React.FC<Props> = ({ title, children }) => {
+const MainLayout: React.FC<MainLayoutProps> = ({ title, children }) => {
   const ThemeClass = useTheme();
 
   return (
