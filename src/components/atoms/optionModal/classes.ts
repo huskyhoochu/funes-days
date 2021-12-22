@@ -25,6 +25,10 @@ export const ScreenFormClass = (theme: ThemeType) => css`
     border-radius: ${radius['8']}px;
     cursor: pointer;
 
+    span {
+      display: block;
+    }
+
     &.light {
       background-color: ${Theme['light'][theme].background};
       color: ${Theme['light'][theme].text};

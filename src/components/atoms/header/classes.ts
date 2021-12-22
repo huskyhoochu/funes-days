@@ -26,8 +26,12 @@ export const HeaderClass = (ThemeClass: string) => css`
           margin-left: 16px;
           height: 28px;
 
-          .material-icons-outlined {
-            ${H5Class};
+          button {
+            height: 100%;
+
+            .material-icons-outlined {
+              ${H5Class};
+            }
           }
         }
       }
