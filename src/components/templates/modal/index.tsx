@@ -2,17 +2,20 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ModalClass } from './classes';
 import { NormalShowingVariants } from '@/framer/variants';
+import useTheme from '@/hooks/useTheme';
 
-export interface ModalProps {
+interface Props {
   onToggle: () => void;
   title: string;
   children: React.ReactNode;
 }
 
-const ModalTemplate: React.FC<ModalProps> = ({ onToggle, title, children }) => {
+const ModalTemplate: React.FC<Props> = ({ onToggle, title, children }) => {
+  const ThemeClass = useTheme();
+
   return (
     <motion.div
-      className={ModalClass}
+      className={ModalClass(ThemeClass)}
       variants={NormalShowingVariants}
       initial="hide"
       animate="show"

@@ -1,3 +1,5 @@
+import { css } from '@emotion/css';
+
 type Themes = {
   [index in ScreenType]: {
     [index in ThemeType]: {
@@ -63,3 +65,10 @@ export const Gray = {
   '600': '#5b5b5b',
   '700': '#363636',
 };
+
+export const ThemeClassBuilder = (screen: ScreenType, theme: ThemeType) =>
+  css`
+    color: ${Theme[screen][theme].text};
+    background-color: ${Theme[screen][theme].background};
+    border-color: ${Theme[screen][theme].text};
+  `;

@@ -1,18 +1,17 @@
 import React from 'react';
+import { AnimatePresence } from 'framer-motion';
 import ModalTemplate from '@/components/templates/modal';
-import { AnimatePresence, useCycle } from 'framer-motion';
 
-const OptionModal: React.FC = () => {
-  const [isOpen, setIsOpen] = useCycle<boolean>(false, true);
+interface Props {
+  isOpen: boolean;
+  onToggle: () => void;
+}
 
-  const toggleModal = () => {
-    setIsOpen();
-  };
-
+const OptionModal: React.FC<Props> = ({ isOpen, onToggle }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <ModalTemplate onToggle={toggleModal} title="옵션">
+        <ModalTemplate onToggle={onToggle} title="옵션">
           <div>hi</div>
         </ModalTemplate>
       )}
