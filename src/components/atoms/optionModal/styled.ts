@@ -94,6 +94,6 @@ export const ThemeFormWrapper = styled.div<{ screenType: ScreenType }>`
 export const SelectedCheckerWrapper = styled.div`
   .material-icons-outlined {
     font-size: 18px;
-    margin-right: 4px;
+    margin-inline: 4px;
   }
 `;
