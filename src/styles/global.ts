@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 
 const GlobalStyle = css`
   * {
-    font-family: 'Nanum Gothic Coding', monospace;
+    font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
   }
 
   html {

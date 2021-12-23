@@ -37,7 +37,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
-        fonts: ['Nanum Gothic Coding', 'Material Icons'],
+        fonts: [
+          'IBM Plex Mono:400,400i,700,700i',
+          'Noto Sans KR:400,700',
+          'Material Icons',
+        ],
         display: 'swap',
       },
     },
