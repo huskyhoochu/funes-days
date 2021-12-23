@@ -1,8 +1,12 @@
-import { css } from '@emotion/css';
+import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
+import { SerializedStyles } from '@emotion/react';
 import { breakPoints, gridPoints } from '@/styles/screen';
 import radius from '@/styles/radius';
 
-export const ModalClass = (ThemeClass: string) => css`
+export const ModalWrapper = styled(motion.div)<{
+  themeClass: SerializedStyles;
+}>`
   position: fixed;
   inset: 0;
   display: flex;
@@ -16,7 +20,7 @@ export const ModalClass = (ThemeClass: string) => css`
   }
 
   .modal-body {
-    ${ThemeClass};
+    ${props => props.themeClass};
     z-index: 1;
     padding-block: 16px;
     padding-inline: 24px;

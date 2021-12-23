@@ -1,5 +1,5 @@
 import React from 'react';
-import { SelectedCheckerClass } from './classes';
+import { SelectedCheckerWrapper } from './styled';
 
 interface Props {
   screenOrTheme: ScreenType | ThemeType;
@@ -8,13 +8,13 @@ interface Props {
 
 const SelectedChecker: React.FC<Props> = ({ screenOrTheme, check }) => {
   return (
-    <div className={SelectedCheckerClass}>
+    <SelectedCheckerWrapper>
       {screenOrTheme === check ? (
         <span className="material-icons-outlined">check_circle_outline</span>
       ) : (
         <span className="material-icons-outlined">radio_button_unchecked</span>
       )}
-    </div>
+    </SelectedCheckerWrapper>
   );
 };
 

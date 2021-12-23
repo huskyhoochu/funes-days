@@ -1,12 +1,11 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Global } from '@emotion/react';
-import { cx } from '@emotion/css';
 import FaviconPackage from '@/components/atoms/faviconPackage';
 import GlobalStyle from '@/styles/global';
-import { ContainerClass } from '@/styles/container';
 import Header from '@/components/atoms/header';
 import useTheme from '@/hooks/useTheme';
+import { MainWrapper } from './styled';
 
 export interface MainLayoutProps {
   title: string;
@@ -24,7 +23,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ title, children }) => {
       <FaviconPackage screen={screen} theme={theme} />
       <Global styles={GlobalStyle} />
       <Header />
-      <main className={cx([ContainerClass, ThemeClass])}>{children}</main>
+      <MainWrapper themeClass={ThemeClass}>{children}</MainWrapper>
     </>
   );
 };

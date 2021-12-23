@@ -2,7 +2,7 @@ import React from 'react';
 import { useRecoilState } from 'recoil';
 import { themeState } from '@/store/theme';
 import useTheme from '@/hooks/useTheme';
-import { ThemeFormClass } from './classes';
+import { ThemeFormWrapper } from './styled';
 import SelectedChecker from './selectedChecker';
 
 const ThemeForm: React.FC = () => {
@@ -14,7 +14,7 @@ const ThemeForm: React.FC = () => {
   };
 
   return (
-    <form className={ThemeFormClass(screen)}>
+    <ThemeFormWrapper screenType={screen}>
       <h5 className="title">테마</h5>
       <div className="content">
         <label htmlFor="beige" className="beige">
@@ -73,7 +73,7 @@ const ThemeForm: React.FC = () => {
           />
         </label>
       </div>
-    </form>
+    </ThemeFormWrapper>
   );
 };
 

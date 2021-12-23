@@ -2,7 +2,7 @@ import React from 'react';
 import { useRecoilState } from 'recoil';
 import { screenState } from '@/store/theme';
 import useTheme from '@/hooks/useTheme';
-import { ScreenFormClass } from './classes';
+import { ScreenFormWrapper } from './styled';
 import SelectedChecker from './selectedChecker';
 
 const ScreenForm: React.FC = () => {
@@ -14,7 +14,7 @@ const ScreenForm: React.FC = () => {
   };
 
   return (
-    <form className={ScreenFormClass(theme)}>
+    <ScreenFormWrapper themeType={theme}>
       <h5 className="title">배경</h5>
       <div className="content">
         <label htmlFor="light" className="light">
@@ -42,7 +42,7 @@ const ScreenForm: React.FC = () => {
           />
         </label>
       </div>
-    </form>
+    </ScreenFormWrapper>
   );
 };
 

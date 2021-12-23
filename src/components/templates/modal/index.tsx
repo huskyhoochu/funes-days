@@ -1,6 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { ModalClass } from './classes';
+import { ModalWrapper } from './styled';
 import { NormalShowingVariants } from '@/framer/variants';
 import useTheme from '@/hooks/useTheme';
 
@@ -14,8 +13,8 @@ const ModalTemplate: React.FC<Props> = ({ onToggle, title, children }) => {
   const [ThemeClass] = useTheme();
 
   return (
-    <motion.div
-      className={ModalClass(ThemeClass)}
+    <ModalWrapper
+      themeClass={ThemeClass}
       variants={NormalShowingVariants}
       initial="hide"
       animate="show"
@@ -31,7 +30,7 @@ const ModalTemplate: React.FC<Props> = ({ onToggle, title, children }) => {
         </div>
         <div className="content">{children}</div>
       </div>
-    </motion.div>
+    </ModalWrapper>
   );
 };
 

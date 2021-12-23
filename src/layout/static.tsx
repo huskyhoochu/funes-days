@@ -1,8 +1,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Global } from '@emotion/react';
+import FaviconPackage from '@/components/atoms/faviconPackage';
 import GlobalStyle from '@/styles/global';
-import { ContainerClass } from '@/styles/container';
+import useTheme from '@/hooks/useTheme';
+import { ContainerWrapper } from '@/styles/container';
 
 interface Props {
   title: string;
@@ -10,13 +12,16 @@ interface Props {
 }
 
 const StaticLayout: React.FC<Props> = ({ title, children }) => {
+  const [, screen, theme] = useTheme();
+
   return (
     <>
       <Helmet>
         <title>{`${title} | funes-days`}</title>
       </Helmet>
+      <FaviconPackage screen={screen} theme={theme} />
       <Global styles={GlobalStyle} />
-      <main className={ContainerClass}>{children}</main>
+      <ContainerWrapper>{children}</ContainerWrapper>
     </>
   );
 };

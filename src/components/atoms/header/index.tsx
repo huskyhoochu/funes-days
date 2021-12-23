@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { ContainerClass } from '@/styles/container';
-import { HeaderClass } from './classes';
+import { ContainerWrapper } from '@/styles/container';
+import { HeaderWrapper } from './styled';
 import useTheme from '@/hooks/useTheme';
 import OptionModal from '@/components/atoms/optionModal';
 import { useCycle } from 'framer-motion';
@@ -15,8 +15,8 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className={HeaderClass(ThemeClass)}>
-      <div className={ContainerClass}>
+    <HeaderWrapper themeClass={ThemeClass}>
+      <ContainerWrapper>
         <div className="inner-wrapper">
           <div className="home">
             <Link to="/">Funes</Link>
@@ -40,9 +40,9 @@ const Header: React.FC = () => {
             </ul>
           </nav>
         </div>
-      </div>
+      </ContainerWrapper>
       <OptionModal isOpen={isOpen} onToggle={toggleOptionModal} />
-    </header>
+    </HeaderWrapper>
   );
 };
 

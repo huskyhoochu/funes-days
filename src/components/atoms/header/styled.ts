@@ -1,8 +1,9 @@
-import { css } from '@emotion/css';
+import styled from '@emotion/styled';
+import { SerializedStyles } from '@emotion/react';
 import { H5Class } from '@/styles/typography';
 
-export const HeaderClass = (ThemeClass: string) => css`
-  ${ThemeClass};
+export const HeaderWrapper = styled.header<{ themeClass: SerializedStyles }>`
+  ${props => props.themeClass};
   ${H5Class};
   height: 60px;
   font-weight: 700;

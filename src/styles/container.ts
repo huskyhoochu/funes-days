@@ -1,4 +1,5 @@
-import { css } from '@emotion/css';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { breakPoints, gridPoints, screenPoint } from '@/styles/screen';
 
 export const ContainerClass = css`
@@ -17,4 +18,8 @@ export const NarrowContainerClass = css`
   @media (min-width: ${breakPoints.tablet}px) {
     width: 100%;
   }
+`;
+
+export const ContainerWrapper = styled.div`
+  ${ContainerClass};
 `;
