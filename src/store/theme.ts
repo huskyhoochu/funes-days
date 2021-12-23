@@ -3,14 +3,16 @@ import { atom, AtomEffect } from 'recoil';
 const localStorageEffect: <T>(key: string) => AtomEffect<T> =
   key =>
   ({ setSelf, onSet }) => {
-    const savedValue = localStorage.getItem(key);
-    if (savedValue !== null) {
-      setSelf(JSON.parse(savedValue));
-    }
+    if (typeof localStorage !== 'undefined') {
+      const savedValue = localStorage.getItem(key);
+      if (savedValue !== null) {
+        setSelf(JSON.parse(savedValue));
+      }
 
-    onSet(newValue => {
-      localStorage.setItem(key, JSON.stringify(newValue));
-    });
+      onSet(newValue => {
+        localStorage.setItem(key, JSON.stringify(newValue));
+      });
+    }
   };
 
 export const screenState = atom<ScreenType>({
