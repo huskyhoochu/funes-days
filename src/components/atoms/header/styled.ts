@@ -13,6 +13,7 @@ export const HeaderWrapper = styled.header<{ themeClass: SerializedStyles }>`
   height: 60px;
   font-weight: 700;
   padding-block: 16px;
+  z-index: 1;
 
   .inner-wrapper {
     display: flex;
