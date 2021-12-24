@@ -14,10 +14,8 @@ const OptionModal: React.FC<Props> = ({ isOpen, onToggle }) => {
     <AnimatePresence>
       {isOpen && (
         <ModalTemplate onToggle={onToggle} title="옵션">
-          <div>
-            <ScreenForm />
-            <ThemeForm />
-          </div>
+          <ScreenForm />
+          <ThemeForm />
         </ModalTemplate>
       )}
     </AnimatePresence>

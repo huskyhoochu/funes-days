@@ -16,3 +16,20 @@ export const NormalShowingVariants: Variants = {
     },
   },
 };
+
+export const NormalHorizontalVariants: Variants = {
+  show: {
+    x: 0,
+    transition: {
+      type: 'spring',
+      duration: 0.6,
+    },
+  },
+  hide: {
+    x: '100%',
+    transition: {
+      type: 'spring',
+      duration: 0.6,
+    },
+  },
+};

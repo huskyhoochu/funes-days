@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { SerializedStyles } from '@emotion/react';
 import { H5Class } from '@/styles/typography';
+import { breakPoints } from '@/styles/screen';
 
 export const HeaderWrapper = styled.header<{ themeClass: SerializedStyles }>`
   ${props => props.themeClass};
@@ -18,24 +19,71 @@ export const HeaderWrapper = styled.header<{ themeClass: SerializedStyles }>`
       height: 28px;
     }
 
-    .nav {
-      ul {
-        display: flex;
-        align-items: center;
+    .right-section {
+      display: flex;
+      align-items: center;
 
-        li {
-          margin-left: 16px;
-          height: 28px;
+      .nav {
+        margin-right: 16px;
+        @media (max-width: ${breakPoints.mobile}px) {
+          display: none;
+        }
 
-          button {
-            height: 100%;
+        ul {
+          display: flex;
+          align-items: center;
 
-            .material-icons-outlined {
-              ${H5Class};
-            }
+          li {
+            margin-left: 16px;
+            height: 28px;
           }
         }
       }
+
+      .option {
+        height: 28px;
+        display: flex;
+        align-items: end;
+        .material-icons-outlined {
+          ${H5Class};
+        }
+      }
+    }
+
+    .mobile {
+      display: none;
+
+      @media (max-width: ${breakPoints.mobile}px) {
+        height: 28px;
+        display: flex;
+        align-items: end;
+        margin-left: 24px;
+      }
+
+      .material-icons-outlined {
+        ${H5Class};
+      }
+    }
+  }
+`;
+
+export const MobileNavWrapper = styled.nav`
+  li {
+    display: block;
+    margin-block: 16px;
+
+    a {
+      height: 28px;
+      display: flex;
+      align-items: center;
+    }
+
+    .material-icons-outlined {
+      ${H5Class};
+      height: 28px;
+      display: flex;
+      align-items: end;
+      margin-right: 8px;
     }
   }
 `;
