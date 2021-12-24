@@ -90,17 +90,17 @@ const useAutoScroll = (
   }, [duration, getScrollProperty, fireQueue]);
 
   useEffect(() => {
+    // 리사이즈 되었을 때 최종 이벤트만 트리거하도록 설정
     if (fireQueue.length > 1) {
-      const { sectionTop } = getScrollProperty();
       scrollTo({
         currentY: curScroll,
-        targetY: sectionTop,
+        targetY: curScroll,
         duration,
       }).then(() => {
         setFireQueue(state => [state.pop() as number]);
       });
     }
-  }, [curScroll, duration, fireQueue.length, getScrollProperty]);
+  }, [curScroll, duration, fireQueue.length]);
 };
 
 export default useAutoScroll;
