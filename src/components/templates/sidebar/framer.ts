@@ -6,7 +6,7 @@ export const ShowingHierarchyVariants: Variants = {
     transition: {
       when: 'beforeChildren',
       type: 'spring',
-      duration: 0.6,
+      duration: 0.1,
     },
   },
   hide: {
@@ -14,7 +14,7 @@ export const ShowingHierarchyVariants: Variants = {
     transition: {
       when: 'afterChildren',
       type: 'spring',
-      duration: 0.6,
+      duration: 0.1,
     },
   },
 };

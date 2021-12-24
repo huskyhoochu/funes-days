@@ -17,6 +17,12 @@ const MobileSidebar: React.FC<Props> = ({ isOpen, onToggle }) => {
           <MobileNavWrapper>
             <ul>
               <li>
+                <Link to="/">
+                  <span className="material-icons-outlined">roofing</span>
+                  home
+                </Link>
+              </li>
+              <li>
                 <Link to="/dev">
                   <span className="material-icons-outlined">code</span>
                   dev
