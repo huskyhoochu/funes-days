@@ -6,6 +6,10 @@ import { breakPoints } from '@/styles/screen';
 export const HeaderWrapper = styled.header<{ themeClass: SerializedStyles }>`
   ${props => props.themeClass};
   ${H5Class};
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 60px;
   font-weight: 700;
   padding-block: 16px;
