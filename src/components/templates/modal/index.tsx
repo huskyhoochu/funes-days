@@ -20,7 +20,7 @@ const ModalTemplate: React.FC<Props> = ({ onToggle, title, children }) => {
       animate="show"
       exit="hide"
     >
-      <div className="modal-background" />
+      <div className="modal-background" onClick={onToggle} />
       <div className="modal-body">
         <div className="title-group">
           <h4>{title}</h4>
