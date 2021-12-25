@@ -13,7 +13,7 @@ const useAutoScroll = (
   const getScrollProperty = useScrollProperty(ref);
   const setIsMoving = useSetRecoilState(fullPageState);
   const [curScroll, setCurScroll] = useRecoilState(curScrollState);
-  const [fireQueue, setFireQueue] = useState<number[]>([]);
+  const [isScroll, setIsScroll] = useState<boolean>(false);
 
   useEffect(() => {
     setCurScroll(document.documentElement.scrollTop);
@@ -60,13 +60,11 @@ const useAutoScroll = (
       }
     };
 
-    window.addEventListener('touchstart', callMoveSection);
-    window.addEventListener('scroll', callMoveSection);
-
-    return () => {
-      window.removeEventListener('touchstart', callMoveSection);
-      window.removeEventListener('scroll', callMoveSection);
-    };
+    if (isScroll) {
+      callMoveSection().then(() => {
+        setIsScroll(false);
+      });
+    }
   }, [
     isMoving,
     getScrollProperty,
@@ -75,34 +73,27 @@ const useAutoScroll = (
     curScroll,
     setIsMoving,
     setCurScroll,
+    setIsScroll,
+    isScroll,
   ]);
 
   useEffect(() => {
-    const resetSection = () => {
-      if (fireQueue.length < 2) {
-        setFireQueue(state => [...state, 0]);
+    const emitToMoveSection = () => {
+      if (!isScroll) {
+        setIsScroll(true);
       }
     };
 
-    window.addEventListener('resize', resetSection);
+    window.addEventListener('touchstart', emitToMoveSection);
+    window.addEventListener('scroll', emitToMoveSection);
 
     return () => {
-      window.removeEventListener('resize', resetSection);
+      window.removeEventListener('touchstart', emitToMoveSection);
+      window.removeEventListener('scroll', emitToMoveSection);
     };
-  }, [duration, getScrollProperty, fireQueue]);
+  }, [isScroll, setIsScroll]);
 
-  useEffect(() => {
-    // 리사이즈 되었을 때 최종 이벤트만 트리거하도록 설정
-    if (fireQueue.length > 1) {
-      scrollTo({
-        currentY: curScroll,
-        targetY: curScroll,
-        duration,
-      }).then(() => {
-        setFireQueue(state => [state.pop() as number]);
-      });
-    }
-  }, [curScroll, duration, fireQueue.length]);
+  console.log(isScroll);
 };
 
 export default useAutoScroll;

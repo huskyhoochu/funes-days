@@ -24,7 +24,6 @@ const IndexPage: React.FC = () => {
 
   useEffect(() => {
     const watchProperty = (e: Event) => {
-      console.log(e);
       const scrollProperty = getScrollProperty();
       setProperties({ ...scrollProperty, type: e.type });
     };
