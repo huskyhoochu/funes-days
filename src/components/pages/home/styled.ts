@@ -35,6 +35,7 @@ export const IntroWrapper = styled.div`
     margin-inline: ${gridPoints.gutter}px;
 
     @media (max-width: ${breakPoints.tablet}px) {
+      padding-block: 0;
       margin-block: ${gridPoints.gutter}px;
     }
 
