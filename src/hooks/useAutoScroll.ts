@@ -60,9 +60,11 @@ const useAutoScroll = (
       }
     };
 
+    window.addEventListener('touchstart', callMoveSection);
     window.addEventListener('scroll', callMoveSection);
 
     return () => {
+      window.removeEventListener('touchstart', callMoveSection);
       window.removeEventListener('scroll', callMoveSection);
     };
   }, [
