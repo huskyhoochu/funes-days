@@ -1,4 +1,3 @@
-import 'the-new-css-reset';
 import React from 'react';
 import { RecoilRoot } from 'recoil';
 

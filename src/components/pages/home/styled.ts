@@ -9,7 +9,6 @@ import {
 } from '@/styles/typography';
 
 export const IntroWrapper = styled.div`
-  padding-block: 60px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 100vh;
@@ -32,6 +31,7 @@ export const IntroWrapper = styled.div`
   }
 
   .intro-text {
+    padding-block: 60px;
     margin-inline: ${gridPoints.gutter}px;
 
     @media (max-width: ${breakPoints.tablet}px) {

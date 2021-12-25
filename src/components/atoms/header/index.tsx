@@ -7,7 +7,12 @@ import OptionModal from '@/components/atoms/optionModal';
 import MobileSidebar from '@/components/atoms/header/mobileSidebar';
 import { HeaderWrapper } from './styled';
 
-const Header: React.FC = () => {
+interface Props {
+  backgroundColor?: string;
+  homeColor?: string;
+}
+
+const Header: React.FC<Props> = ({ backgroundColor = '', homeColor = '' }) => {
   const [ThemeClass] = useTheme();
   const [isOptionOpen, setIsOptionOpen] = useCycle<boolean>(false, true);
   const [isMobileOpen, setIsMobileOpen] = useCycle<boolean>(false, true);
@@ -21,7 +26,11 @@ const Header: React.FC = () => {
   };
 
   return (
-    <HeaderWrapper themeClass={ThemeClass}>
+    <HeaderWrapper
+      themeClass={ThemeClass}
+      backgroundColor={backgroundColor}
+      homeColor={homeColor}
+    >
       <ContainerWrapper>
         <div className="inner-wrapper">
           <div className="home">

@@ -3,7 +3,11 @@ import { SerializedStyles } from '@emotion/react';
 import { H5Class } from '@/styles/typography';
 import { breakPoints } from '@/styles/screen';
 
-export const HeaderWrapper = styled.header<{ themeClass: SerializedStyles }>`
+export const HeaderWrapper = styled.header<{
+  themeClass: SerializedStyles;
+  backgroundColor: string;
+  homeColor: string;
+}>`
   ${props => props.themeClass};
   ${H5Class};
   position: fixed;
@@ -14,6 +18,7 @@ export const HeaderWrapper = styled.header<{ themeClass: SerializedStyles }>`
   font-weight: 700;
   padding-block: 16px;
   z-index: 1;
+  background-color: ${props => props.backgroundColor};
 
   .inner-wrapper {
     display: flex;
@@ -22,6 +27,8 @@ export const HeaderWrapper = styled.header<{ themeClass: SerializedStyles }>`
 
     .home {
       height: 28px;
+      color: ${props => props.homeColor};
+      transition: color 0.6s ease;
     }
 
     .right-section {
@@ -49,6 +56,7 @@ export const HeaderWrapper = styled.header<{ themeClass: SerializedStyles }>`
         height: 28px;
         display: flex;
         align-items: end;
+
         .material-icons-outlined {
           ${H5Class};
         }

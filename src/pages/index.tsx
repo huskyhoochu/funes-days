@@ -1,14 +1,24 @@
 import React, { useRef } from 'react';
-import Layout from '@/layout';
+import { useRecoilValue } from 'recoil';
 import { AutoScrollSection } from '@/components/templates/section';
 import Intro from '@/components/pages/home/intro';
+import { Gray } from '@/styles/theme';
+import activeIndexState from '@/store/activeIndex';
+import Header from '@/components/atoms/header';
+import HomeLayout from '@/layout/home';
 
-const IndexPage = () => {
+const IndexPage: React.FC = () => {
+  const activeIndex = useRecoilValue(activeIndexState);
   const firstSectionRef = useRef<HTMLDivElement>(null);
   const secondSectionRef = useRef<HTMLDivElement>(null);
   const thirdSectionRef = useRef<HTMLDivElement>(null);
+
   return (
-    <Layout title="main">
+    <HomeLayout title="main">
+      <Header
+        backgroundColor="transparent"
+        homeColor={activeIndex === 0 ? Gray['100'] : ''}
+      />
       <AutoScrollSection forwardedRef={firstSectionRef} index={0}>
         <Intro />
       </AutoScrollSection>
@@ -22,7 +32,7 @@ const IndexPage = () => {
           <h3>bye 안녕</h3>
         </div>
       </AutoScrollSection>
-    </Layout>
+    </HomeLayout>
   );
 };
 
