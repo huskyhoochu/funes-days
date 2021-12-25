@@ -10,6 +10,10 @@ const GlobalStyle = css`
     -moz-osx-font-smoothing: grayscale;
   }
 
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+
   a,
   button {
     cursor: pointer;
