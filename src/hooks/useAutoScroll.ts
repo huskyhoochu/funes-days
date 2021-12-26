@@ -85,13 +85,11 @@ const useAutoScroll = (
       setIsScroll(state => [...state, 0]);
     };
 
-    window.addEventListener('touchstart', emitToMoveSection);
-    window.addEventListener('touchend', emitToMoveSection);
+    window.addEventListener('touchmove', emitToMoveSection);
     window.addEventListener('scroll', emitToMoveSection);
 
     return () => {
-      window.removeEventListener('touchstart', emitToMoveSection);
-      window.removeEventListener('touchend', emitToMoveSection);
+      window.removeEventListener('touchmove', emitToMoveSection);
       window.removeEventListener('scroll', emitToMoveSection);
     };
   }, [setIsScroll]);

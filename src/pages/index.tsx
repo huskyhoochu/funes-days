@@ -29,13 +29,11 @@ const IndexPage: React.FC = () => {
     };
 
     window.addEventListener('scroll', watchProperty);
-    window.addEventListener('touchstart', watchProperty);
-    window.addEventListener('touchend', watchProperty);
+    window.addEventListener('touchmove', watchProperty);
 
     return () => {
       window.removeEventListener('scroll', watchProperty);
-      window.removeEventListener('touchstart', watchProperty);
-      window.removeEventListener('touchend', watchProperty);
+      window.removeEventListener('touchmove', watchProperty);
     };
   }, [getScrollProperty]);
 
