@@ -86,10 +86,12 @@ const useAutoScroll = (
     };
 
     window.addEventListener('touchstart', emitToMoveSection);
+    window.addEventListener('touchend', emitToMoveSection);
     window.addEventListener('scroll', emitToMoveSection);
 
     return () => {
       window.removeEventListener('touchstart', emitToMoveSection);
+      window.removeEventListener('touchend', emitToMoveSection);
       window.removeEventListener('scroll', emitToMoveSection);
     };
   }, [setIsScroll]);
