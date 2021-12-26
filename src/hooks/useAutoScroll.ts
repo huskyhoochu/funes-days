@@ -20,7 +20,6 @@ const useAutoScroll = (
   }, [setCurScroll]);
 
   useEffect(() => {
-    const throttle = 200;
     const callMoveSection = async () => {
       const { scrollTop, sectionTop, sectionBottom } = getScrollProperty();
       // 자신의 영역에 스크롤이 진입했을 경우 오토 스크롤 작동
@@ -49,7 +48,7 @@ const useAutoScroll = (
           const timeout = setTimeout(() => {
             setIsMoving(false);
             clearTimeout(timeout);
-          }, duration + throttle);
+          }, duration);
         }
       } else {
         // 자신의 영역을 벗어났을 경우에는
