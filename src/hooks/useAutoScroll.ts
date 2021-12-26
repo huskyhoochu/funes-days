@@ -13,7 +13,7 @@ const useAutoScroll = (
   const getScrollProperty = useScrollProperty(ref);
   const setIsMoving = useSetRecoilState(fullPageState);
   const [curScroll, setCurScroll] = useRecoilState(curScrollState);
-  const [isScroll, setIsScroll] = useState<boolean>(false);
+  const [isScroll, setIsScroll] = useState<number[]>([]);
 
   useEffect(() => {
     setCurScroll(document.documentElement.scrollTop);
@@ -60,11 +60,14 @@ const useAutoScroll = (
       }
     };
 
-    if (isScroll) {
+    isScroll.forEach(() => {
       callMoveSection().then(() => {
-        setIsScroll(false);
+        setIsScroll(state => {
+          state.pop();
+          return state;
+        });
       });
-    }
+    });
   }, [
     isMoving,
     getScrollProperty,
@@ -79,9 +82,7 @@ const useAutoScroll = (
 
   useEffect(() => {
     const emitToMoveSection = () => {
-      if (!isScroll) {
-        setIsScroll(true);
-      }
+      setIsScroll(state => [...state, 0]);
     };
 
     window.addEventListener('touchstart', emitToMoveSection);
@@ -91,9 +92,7 @@ const useAutoScroll = (
       window.removeEventListener('touchstart', emitToMoveSection);
       window.removeEventListener('scroll', emitToMoveSection);
     };
-  }, [isScroll, setIsScroll]);
-
-  console.log(isScroll);
+  }, [setIsScroll]);
 };
 
 export default useAutoScroll;

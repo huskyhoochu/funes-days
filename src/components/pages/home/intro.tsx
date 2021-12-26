@@ -6,7 +6,7 @@ const Intro: React.FC = () => {
     <IntroWrapper>
       <div className="intro-img">
         <img
-          src="https://images.unsplash.com/photo-1571818863060-020e2e0c0062?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80"
+          src="https://images.unsplash.com/photo-1528132596460-787bb7adfd5f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1286&q=80"
           alt="graph"
         />
       </div>
