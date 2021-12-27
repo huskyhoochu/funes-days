@@ -23,3 +23,7 @@ export const NarrowContainerClass = css`
 export const ContainerWrapper = styled.div`
   ${ContainerClass};
 `;
+
+export const NarrowContainerWrapper = styled.div`
+  ${NarrowContainerClass};
+`;

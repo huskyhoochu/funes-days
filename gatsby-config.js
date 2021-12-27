@@ -15,7 +15,19 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-offline',
-    'gatsby-transformer-remark',
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+            },
+          },
+        ],
+      },
+    },
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-source-filesystem',
@@ -32,6 +44,14 @@ module.exports = {
         path: './src/pages/',
       },
       __key: 'pages',
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'markdown-pages',
+        path: './src/markdown/',
+      },
+      __key: 'markdown-pages',
     },
     'gatsby-plugin-tsconfig-paths',
     {
