@@ -16,6 +16,11 @@ export const IntroWrapper = styled.div`
 
   @media (max-width: ${breakPoints.tablet}px) {
     grid-template-columns: 1fr;
+    grid-template-rows: 60% 40%;
+  }
+
+  @media (max-width: ${breakPoints.mobile}px) {
+    grid-template-columns: 1fr;
     grid-template-rows: 40% 60%;
   }
 

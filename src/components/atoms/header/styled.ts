@@ -1,10 +1,12 @@
 import styled from '@emotion/styled';
-import { SerializedStyles } from '@emotion/react';
+import { css, SerializedStyles } from '@emotion/react';
 import { H5Class } from '@/styles/typography';
 import { breakPoints } from '@/styles/screen';
+import radius from '@/styles/radius';
 
 export const HeaderWrapper = styled.header<{
   themeClass: SerializedStyles;
+  screen: ScreenType;
   backgroundColor: string;
 }>`
   ${props => props.themeClass};
@@ -21,10 +23,23 @@ export const HeaderWrapper = styled.header<{
     background-color: ${props => props.backgroundColor};
   }
 
-  @media (max-width: ${breakPoints.tablet}px) {
-    backdrop-filter: blur(16px) saturate(80%);
-    background-color: rgba(255, 255, 255, 0.5);
-  }
+  ${props =>
+    props.backgroundColor &&
+    props.screen === 'light' &&
+    css`
+      @media (max-width: ${breakPoints.tablet}px) {
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+    `};
+
+  ${props =>
+    props.backgroundColor &&
+    props.screen === 'dark' &&
+    css`
+      @media (max-width: ${breakPoints.tablet}px) {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    `};
 
   .inner-wrapper {
     display: flex;
@@ -33,7 +48,28 @@ export const HeaderWrapper = styled.header<{
 
     .home {
       height: 28px;
-      transition: color 0.6s ease;
+
+      @media (min-width: ${breakPoints.tablet}px) {
+        ${props =>
+          props.backgroundColor &&
+          props.screen === 'light' &&
+          css`
+            background-color: rgba(255, 255, 255, 0.5);
+          `};
+
+        ${props =>
+          props.backgroundColor &&
+          props.screen === 'dark' &&
+          css`
+            background-color: rgba(0, 0, 0, 0.5);
+          `};
+        border-radius: ${radius['4']}px;
+        height: 36px;
+
+        a {
+          padding: 8px;
+        }
+      }
     }
 
     .right-section {

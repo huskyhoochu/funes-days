@@ -12,7 +12,7 @@ interface Props {
 }
 
 const Header: React.FC<Props> = ({ backgroundColor = '' }) => {
-  const [ThemeClass] = useTheme();
+  const [ThemeClass, screen] = useTheme();
   const [isOptionOpen, setIsOptionOpen] = useCycle<boolean>(false, true);
   const [isMobileOpen, setIsMobileOpen] = useCycle<boolean>(false, true);
 
@@ -25,7 +25,11 @@ const Header: React.FC<Props> = ({ backgroundColor = '' }) => {
   };
 
   return (
-    <HeaderWrapper themeClass={ThemeClass} backgroundColor={backgroundColor}>
+    <HeaderWrapper
+      themeClass={ThemeClass}
+      screen={screen}
+      backgroundColor={backgroundColor}
+    >
       <ContainerWrapper>
         <div className="inner-wrapper">
           <div className="home">
