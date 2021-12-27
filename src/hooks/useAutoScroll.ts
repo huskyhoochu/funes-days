@@ -51,12 +51,6 @@ const useAutoScroll = (
             clearTimeout(timeout);
           }, throttle);
         }
-      } else {
-        // 자신의 영역을 벗어났을 경우에는
-        // 스크롤 이벤트 잠금이 유지되는 기간 동안 스크롤이 목표 지점에 위치하도록 강제함
-        if (isMoving) {
-          window.scrollTo({ top: curScroll });
-        }
       }
     };
 
