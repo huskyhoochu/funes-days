@@ -27,7 +27,7 @@ export const IntroWrapper = styled.div`
   .intro-img {
     height: 100%;
 
-    img {
+    video {
       width: 100%;
       height: 100%;
       object-fit: cover;

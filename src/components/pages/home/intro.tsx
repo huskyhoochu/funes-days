@@ -1,13 +1,16 @@
 import React from 'react';
 import { IntroWrapper } from './styled';
+import GrapesVideo from '@/assets/grapes.mp4';
 
 const Intro: React.FC = () => {
   return (
     <IntroWrapper>
       <div className="intro-img">
-        <img
-          src="https://images.unsplash.com/photo-1528132596460-787bb7adfd5f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1286&q=80"
-          alt="graph"
+        <video
+          src={GrapesVideo}
+          autoPlay={true}
+          loop={true}
+          playsInline={true}
         />
       </div>
       <div className="intro-text">
