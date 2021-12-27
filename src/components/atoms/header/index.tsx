@@ -9,10 +9,9 @@ import { HeaderWrapper } from './styled';
 
 interface Props {
   backgroundColor?: string;
-  homeColor?: string;
 }
 
-const Header: React.FC<Props> = ({ backgroundColor = '', homeColor = '' }) => {
+const Header: React.FC<Props> = ({ backgroundColor = '' }) => {
   const [ThemeClass] = useTheme();
   const [isOptionOpen, setIsOptionOpen] = useCycle<boolean>(false, true);
   const [isMobileOpen, setIsMobileOpen] = useCycle<boolean>(false, true);
@@ -26,11 +25,7 @@ const Header: React.FC<Props> = ({ backgroundColor = '', homeColor = '' }) => {
   };
 
   return (
-    <HeaderWrapper
-      themeClass={ThemeClass}
-      backgroundColor={backgroundColor}
-      homeColor={homeColor}
-    >
+    <HeaderWrapper themeClass={ThemeClass} backgroundColor={backgroundColor}>
       <ContainerWrapper>
         <div className="inner-wrapper">
           <div className="home">

@@ -6,7 +6,6 @@ import { breakPoints } from '@/styles/screen';
 export const HeaderWrapper = styled.header<{
   themeClass: SerializedStyles;
   backgroundColor: string;
-  homeColor: string;
 }>`
   ${props => props.themeClass};
   ${H5Class};
@@ -18,7 +17,14 @@ export const HeaderWrapper = styled.header<{
   font-weight: 700;
   padding-block: 16px;
   z-index: 1;
-  background-color: ${props => props.backgroundColor};
+  @media (min-width: ${breakPoints.tablet}px) {
+    background-color: ${props => props.backgroundColor};
+  }
+
+  @media (max-width: ${breakPoints.tablet}px) {
+    backdrop-filter: blur(16px) saturate(80%);
+    background-color: rgba(255, 255, 255, 0.5);
+  }
 
   .inner-wrapper {
     display: flex;
@@ -27,7 +33,6 @@ export const HeaderWrapper = styled.header<{
 
     .home {
       height: 28px;
-      color: ${props => props.homeColor};
       transition: color 0.6s ease;
     }
 

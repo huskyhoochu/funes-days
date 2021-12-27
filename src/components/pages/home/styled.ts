@@ -16,7 +16,7 @@ export const IntroWrapper = styled.div`
 
   @media (max-width: ${breakPoints.tablet}px) {
     grid-template-columns: 1fr;
-    grid-template-rows: 50% 50%;
+    grid-template-rows: 40% 60%;
   }
 
   .intro-img {
