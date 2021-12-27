@@ -48,13 +48,5 @@ export const pageQuery = graphql`
         slug
       }
     }
-    allFile(filter: { relativeDirectory: { eq: $frontmatter__slug } }) {
-      nodes {
-        childImageSharp {
-          id
-          gatsbyImageData
-        }
-      }
-    }
   }
 `;
