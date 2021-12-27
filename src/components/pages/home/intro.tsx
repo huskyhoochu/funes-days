@@ -11,6 +11,7 @@ const Intro: React.FC = () => {
           autoPlay={true}
           loop={true}
           playsInline={true}
+          muted={true}
         />
       </div>
       <div className="intro-text">
