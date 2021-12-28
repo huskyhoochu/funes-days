@@ -2,7 +2,7 @@ import React from 'react';
 import PostLayout from '@/layout/post';
 import { graphql } from 'gatsby';
 import { NarrowContainerWrapper } from '@/styles/container';
-import { MarkdownWrapper } from './styled';
+import { MarkdownWrapper } from '@/components/pages/dev/styled';
 
 interface Props {
   data: {
