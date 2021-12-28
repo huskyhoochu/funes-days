@@ -142,7 +142,18 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
       margin-bottom: 8px;
 
       &.active {
-        text-decoration: underline;
+        > p,
+        > a {
+          text-decoration: underline;
+        }
+      }
+
+      p {
+        margin-bottom: 8px;
+      }
+
+      ul {
+        margin-left: ${gridPoints.gutter}px;
       }
     }
   }

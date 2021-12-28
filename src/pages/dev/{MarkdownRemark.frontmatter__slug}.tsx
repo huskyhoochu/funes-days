@@ -35,9 +35,11 @@ const DevTemplate: React.FC<Props> = ({ data }) => {
       setCurScroll(curScroll);
     };
 
-    const headings = document.querySelectorAll('h4');
+    const headingsH4 = document.querySelectorAll('h4');
+    const headingsH6 = document.querySelectorAll('h6');
+    const headings = Array.from(headingsH4).concat(Array.from(headingsH6));
     const toc = document.getElementById('toc');
-    const navList = toc?.firstChild?.childNodes as NodeListOf<ChildNode>;
+    const navList = toc?.children[0].children as HTMLCollection;
     const navArray = Array.from(navList);
 
     headings.forEach((heading, idx, arr) => {
@@ -45,40 +47,63 @@ const DevTemplate: React.FC<Props> = ({ data }) => {
       const text = heading.innerText;
       const nextHeadingTop =
         arr[idx + 1]?.offsetTop || document.documentElement.offsetHeight;
+      const replacedText =
+        '#' + text.replace(/\s/g, '-').replace(/[^가-힣0-9a-zA-Z-]/g, '');
 
-      if (curScroll >= top - 1 && curScroll < nextHeadingTop) {
-        const activeNav = navArray
-          .filter(nav => {
-            const decodedHash = decodeURIComponent(
-              (nav.firstChild as HTMLAnchorElement)?.hash,
-            );
-            const replacedText =
-              '#' + text.replace(/\s/g, '-').replace(/[^가-힣0-9a-zA-Z-]/g, '');
-            return decodedHash === replacedText;
-          })
-          .pop();
-
-        (activeNav as HTMLLIElement)?.classList?.add('active');
-
-        const inactiveNav = navArray.filter(nav => {
-          const decodedHash = decodeURIComponent(
-            (nav.firstChild as HTMLAnchorElement)?.hash,
+      const getDecodedHash = (el: Element): string => {
+        let decodedHash;
+        if (el instanceof HTMLAnchorElement) {
+          decodedHash = decodeURIComponent((el as HTMLAnchorElement)?.hash);
+        } else if (
+          el.children.length > 1 &&
+          el.children[1] instanceof HTMLUListElement
+        ) {
+          const nestedArr = Array.from(
+            el.children[1].children as HTMLCollection,
           );
-          const replacedText =
-            '#' + text.replace(/\s/g, '-').replace(/[^가-힣0-9a-zA-Z-]/g, '');
-          return decodedHash !== replacedText;
-        });
+          toggleActive(nestedArr);
+          decodedHash = getDecodedHash(el.children[0]);
+        } else if (
+          el.children.length === 1 &&
+          el.children[0] instanceof HTMLUListElement
+        ) {
+          const nestedArr = Array.from(
+            el.children[0].children as HTMLCollection,
+          );
+          toggleActive(nestedArr);
+          decodedHash = '';
+        } else {
+          decodedHash = getDecodedHash(el.children[0]);
+        }
+        return decodedHash;
+      };
 
-        inactiveNav.forEach(nav =>
-          (nav as HTMLLIElement)?.classList?.remove('active'),
-        );
-      }
+      const toggleActive = (navArr: Element[]) => {
+        if (curScroll >= top - 1 && curScroll < nextHeadingTop) {
+          const activeNav = navArr
+            .filter(nav => getDecodedHash(nav) === replacedText)
+            .pop();
 
-      if (curScroll < arr[0].offsetTop - 1) {
-        navArray.forEach(nav =>
-          (nav as HTMLLIElement)?.classList?.remove('active'),
-        );
-      }
+          (activeNav as HTMLLIElement)?.classList?.add('active');
+
+          const inactiveNav = navArr.filter(
+            nav => getDecodedHash(nav) !== replacedText,
+          );
+
+          inactiveNav.forEach(nav =>
+            (nav as HTMLLIElement)?.classList?.remove('active'),
+          );
+        }
+
+        // 전체 텍스트보다 위로 벗어났을 경우
+        if (curScroll < arr[0].offsetTop - 1) {
+          navArr.forEach(nav =>
+            (nav as HTMLLIElement)?.classList?.remove('active'),
+          );
+        }
+      };
+
+      toggleActive(navArray);
     });
 
     window.addEventListener('scroll', getCurScroll);
