@@ -48,7 +48,7 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
     }
   }
 
-  .content {
+  .md-content {
     margin-block: 60px;
     ${Body1Class};
 

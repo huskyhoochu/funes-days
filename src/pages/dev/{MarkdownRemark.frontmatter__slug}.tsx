@@ -35,9 +35,10 @@ const DevTemplate: React.FC<Props> = ({ data }) => {
       setCurScroll(curScroll);
     };
 
-    const headingsH4 = document.querySelectorAll('h4');
-    const headingsH6 = document.querySelectorAll('h6');
-    const headings = Array.from(headingsH4).concat(Array.from(headingsH6));
+    const mdContent = document.getElementsByClassName('md-content')[0];
+    const headings = Array.from(mdContent.children).filter(
+      el => el instanceof HTMLHeadingElement,
+    ) as HTMLHeadingElement[];
     const toc = document.getElementById('toc');
     const navList = toc?.children[0].children as HTMLCollection;
     const navArray = Array.from(navList);
@@ -48,7 +49,11 @@ const DevTemplate: React.FC<Props> = ({ data }) => {
       const nextHeadingTop =
         arr[idx + 1]?.offsetTop || document.documentElement.offsetHeight;
       const replacedText =
-        '#' + text.replace(/\s/g, '-').replace(/[^가-힣0-9a-zA-Z-]/g, '');
+        '#' +
+        text
+          .replace(/\s/g, '-')
+          .replace(/[^가-힣0-9a-zA-Z-]/g, '')
+          .toLowerCase();
 
       const getDecodedHash = (el: Element): string => {
         let decodedHash;
@@ -131,7 +136,10 @@ const DevTemplate: React.FC<Props> = ({ data }) => {
               ))}
             </div>
           </div>
-          <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
+          <div
+            className="md-content"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
         </NarrowContainerWrapper>
         <div className="toc-group">
           <h5>Table of Contents</h5>
