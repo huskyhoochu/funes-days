@@ -118,7 +118,7 @@ export const IntroWrapper = styled.div`
 `;
 
 export const DevSectionWrapper = styled.div`
-  padding-block: 60px;
+  padding-block: 90px;
 
   .title-group {
     h4 {
@@ -127,7 +127,7 @@ export const DevSectionWrapper = styled.div`
   }
 
   .post-group {
-    margin-block: 60px;
+    margin-block: 30px;
     display: grid;
     grid-template-columns: repeat(
       auto-fill,
