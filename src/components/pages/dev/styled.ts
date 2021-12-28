@@ -1,57 +1,104 @@
 import styled from '@emotion/styled';
-import { Body1Class, Body2Class } from '@/styles/typography';
+import {
+  Body1Class,
+  Body2Class,
+  H6Class,
+  Subtitle1Class,
+} from '@/styles/typography';
 import { gridPoints } from '@/styles/screen';
+import { css } from '@emotion/react';
+import radius from '@/styles/radius';
 
-export const MarkdownWrapper = styled.div`
-  ${Body1Class};
-  line-height: 2;
+export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
   padding-block: 120px;
 
-  .caption {
-    text-align: center;
-    ${Body2Class};
+  .title-group {
+    h3 {
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .description {
+      ${Subtitle1Class};
+    }
+
+    .tag-group {
+      margin-block: 16px;
+      display: flex;
+      align-items: center;
+
+      .tag {
+        ${H6Class};
+        font-weight: 700;
+        border-radius: ${radius['8']}px;
+        padding: 4px 8px;
+
+        ${props =>
+          props.screen === 'light' &&
+          css`
+            background-color: rgba(255, 255, 255, 0.5);
+          `};
+
+        ${props =>
+          props.screen === 'dark' &&
+          css`
+            background-color: rgba(0, 0, 0, 0.5);
+          `};
+      }
+    }
   }
 
-  a {
-    text-decoration: underline;
-  }
+  .content {
+    margin-block: 60px;
+    ${Body1Class};
+    line-height: 2;
 
-  strong {
-    font-weight: 700;
-  }
+    .caption {
+      text-align: center;
+      ${Body2Class};
+    }
 
-  em {
-    font-style: italic;
-  }
+    a {
+      text-decoration: underline;
+    }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: 700;
-  }
+    strong {
+      font-weight: 700;
+    }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p {
-    margin-bottom: 16px;
-  }
+    em {
+      font-style: italic;
+    }
 
-  p {
-    text-align: justify;
-  }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: 700;
+    }
 
-  blockquote {
-    margin-block: ${gridPoints.gutter * 2}px;
-    margin-inline: ${gridPoints.gutter * 3}px;
-    border-left-style: solid;
-    border-left-width: 2px;
-    padding-left: ${gridPoints.gutter}px;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      margin-bottom: 16px;
+    }
+
+    p {
+      text-align: justify;
+    }
+
+    blockquote {
+      margin-block: ${gridPoints.gutter * 2}px;
+      margin-inline: ${gridPoints.gutter * 3}px;
+      border-left-style: solid;
+      border-left-width: 4px;
+      padding-left: ${gridPoints.gutter}px;
+    }
   }
 `;
