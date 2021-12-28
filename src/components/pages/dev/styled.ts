@@ -5,7 +5,7 @@ import {
   H6Class,
   Subtitle1Class,
 } from '@/styles/typography';
-import { gridPoints } from '@/styles/screen';
+import { breakPoints, gridPoints } from '@/styles/screen';
 import { css } from '@emotion/react';
 import radius from '@/styles/radius';
 
@@ -99,6 +99,10 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
       border-left-style: solid;
       border-left-width: 4px;
       padding-left: ${gridPoints.gutter}px;
+
+      @media (max-width: ${breakPoints.mobile}px) {
+        margin-inline: ${gridPoints.gutter}px;
+      }
     }
   }
 `;
