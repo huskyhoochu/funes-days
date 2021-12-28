@@ -31,6 +31,7 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
         font-weight: 700;
         border-radius: ${radius['8']}px;
         padding: 4px 8px;
+        margin-right: ${gridPoints.gutter}px;
 
         ${props =>
           props.screen === 'light' &&
@@ -102,6 +103,14 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
 
       @media (max-width: ${breakPoints.mobile}px) {
         margin-inline: ${gridPoints.gutter}px;
+      }
+    }
+
+    .gatsby-highlight {
+      margin-block: 32px;
+
+      > pre {
+        border-radius: ${radius['8']}px;
       }
     }
 

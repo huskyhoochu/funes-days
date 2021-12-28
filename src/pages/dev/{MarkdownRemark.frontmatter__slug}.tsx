@@ -58,7 +58,7 @@ const DevTemplate: React.FC<Props> = ({ data }) => {
           })
           .pop();
 
-        (activeNav as HTMLLIElement).classList.add('active');
+        (activeNav as HTMLLIElement)?.classList?.add('active');
 
         const inactiveNav = navArray.filter(nav => {
           const decodedHash = decodeURIComponent(

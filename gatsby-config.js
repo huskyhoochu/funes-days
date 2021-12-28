@@ -31,8 +31,11 @@ module.exports = {
               offsetY: -90,
               maintainCase: false,
               isIconAfterHeader: true,
-              elements: ['h4'],
+              elements: ['h4', 'h6'],
             },
+          },
+          {
+            resolve: 'gatsby-remark-prismjs',
           },
         ],
       },

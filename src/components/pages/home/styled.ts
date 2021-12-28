@@ -133,6 +133,7 @@ export const DevSectionWrapper = styled.div`
       auto-fill,
       minmax(${gridPoints.col * 4 + gridPoints.gutter * 3}px, 1fr)
     );
+    grid-gap: ${gridPoints.gutter}px;
 
     @media (max-width: ${breakPoints.mobile}px) {
       grid-template-columns: 1fr;
@@ -166,6 +167,7 @@ export const PostCardWrapper = styled(Link)<{ screen: ScreenType }>`
       font-weight: 700;
       border-radius: ${radius['8']}px;
       padding: 3px 6px;
+      margin-right: ${gridPoints.gutter}px;
 
       ${props =>
         props.screen === 'light' &&
