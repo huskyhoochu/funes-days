@@ -53,21 +53,31 @@ export const IntroWrapper = styled.div`
     .content {
       ${H5Class};
 
+      &:after {
+        content: '';
+        position: absolute;
+        width: 12px;
+        height: 36px;
+        margin-inline: 4px;
+        background-color: ${Gray['400']};
+      }
+
       @media (max-width: ${breakPoints.tablet}px) {
         ${H6Class};
+
+        &:after {
+          width: 12px;
+          height: 30px;
+        }
       }
 
       @media (max-width: ${breakPoints.mobile}px) {
         ${Body2Class};
-      }
 
-      &:after {
-        content: '';
-        position: absolute;
-        width: 16px;
-        height: 40px;
-        margin-inline: 4px;
-        background-color: ${Gray['400']};
+        &:after {
+          width: 8px;
+          height: 20px;
+        }
       }
 
       &.complete {
@@ -147,7 +157,7 @@ export const PostCardWrapper = styled(Link)<{ screen: ScreenType }>`
   }
 
   .tag-group {
-    margin-block: 8px;
+    margin-top: 8px;
     display: flex;
     align-items: center;
 
