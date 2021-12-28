@@ -15,7 +15,11 @@ export const NarrowContainerClass = css`
     max-width: ${screenPoint}px;
   }
 
-  @media (min-width: ${breakPoints.tablet}px) {
+  @media (max-width: ${breakPoints.desktop}px) {
+    max-width: ${screenPoint}px;
+  }
+
+  @media (max-width: ${breakPoints.tablet}px) {
     width: 100%;
   }
 `;
