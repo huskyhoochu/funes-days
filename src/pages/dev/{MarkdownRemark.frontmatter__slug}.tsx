@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import { graphql } from 'gatsby';
 import PostLayout from '@/layout/post';
@@ -27,6 +27,66 @@ const DevTemplate: React.FC<Props> = ({ data }) => {
   const [, screen] = useTheme();
   const { markdownRemark } = data;
   const { frontmatter, html, timeToRead, tableOfContents } = markdownRemark;
+  const [curScroll, setCurScroll] = useState<number>(0);
+
+  useEffect(() => {
+    const getCurScroll = (e: Event) => {
+      const curScroll = (e.target as Document).documentElement.scrollTop;
+      setCurScroll(curScroll);
+    };
+
+    const headings = document.querySelectorAll('h4');
+    const toc = document.getElementById('toc');
+    const navList = toc?.firstChild?.childNodes as NodeListOf<ChildNode>;
+    const navArray = Array.from(navList);
+
+    headings.forEach((heading, idx, arr) => {
+      const top = heading.offsetTop;
+      const text = heading.innerText;
+      const nextHeadingTop =
+        arr[idx + 1]?.offsetTop || document.documentElement.offsetHeight;
+
+      if (curScroll >= top - 1 && curScroll < nextHeadingTop) {
+        const activeNav = navArray
+          .filter(nav => {
+            const decodedHash = decodeURIComponent(
+              (nav.firstChild as HTMLAnchorElement)?.hash,
+            );
+            const replacedText =
+              '#' + text.replace(/\s/g, '-').replace(/[^가-힣0-9a-zA-Z-]/g, '');
+            return decodedHash === replacedText;
+          })
+          .pop();
+
+        (activeNav as HTMLLIElement).classList.add('active');
+
+        const inactiveNav = navArray.filter(nav => {
+          const decodedHash = decodeURIComponent(
+            (nav.firstChild as HTMLAnchorElement)?.hash,
+          );
+          const replacedText =
+            '#' + text.replace(/\s/g, '-').replace(/[^가-힣0-9a-zA-Z-]/g, '');
+          return decodedHash !== replacedText;
+        });
+
+        inactiveNav.forEach(nav =>
+          (nav as HTMLLIElement)?.classList?.remove('active'),
+        );
+      }
+
+      if (curScroll < arr[0].offsetTop - 1) {
+        navArray.forEach(nav =>
+          (nav as HTMLLIElement)?.classList?.remove('active'),
+        );
+      }
+    });
+
+    window.addEventListener('scroll', getCurScroll);
+
+    return () => {
+      window.removeEventListener('scroll', getCurScroll);
+    };
+  }, [curScroll, setCurScroll]);
 
   return (
     <PostLayout title={frontmatter.title}>
@@ -46,9 +106,12 @@ const DevTemplate: React.FC<Props> = ({ data }) => {
               ))}
             </div>
           </div>
-          <div dangerouslySetInnerHTML={{ __html: tableOfContents }} />
           <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
         </NarrowContainerWrapper>
+        <div className="toc-group">
+          <h5>Table of Contents</h5>
+          <div id="toc" dangerouslySetInnerHTML={{ __html: tableOfContents }} />
+        </div>
       </MarkdownWrapper>
     </PostLayout>
   );

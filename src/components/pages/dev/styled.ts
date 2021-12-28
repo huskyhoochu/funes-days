@@ -1,5 +1,10 @@
 import styled from '@emotion/styled';
-import { Body1Class, Body2Class, H6Class } from '@/styles/typography';
+import {
+  Body1Class,
+  Body2Class,
+  H6Class,
+  Subtitle2Class,
+} from '@/styles/typography';
 import { breakPoints, gridPoints } from '@/styles/screen';
 import { css } from '@emotion/react';
 import radius from '@/styles/radius';
@@ -7,6 +12,8 @@ import { Gray } from '@/styles/theme';
 
 export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
   padding-block: 120px;
+  position: relative;
+  display: flex;
 
   .title-group {
     h3 {
@@ -100,6 +107,34 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
 
     .anchor {
       fill: ${props => (props.screen === 'light' ? Gray['600'] : Gray['200'])};
+    }
+  }
+
+  .toc-group {
+    position: sticky;
+    top: 120px;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    margin-inline: ${gridPoints.gutter}px;
+    line-height: 2;
+    word-break: keep-all;
+    ${Subtitle2Class};
+
+    @media (max-width: ${breakPoints.tablet}px) {
+      display: none;
+    }
+
+    h5 {
+      font-weight: 700;
+    }
+
+    li {
+      margin-bottom: 8px;
+
+      &.active {
+        text-decoration: underline;
+      }
     }
   }
 `;
