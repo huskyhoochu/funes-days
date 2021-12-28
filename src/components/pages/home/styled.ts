@@ -12,6 +12,7 @@ import {
   Subtitle2Class,
 } from '@/styles/typography';
 import radius from '@/styles/radius';
+import { Gray } from '@/styles/theme';
 
 export const IntroWrapper = styled.div`
   display: grid;
@@ -58,6 +59,35 @@ export const IntroWrapper = styled.div`
 
       @media (max-width: ${breakPoints.mobile}px) {
         ${Body2Class};
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 40px;
+        margin-inline: 4px;
+        background-color: ${Gray['400']};
+      }
+
+      &.complete {
+        &:after {
+          animation-name: breath;
+          animation-iteration-count: infinite;
+          animation-duration: 1s;
+        }
+      }
+
+      @keyframes breath {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
       }
     }
 
