@@ -11,6 +11,7 @@ interface Props {
     markdownRemark: {
       html: string;
       timeToRead: number;
+      tableOfContents: string;
       frontmatter: {
         title: string;
         description: string;
@@ -25,7 +26,7 @@ interface Props {
 const DevTemplate: React.FC<Props> = ({ data }) => {
   const [, screen] = useTheme();
   const { markdownRemark } = data;
-  const { frontmatter, html, timeToRead } = markdownRemark;
+  const { frontmatter, html, timeToRead, tableOfContents } = markdownRemark;
 
   return (
     <PostLayout title={frontmatter.title}>
@@ -45,6 +46,7 @@ const DevTemplate: React.FC<Props> = ({ data }) => {
               ))}
             </div>
           </div>
+          <div dangerouslySetInnerHTML={{ __html: tableOfContents }} />
           <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
         </NarrowContainerWrapper>
       </MarkdownWrapper>
@@ -59,6 +61,7 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { slug: { eq: $frontmatter__slug } }) {
       html
       timeToRead
+      tableOfContents
       frontmatter {
         title
         description

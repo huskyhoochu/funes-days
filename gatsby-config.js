@@ -16,13 +16,22 @@ module.exports = {
     'gatsby-plugin-sitemap',
     'gatsby-plugin-offline',
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 800,
+            },
+          },
+          {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              offsetY: -90,
+              maintainCase: false,
+              isIconAfterHeader: true,
+              elements: ['h4'],
             },
           },
         ],

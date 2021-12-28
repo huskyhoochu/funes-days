@@ -11,7 +11,7 @@ export const HeaderWrapper = styled.header<{
 }>`
   ${props => props.themeClass};
   ${H5Class};
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;

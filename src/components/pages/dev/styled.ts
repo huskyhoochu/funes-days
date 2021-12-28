@@ -3,6 +3,7 @@ import { Body1Class, Body2Class, H6Class } from '@/styles/typography';
 import { breakPoints, gridPoints } from '@/styles/screen';
 import { css } from '@emotion/react';
 import radius from '@/styles/radius';
+import { Gray } from '@/styles/theme';
 
 export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
   padding-block: 120px;
@@ -66,7 +67,7 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
     h4,
     h5,
     h6 {
-      margin-top: 32px;
+      padding-top: 60px;
       font-weight: 700;
     }
 
@@ -95,6 +96,10 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
       @media (max-width: ${breakPoints.mobile}px) {
         margin-inline: ${gridPoints.gutter}px;
       }
+    }
+
+    .anchor {
+      fill: ${props => (props.screen === 'light' ? Gray['600'] : Gray['200'])};
     }
   }
 `;
