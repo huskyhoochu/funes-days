@@ -1,12 +1,17 @@
 import styled from '@emotion/styled';
+import { Link } from 'gatsby';
+import { css } from '@emotion/react';
 import { breakPoints, gridPoints } from '@/styles/screen';
 import {
+  Body1Class,
   Body2Class,
   CaptionClass,
   H5Class,
   H6Class,
   Subtitle1Class,
+  Subtitle2Class,
 } from '@/styles/typography';
+import radius from '@/styles/radius';
 
 export const IntroWrapper = styled.div`
   display: grid;
@@ -68,6 +73,71 @@ export const IntroWrapper = styled.div`
       @media (max-width: ${breakPoints.mobile}px) {
         ${CaptionClass};
       }
+    }
+  }
+`;
+
+export const DevSectionWrapper = styled.div`
+  padding-block: 60px;
+
+  .title-group {
+    h4 {
+      font-weight: 700;
+    }
+  }
+
+  .post-group {
+    margin-block: 60px;
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(${gridPoints.col * 4 + gridPoints.gutter * 3}px, 1fr)
+    );
+
+    @media (max-width: ${breakPoints.mobile}px) {
+      grid-template-columns: 1fr;
+    }
+  }
+`;
+
+export const PostCardWrapper = styled(Link)<{ screen: ScreenType }>`
+  border-style: solid;
+  border-width: 1px;
+  padding: 12px 16px;
+  border-radius: ${radius['8']}px;
+
+  h6 {
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .description {
+    ${Subtitle2Class};
+    margin-block: 4px;
+  }
+
+  .tag-group {
+    margin-block: 8px;
+    display: flex;
+    align-items: center;
+
+    .tag {
+      ${Body1Class};
+      font-weight: 700;
+      border-radius: ${radius['8']}px;
+      padding: 3px 6px;
+
+      ${props =>
+        props.screen === 'light' &&
+        css`
+          background-color: rgba(255, 255, 255, 0.5);
+        `};
+
+      ${props =>
+        props.screen === 'dark' &&
+        css`
+          background-color: rgba(0, 0, 0, 0.5);
+        `};
     }
   }
 `;

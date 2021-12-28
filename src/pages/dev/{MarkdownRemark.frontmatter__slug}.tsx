@@ -33,10 +33,10 @@ const DevTemplate: React.FC<Props> = ({ data }) => {
         <NarrowContainerWrapper>
           <div className="title-group">
             <h3>{frontmatter.title}</h3>
+            <h5>{frontmatter.description}</h5>
             <h5>
               {dayjs(frontmatter.date).format('YYYY-MM-DD')} ∙ {timeToRead} min
             </h5>
-            <p className="description">{frontmatter.description}</p>
             <div className="tag-group">
               {frontmatter.tags.map((tag, idx) => (
                 <p key={idx} className="tag">

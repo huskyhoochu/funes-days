@@ -1,10 +1,5 @@
 import styled from '@emotion/styled';
-import {
-  Body1Class,
-  Body2Class,
-  H6Class,
-  Subtitle1Class,
-} from '@/styles/typography';
+import { Body1Class, Body2Class, H6Class } from '@/styles/typography';
 import { breakPoints, gridPoints } from '@/styles/screen';
 import { css } from '@emotion/react';
 import radius from '@/styles/radius';
@@ -16,10 +11,6 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
     h3 {
       font-weight: 700;
       margin-bottom: 16px;
-    }
-
-    .description {
-      ${Subtitle1Class};
     }
 
     .tag-group {
@@ -51,7 +42,6 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
   .content {
     margin-block: 60px;
     ${Body1Class};
-    line-height: 2;
 
     .caption {
       text-align: center;
@@ -76,6 +66,7 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
     h4,
     h5,
     h6 {
+      margin-top: 32px;
       font-weight: 700;
     }
 
@@ -91,6 +82,7 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
 
     p {
       text-align: justify;
+      line-height: 2;
     }
 
     blockquote {
