@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const useActiveToc = (
   mdContentRef: React.RefObject<HTMLDivElement>,
@@ -22,19 +22,19 @@ const useActiveToc = (
     const getDecodedHash = (el: Element, replaceText: string): string => {
       let decodedHash = '';
       if (el instanceof HTMLAnchorElement) {
-        decodedHash = decodeURIComponent((el as HTMLAnchorElement)?.hash);
+        decodedHash = decodeURIComponent(el.hash);
       } else if (
         el.children.length > 1 &&
         el.children[1] instanceof HTMLUListElement
       ) {
-        const nestedArr = Array.from(el.children[1].children as HTMLCollection);
+        const nestedArr = Array.from(el.children[1].children);
         toggleActiveNav(nestedArr, replaceText);
         decodedHash = getDecodedHash(el.children[0], replaceText);
       } else if (
         el.children.length === 1 &&
         el.children[0] instanceof HTMLUListElement
       ) {
-        const nestedArr = Array.from(el.children[0].children as HTMLCollection);
+        const nestedArr = Array.from(el.children[0].children);
         toggleActiveNav(nestedArr, replaceText);
       } else {
         decodedHash = getDecodedHash(el.children[0], replaceText);
@@ -56,23 +56,19 @@ const useActiveToc = (
     const toggleActiveNav = (navArr: Element[], replacedText: string) => {
       getActiveNav(navArr, replacedText)?.classList?.add('active');
       getInactiveNavArr(navArr, replacedText).forEach(nav =>
-        (nav as HTMLLIElement)?.classList?.remove('active'),
+        nav.classList.remove('active'),
       );
     };
 
-    const inactiveAllNav = (navArr: Element[]) => {
-      navArr.forEach(nav =>
-        (nav as HTMLLIElement)?.classList?.remove('active'),
-      );
-    };
+    const inactiveAllNav = (navArr: Element[]) =>
+      navArr.forEach(nav => nav.classList.remove('active'));
 
     headings.forEach((heading, idx, arr) => {
-      const text = heading.innerText;
       const nextHeadingTop =
         arr[idx + 1]?.offsetTop || document.documentElement.offsetHeight;
       const replacedText =
         '#' +
-        text
+        heading.innerText
           .replace(/\s/g, '-')
           .replace(/[^가-힣0-9a-zA-Z-]/g, '')
           .toLowerCase();
