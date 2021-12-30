@@ -3,7 +3,7 @@ title: '자바스크립트: 리터럴과 생성자'
 description: '[JavaScript Patterns] 필기 정리'
 date: 2019-03-21T14:50:48+09:00
 draft: false
-tags: ['javascript']
+tags: ['book', 'javascript']
 slug: 'literal-and-constructor'
 category: 'dev'
 ---

@@ -3,7 +3,7 @@ title: '회사 생활 6개월, 깨달은 점들: 개발자로서 회사원으로
 description: '개발자로 취업한 지도 벌써 반 년! 정신없었던 상반기를 돌아보는 시간'
 date: 2019-08-02T18:54:03+09:00
 draft: false
-tags: ['review']
+tags: ['diary']
 slug: 'review-company'
 category: 'dev'
 ---

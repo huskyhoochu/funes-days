@@ -3,7 +3,7 @@ title: 'AWS를 만드는 AWS, CloudFormation'
 description: '코드를 작성해서 AWS 인프라를 구축하자! CloudFormation 기본 사용법 소개'
 date: 2019-03-19T19:31:51+09:00
 draft: false
-tags: ['AWS']
+tags: ['aws']
 slug: 'introduce-cloudformation'
 category: 'dev'
 ---

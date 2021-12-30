@@ -3,7 +3,7 @@ title: '디스할 수 없는 너, this'
 description: "자바스크립트에서 가장 불가사의한 키워드, 'this' 를 파헤쳐봅시다"
 date: 2018-11-05T17:27:00+09:00
 draft: false
-tags: ['frontend', 'javascript']
+tags: ['javascript']
 slug: 'what-is-this-exactly-in-javascript'
 category: 'dev'
 ---
@@ -12,7 +12,7 @@ category: 'dev'
 
 정말 오랜만에 찾아왔네요. 여러분 모두 즐겁게 코딩하고 계신 거 맞죠?
 
-![jihyo](./jihyo.jpg)
+![jihyo](jihyo.jpg)
 
 <p class="caption">저는 잘 지내요!</p>
 
