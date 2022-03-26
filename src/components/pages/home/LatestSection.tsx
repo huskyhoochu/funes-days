@@ -1,7 +1,7 @@
 import React from 'react';
 import PostCard from '@/components/pages/home/postCard';
 import { ContainerWrapper } from '@/styles/container';
-import { DevSectionWrapper } from './styled';
+import { LatestSectionWrapper } from './styled';
 import { motion } from 'framer-motion';
 import { PropagationShowingVariants } from '@/framer/variants';
 
@@ -22,9 +22,9 @@ interface Props {
   }[];
 }
 
-const DevSection: React.FC<Props> = ({ posts }) => {
+const LatestSection: React.FC<Props> = ({ posts }) => {
   return (
-    <DevSectionWrapper>
+    <LatestSectionWrapper>
       <ContainerWrapper>
         <div className="title-group">
           <h4>Latest Updates</h4>
@@ -40,8 +40,8 @@ const DevSection: React.FC<Props> = ({ posts }) => {
           ))}
         </motion.div>
       </ContainerWrapper>
-    </DevSectionWrapper>
+    </LatestSectionWrapper>
   );
 };
 
-export default DevSection;
+export default LatestSection;

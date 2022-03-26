@@ -54,6 +54,10 @@ export const IntroWrapper = styled.div<{
         height: 100%;
         margin-left: 16px;
         background-color: ${Gray['400']};
+
+        @media (max-width: ${breakPoints.mobile}px) {
+          width: 30px;
+        }
       }
 
       &.complete {
@@ -79,7 +83,7 @@ export const IntroWrapper = styled.div<{
   }
 `;
 
-export const DevSectionWrapper = styled.div`
+export const LatestSectionWrapper = styled.div`
   padding-block: 90px;
 
   .title-group {

@@ -4,7 +4,7 @@ import { ActiveScrollSection } from '@/components/templates/section';
 import Intro from '@/components/pages/home/intro';
 import Header from '@/components/atoms/header';
 import HomeLayout from '@/layout/home';
-import LatestUpdateSection from '@/components/pages/home/devSection';
+import LatestUpdateSection from '@/components/pages/home/LatestSection';
 import useTheme from '@/hooks/useTheme';
 
 interface Props {

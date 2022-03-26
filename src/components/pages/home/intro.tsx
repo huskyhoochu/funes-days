@@ -40,6 +40,11 @@ const Intro: React.FC<Props> = ({ themeClass }) => {
 
   return (
     <IntroWrapper themeClass={themeClass}>
+      <div className="intro-text" ref={callIntersect}>
+        <p className={`content ${isWrittenComplete ? 'complete' : ''}`}>
+          {textState}
+        </p>
+      </div>
       <div className="intro-img">
         <video
           src={GrapesVideo}
@@ -48,11 +53,6 @@ const Intro: React.FC<Props> = ({ themeClass }) => {
           playsInline={true}
           muted={true}
         />
-      </div>
-      <div className="intro-text" ref={callIntersect}>
-        <p className={`content ${isWrittenComplete ? 'complete' : ''}`}>
-          {textState}
-        </p>
       </div>
     </IntroWrapper>
   );
