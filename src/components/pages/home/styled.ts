@@ -17,11 +17,11 @@ export const IntroWrapper = styled.div<{
   ${props => props.themeClass};
 
   .intro-img {
-    height: 100%;
+    height: 35vh;
 
     video {
       width: 100%;
-      height: 35vh;
+      height: 100%;
       object-fit: cover;
       object-position: center;
     }
