@@ -45,6 +45,7 @@ export const IntroWrapper = styled.div<{
 
       @media (max-width: ${breakPoints.mobile}px) {
         ${H3Class};
+        right: 42px;
       }
 
       &:after {
