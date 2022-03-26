@@ -25,6 +25,7 @@ export const SidebarWrapper = styled(motion.div)<{
     padding-block: 24px;
     padding-inline: 16px;
     will-change: transform;
+    z-index: 1;
 
     .title-group {
       display: flex;
