@@ -1,19 +1,28 @@
 import { Variants } from 'framer-motion';
 
+export const PropagationShowingVariants: Variants = {
+  show: {
+    opacity: 1,
+    transition: {
+      when: 'beforeChildren',
+      staggerChildren: 0.3,
+    },
+  },
+  hide: {
+    opacity: 0,
+  },
+};
+
 export const NormalShowingVariants: Variants = {
   show: {
     opacity: 1,
     transition: {
       type: 'spring',
-      duration: 0.6,
+      duration: 1,
     },
   },
   hide: {
     opacity: 0,
-    transition: {
-      type: 'spring',
-      duration: 0.6,
-    },
   },
 };
 

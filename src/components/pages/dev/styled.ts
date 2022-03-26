@@ -49,6 +49,7 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
   }
 
   .md-content {
+    position: relative;
     margin-block: 60px;
     ${Body1Class};
     overflow-x: auto;
@@ -110,12 +111,22 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
     .gatsby-highlight {
       margin-block: 32px;
 
+      @media (min-width: ${breakPoints.desktop}px) {
+        > pre {
+          max-width: ${gridPoints.col * 12 + gridPoints.gutter * 11}px;
+        }
+      }
+
       @media (max-width: ${breakPoints.desktop}px) {
-        max-width: ${breakPoints.mobile}px;
+        > pre {
+          max-width: ${gridPoints.col * 6 + gridPoints.gutter * 5}px;
+        }
       }
 
       @media (max-width: ${breakPoints.tablet}px) {
-        max-width: ${breakPoints.tablet}px;
+        > pre {
+          max-width: ${breakPoints.tablet}px;
+        }
       }
 
       > pre {

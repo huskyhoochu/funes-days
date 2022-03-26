@@ -4,7 +4,7 @@ import { ActiveScrollSection } from '@/components/templates/section';
 import Intro from '@/components/pages/home/intro';
 import Header from '@/components/atoms/header';
 import HomeLayout from '@/layout/home';
-import DevSection from '@/components/pages/home/devSection';
+import LatestUpdateSection from '@/components/pages/home/devSection';
 import useTheme from '@/hooks/useTheme';
 
 interface Props {
@@ -31,17 +31,13 @@ interface Props {
 const IndexPage: React.FC<Props> = ({ data }) => {
   const [, , , ReversedThemeClass] = useTheme();
   const firstSectionRef = useRef<HTMLDivElement>(null);
-
   const { allMarkdownRemark } = data;
-  const devPosts = allMarkdownRemark.edges.filter(
-    edge => edge.node.frontmatter.category === 'dev',
-  );
 
   return (
     <HomeLayout title="main">
       <Header backgroundColor="transparent" />
       <ActiveScrollSection forwardedRef={firstSectionRef} index={0}>
-        <DevSection posts={devPosts} />
+        <LatestUpdateSection posts={allMarkdownRemark.edges} />
       </ActiveScrollSection>
       <ActiveScrollSection forwardedRef={firstSectionRef} index={0}>
         <Intro themeClass={ReversedThemeClass} />

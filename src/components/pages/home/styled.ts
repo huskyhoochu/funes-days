@@ -1,12 +1,11 @@
 import styled from '@emotion/styled';
-import { Link } from 'gatsby';
+import { motion } from 'framer-motion';
 import { css, SerializedStyles } from '@emotion/react';
 import { breakPoints, gridPoints } from '@/styles/screen';
 import {
   CaptionClass,
   H1Class,
-  H6Class,
-  Subtitle1Class,
+  H3Class,
   Subtitle2Class,
 } from '@/styles/typography';
 import radius from '@/styles/radius';
@@ -44,6 +43,10 @@ export const IntroWrapper = styled.div<{
       ${H1Class};
       font-weight: 700;
 
+      @media (max-width: ${breakPoints.mobile}px) {
+        ${H3Class};
+      }
+
       &:after {
         content: '';
         position: absolute;
@@ -71,20 +74,6 @@ export const IntroWrapper = styled.div<{
         100% {
           opacity: 1;
         }
-      }
-    }
-
-    .excerpt {
-      ${H6Class};
-      text-align: right;
-      margin-block: 16px;
-
-      @media (max-width: ${breakPoints.tablet}px) {
-        ${Subtitle1Class};
-      }
-
-      @media (max-width: ${breakPoints.mobile}px) {
-        ${CaptionClass};
       }
     }
   }
@@ -133,16 +122,19 @@ export const DevSectionWrapper = styled.div`
     }
 
     @media (max-width: ${breakPoints.mobile}px) {
-      display: block;
+      grid-template-columns: repeat(1, auto);
+      grid-template-rows: repeat(7, auto);
     }
   }
 `;
 
-export const PostCardWrapper = styled(Link)<{ screen: ScreenType }>`
+export const PostCardWrapper = styled(motion.div)<{ screen: ScreenType }>`
   border-style: solid;
   border-width: 1px;
   padding: 12px 16px;
   border-radius: ${radius['8']}px;
+  width: 100%;
+  height: 100%;
 
   h6 {
     font-weight: 700;

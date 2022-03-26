@@ -2,6 +2,8 @@ import React from 'react';
 import PostCard from '@/components/pages/home/postCard';
 import { ContainerWrapper } from '@/styles/container';
 import { DevSectionWrapper } from './styled';
+import { motion } from 'framer-motion';
+import { PropagationShowingVariants } from '@/framer/variants';
 
 interface Props {
   posts: {
@@ -27,11 +29,16 @@ const DevSection: React.FC<Props> = ({ posts }) => {
         <div className="title-group">
           <h4>Latest Updates</h4>
         </div>
-        <div className="post-group">
+        <motion.div
+          className="post-group"
+          variants={PropagationShowingVariants}
+          initial="hide"
+          animate="show"
+        >
           {posts.map(post => (
             <PostCard key={post.node.id} node={post.node} />
           ))}
-        </div>
+        </motion.div>
       </ContainerWrapper>
     </DevSectionWrapper>
   );
