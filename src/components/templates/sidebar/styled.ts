@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
 import { SerializedStyles } from '@emotion/react';
 
-export const SidebarWrapper = styled(motion.div)<{
+export const SidebarWrapper = styled.div<{
   theme: SerializedStyles;
 }>`
   position: fixed;
