@@ -64,7 +64,7 @@ const Header: React.FC<Props> = ({ backgroundColor = '' }) => {
               <span className="material-icons-outlined">menu</span>
             </button>
           </div>
-          <AnimatePresence>
+          <AnimatePresence exitBeforeEnter={true}>
             {isMobileOpen && <MobileSidebar onToggle={toggleMobileSidebar} />}
           </AnimatePresence>
         </div>

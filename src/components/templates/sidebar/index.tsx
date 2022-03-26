@@ -1,9 +1,5 @@
-import React from 'react';
-import { LayoutGroup, motion } from 'framer-motion';
-import {
-  NormalHorizontalVariants,
-  NormalShowingVariants,
-} from '@/framer/variants';
+import React, { useEffect } from 'react';
+import { LayoutGroup, motion, usePresence } from 'framer-motion';
 import useTheme from '@/hooks/useTheme';
 import { SidebarWrapper } from './styled';
 
@@ -14,26 +10,23 @@ interface Props {
 
 const Sidebar: React.FC<Props> = ({ onToggle, children }) => {
   const [ThemeClass] = useTheme();
+  const [isPresent, safeToRemove] = usePresence();
+
+  useEffect(() => {
+    !isPresent && setTimeout(safeToRemove, 300);
+  }, [isPresent]);
 
   return (
     <SidebarWrapper theme={ThemeClass}>
       <LayoutGroup>
         <motion.div
           layout={true}
-          className="sidebar-background"
-          variants={NormalShowingVariants}
+          className={`sidebar-background ${isPresent ? 'active' : 'inactive'}`}
           onClick={onToggle}
-          initial="hide"
-          animate="show"
-          exit="hide"
         />
         <motion.div
           layout={true}
-          className="sidebar-body"
-          variants={NormalHorizontalVariants}
-          initial="hide"
-          animate="show"
-          exit="hide"
+          className={`sidebar-body ${isPresent ? 'active' : 'inactive'}`}
         >
           <div className="title-group">
             <h4>Funes</h4>

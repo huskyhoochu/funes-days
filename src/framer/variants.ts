@@ -36,9 +36,5 @@ export const NormalHorizontalVariants: Variants = {
   },
   hide: {
     x: '100%',
-    transition: {
-      type: 'tween',
-      duration: 0.3,
-    },
   },
 };
