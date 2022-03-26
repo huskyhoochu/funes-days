@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { useCycle } from 'framer-motion';
+import { AnimatePresence, useCycle } from 'framer-motion';
 import { ContainerWrapper } from '@/styles/container';
 import useTheme from '@/hooks/useTheme';
 import OptionModal from '@/components/atoms/optionModal';
@@ -64,7 +64,9 @@ const Header: React.FC<Props> = ({ backgroundColor = '' }) => {
               <span className="material-icons-outlined">menu</span>
             </button>
           </div>
-          <MobileSidebar isOpen={isMobileOpen} onToggle={toggleMobileSidebar} />
+          <AnimatePresence>
+            {isMobileOpen && <MobileSidebar onToggle={toggleMobileSidebar} />}
+          </AnimatePresence>
         </div>
       </ContainerWrapper>
       <OptionModal isOpen={isOptionOpen} onToggle={toggleOptionModal} />
