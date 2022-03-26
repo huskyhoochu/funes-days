@@ -18,7 +18,7 @@ const Sidebar: React.FC<Props> = ({ onToggle, children }) => {
 
   return (
     <SidebarWrapper
-      themeClass={ThemeClass}
+      theme={ThemeClass}
       variants={ShowingHierarchyVariants}
       initial="hide"
       animate="show"
@@ -29,7 +29,11 @@ const Sidebar: React.FC<Props> = ({ onToggle, children }) => {
         variants={NormalShowingVariants}
         onClick={onToggle}
       />
-      <motion.div className="sidebar-body" variants={NormalHorizontalVariants}>
+      <motion.div
+        layout="position"
+        className="sidebar-body"
+        variants={NormalHorizontalVariants}
+      >
         <div className="title-group">
           <h4>Funes</h4>
           <button onClick={onToggle}>

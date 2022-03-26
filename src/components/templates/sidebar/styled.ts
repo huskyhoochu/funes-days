@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { SerializedStyles } from '@emotion/react';
 
 export const SidebarWrapper = styled(motion.div)<{
-  themeClass: SerializedStyles;
+  theme: SerializedStyles;
 }>`
   position: fixed;
   inset: 0;
@@ -15,7 +15,7 @@ export const SidebarWrapper = styled(motion.div)<{
   }
 
   .sidebar-body {
-    ${props => props.themeClass};
+    ${props => props.theme};
     position: absolute;
     top: 0;
     right: 0;
@@ -24,6 +24,7 @@ export const SidebarWrapper = styled(motion.div)<{
     height: 100vh;
     padding-block: 24px;
     padding-inline: 16px;
+    will-change: transform;
 
     .title-group {
       display: flex;
