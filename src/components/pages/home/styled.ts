@@ -1,12 +1,10 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import { css } from '@emotion/react';
+import { css, SerializedStyles } from '@emotion/react';
 import { breakPoints, gridPoints } from '@/styles/screen';
 import {
-  Body1Class,
-  Body2Class,
   CaptionClass,
-  H5Class,
+  H1Class,
   H6Class,
   Subtitle1Class,
   Subtitle2Class,
@@ -14,70 +12,45 @@ import {
 import radius from '@/styles/radius';
 import { Gray } from '@/styles/theme';
 
-export const IntroWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 100vh;
-  height: 100%;
-
-  @media (max-width: ${breakPoints.tablet}px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 60% 40%;
-  }
-
-  @media (max-width: ${breakPoints.mobile}px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 40% 60%;
-  }
+export const IntroWrapper = styled.div<{
+  themeClass: SerializedStyles;
+}>`
+  ${props => props.themeClass};
 
   .intro-img {
     height: 100%;
 
     video {
       width: 100%;
-      height: 100%;
+      height: 35vh;
       object-fit: cover;
       object-position: center;
     }
   }
 
   .intro-text {
-    padding-block: 60px;
+    position: relative;
+    overflow: hidden;
+    height: 15vh;
     margin-inline: ${gridPoints.gutter}px;
 
-    @media (max-width: ${breakPoints.tablet}px) {
-      padding-block: 0;
-      margin-block: ${gridPoints.gutter}px;
-    }
-
     .content {
-      ${H5Class};
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 72px;
+      text-align: right;
+      width: 30000px;
+      ${H1Class};
+      font-weight: 700;
 
       &:after {
         content: '';
         position: absolute;
-        width: 12px;
-        height: 36px;
-        margin-inline: 4px;
+        width: 60px;
+        height: 100%;
+        margin-left: 16px;
         background-color: ${Gray['400']};
-      }
-
-      @media (max-width: ${breakPoints.tablet}px) {
-        ${H6Class};
-
-        &:after {
-          width: 12px;
-          height: 30px;
-        }
-      }
-
-      @media (max-width: ${breakPoints.mobile}px) {
-        ${Body2Class};
-
-        &:after {
-          width: 8px;
-          height: 20px;
-        }
       }
 
       &.complete {
@@ -122,21 +95,45 @@ export const DevSectionWrapper = styled.div`
 
   .title-group {
     h4 {
+      text-align: center;
       font-weight: 700;
+      text-decoration: underline;
     }
   }
 
   .post-group {
-    margin-block: 30px;
+    margin-block: 60px;
     display: grid;
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(${gridPoints.col * 4 + gridPoints.gutter * 3}px, 1fr)
-    );
+    grid-auto-flow: column dense;
     grid-gap: ${gridPoints.gutter}px;
 
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(2, auto);
+
+    > :nth-of-type(3) {
+      grid-column-end: span 1;
+      grid-row-end: span 2;
+    }
+
+    @media (max-width: ${breakPoints.tablet}px) {
+      grid-auto-flow: row dense;
+
+      grid-template-columns: repeat(2, auto);
+      grid-template-rows: repeat(4, auto);
+
+      > :nth-of-type(3) {
+        grid-column-end: span 1;
+        grid-row-end: span 1;
+      }
+
+      > :nth-of-type(4) {
+        grid-column-end: span 1;
+        grid-row-end: span 2;
+      }
+    }
+
     @media (max-width: ${breakPoints.mobile}px) {
-      grid-template-columns: 1fr;
+      display: block;
     }
   }
 `;
@@ -163,7 +160,7 @@ export const PostCardWrapper = styled(Link)<{ screen: ScreenType }>`
     align-items: center;
 
     .tag {
-      ${Body1Class};
+      ${CaptionClass};
       font-weight: 700;
       border-radius: ${radius['8']}px;
       padding: 3px 6px;

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { fromEventPattern, take } from 'rxjs';
+import React, { useEffect } from 'react';
+import { fromEventPattern, take, throttleTime } from 'rxjs';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import fullPageState from '@/store/fullPage';
 import useScrollProperty from '@/hooks/useScrollProperty';
@@ -14,7 +14,6 @@ const useAutoScroll = (
   const getScrollProperty = useScrollProperty(ref);
   const setIsMoving = useSetRecoilState(fullPageState);
   const [curScroll, setCurScroll] = useRecoilState(curScrollState);
-  const [isScroll, setIsScroll] = useState<number[]>([]);
 
   useEffect(() => {
     setCurScroll(document.documentElement.scrollTop);
@@ -60,7 +59,7 @@ const useAutoScroll = (
       handler => document.removeEventListener('scroll', handler),
     );
 
-    scrolls.pipe(take(1)).subscribe(callMoveSection);
+    scrolls.pipe(throttleTime(1000), take(1)).subscribe(callMoveSection);
   }, [
     isMoving,
     getScrollProperty,
@@ -69,8 +68,6 @@ const useAutoScroll = (
     curScroll,
     setIsMoving,
     setCurScroll,
-    setIsScroll,
-    isScroll,
   ]);
 };
 

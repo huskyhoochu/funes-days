@@ -1,10 +1,11 @@
 import React, { useRef } from 'react';
 import { graphql } from 'gatsby';
-import { AutoScrollSection } from '@/components/templates/section';
+import { ActiveScrollSection } from '@/components/templates/section';
 import Intro from '@/components/pages/home/intro';
 import Header from '@/components/atoms/header';
 import HomeLayout from '@/layout/home';
 import DevSection from '@/components/pages/home/devSection';
+import useTheme from '@/hooks/useTheme';
 
 interface Props {
   data: {
@@ -28,9 +29,8 @@ interface Props {
 }
 
 const IndexPage: React.FC<Props> = ({ data }) => {
+  const [, , , ReversedThemeClass] = useTheme();
   const firstSectionRef = useRef<HTMLDivElement>(null);
-  const secondSectionRef = useRef<HTMLDivElement>(null);
-  const thirdSectionRef = useRef<HTMLDivElement>(null);
 
   const { allMarkdownRemark } = data;
   const devPosts = allMarkdownRemark.edges.filter(
@@ -40,19 +40,12 @@ const IndexPage: React.FC<Props> = ({ data }) => {
   return (
     <HomeLayout title="main">
       <Header backgroundColor="transparent" />
-      <AutoScrollSection forwardedRef={firstSectionRef} index={0}>
-        <Intro />
-      </AutoScrollSection>
-      <AutoScrollSection forwardedRef={secondSectionRef} index={1}>
+      <ActiveScrollSection forwardedRef={firstSectionRef} index={0}>
         <DevSection posts={devPosts} />
-      </AutoScrollSection>
-      <AutoScrollSection forwardedRef={thirdSectionRef} index={2}>
-        <div
-          style={{ paddingBlock: 60, height: '100%', backgroundColor: 'green' }}
-        >
-          <h3>3 Section 끝이야</h3>
-        </div>
-      </AutoScrollSection>
+      </ActiveScrollSection>
+      <ActiveScrollSection forwardedRef={firstSectionRef} index={0}>
+        <Intro themeClass={ReversedThemeClass} />
+      </ActiveScrollSection>
     </HomeLayout>
   );
 };
@@ -64,7 +57,7 @@ export const query = graphql`
     allMarkdownRemark(
       filter: { frontmatter: { draft: { eq: false } } }
       sort: { order: DESC, fields: frontmatter___date }
-      limit: 12
+      limit: 7
     ) {
       edges {
         node {

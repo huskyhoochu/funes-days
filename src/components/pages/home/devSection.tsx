@@ -25,7 +25,7 @@ const DevSection: React.FC<Props> = ({ posts }) => {
     <DevSectionWrapper>
       <ContainerWrapper>
         <div className="title-group">
-          <h4>Dev Posts</h4>
+          <h4>Latest Updates</h4>
         </div>
         <div className="post-group">
           {posts.map(post => (

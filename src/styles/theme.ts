@@ -72,3 +72,15 @@ export const ThemeClassBuilder = (screen: ScreenType, theme: ThemeType) =>
     background-color: ${Theme[screen][theme].background};
     border-color: ${Theme[screen][theme].text};
   `;
+
+export const ReversedThemClassBuilder = (
+  screen: ScreenType,
+  theme: ThemeType,
+) => {
+  const reversedScreen = screen === 'light' ? 'dark' : 'light';
+  return css`
+    color: ${Theme[reversedScreen][theme].text};
+    background-color: ${Theme[reversedScreen][theme].background};
+    border-color: ${Theme[reversedScreen][theme].text};
+  `;
+};
