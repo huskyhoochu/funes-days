@@ -6,11 +6,13 @@ export const SidebarWrapper = styled.div<{
 }>`
   position: fixed;
   inset: 0;
+  z-index: 0;
 
   .sidebar-background {
     position: absolute;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
   }
 
   .sidebar-body {
