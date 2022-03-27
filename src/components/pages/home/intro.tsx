@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import GrapesVideo from '@/assets/grapes.mp4';
 import { IntroWrapper } from './styled';
-import { SerializedStyles } from '@emotion/react';
 import useIntersect from '@/hooks/useIntersect';
+import useTheme from '@/hooks/useTheme';
 
 const text = `우리는 한 눈에 탁자 위에 있는 세 개의 컵을 감지하지만, 푸네스는 포도
 덩굴에 달린 모든 포도알과 포도줄기, 그리고 덩굴손을 감지할 수 있었다.
@@ -13,11 +13,8 @@ const text = `우리는 한 눈에 탁자 위에 있는 세 개의 컵을 감지
 이 세상이 생긴 이래 모든 인간이 가졌을지도 모르는 기억보다 더 많을
 거예요."  - [기억의 천재 푸네스] 본문 중에서 -`;
 
-interface Props {
-  themeClass: SerializedStyles;
-}
-
-const Intro: React.FC<Props> = ({ themeClass }) => {
+const Intro: React.FC = () => {
+  const [ThemeClass, , , ReversedThemeClass] = useTheme();
   const [textState, setTextState] = useState<string>('');
   const [isWrittenComplete, setIsWrittenComplete] = useState<boolean>(false);
 
@@ -39,7 +36,10 @@ const Intro: React.FC<Props> = ({ themeClass }) => {
   const callIntersect = useIntersect(true, writeText);
 
   return (
-    <IntroWrapper themeClass={themeClass}>
+    <IntroWrapper
+      themeClass={ThemeClass}
+      reversedThemeClass={ReversedThemeClass}
+    >
       <div className="intro-text" ref={callIntersect}>
         <p className={`content ${isWrittenComplete ? 'complete' : ''}`}>
           {textState}

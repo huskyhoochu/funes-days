@@ -13,11 +13,24 @@ import { Gray } from '@/styles/theme';
 
 export const IntroWrapper = styled.div<{
   themeClass: SerializedStyles;
+  reversedThemeClass: SerializedStyles;
 }>`
-  ${props => props.themeClass};
+  ${props => props.reversedThemeClass};
 
   .intro-img {
+    position: relative;
     height: 35vh;
+
+    &:before {
+      position: absolute;
+      top: -32px;
+      left: 0;
+      right: 0;
+      height: 100px;
+      content: '';
+      clip-path: path('M0,30 C400,70 750,0 1600,50 S1850,30 2600,30');
+      ${props => props.reversedThemeClass};
+    }
 
     video {
       width: 100%;
@@ -31,13 +44,12 @@ export const IntroWrapper = styled.div<{
     position: relative;
     overflow: hidden;
     height: 15vh;
-    margin-inline: ${gridPoints.gutter}px;
 
     .content {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      right: 72px;
+      right: 104px;
       text-align: right;
       width: 30000px;
       ${H1Class};
@@ -45,7 +57,7 @@ export const IntroWrapper = styled.div<{
 
       @media (max-width: ${breakPoints.mobile}px) {
         ${H3Class};
-        right: 42px;
+        right: 60px;
       }
 
       &:after {
@@ -84,8 +96,22 @@ export const IntroWrapper = styled.div<{
   }
 `;
 
-export const LatestSectionWrapper = styled.div`
+export const LatestSectionWrapper = styled.div<{
+  themeClass: SerializedStyles;
+  reversedThemeClass: SerializedStyles;
+}>`
   padding-block: 90px;
+
+  &:after {
+    position: absolute;
+    bottom: -70px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    content: '';
+    clip-path: path('M0,30 C100,0 350,60 900,20 S1050,10 2600,30');
+    ${props => props.reversedThemeClass};
+  }
 
   .title-group {
     h4 {

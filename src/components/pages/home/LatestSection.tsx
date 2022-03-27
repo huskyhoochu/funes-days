@@ -4,6 +4,7 @@ import { ContainerWrapper } from '@/styles/container';
 import { LatestSectionWrapper } from './styled';
 import { motion } from 'framer-motion';
 import { PropagationShowingVariants } from '@/framer/variants';
+import useTheme from '@/hooks/useTheme';
 
 interface Props {
   posts: {
@@ -23,8 +24,13 @@ interface Props {
 }
 
 const LatestSection: React.FC<Props> = ({ posts }) => {
+  const [ThemeClass, , , ReversedThemeClass] = useTheme();
+
   return (
-    <LatestSectionWrapper>
+    <LatestSectionWrapper
+      themeClass={ThemeClass}
+      reversedThemeClass={ReversedThemeClass}
+    >
       <ContainerWrapper>
         <div className="title-group">
           <h4>Latest Updates</h4>

@@ -5,7 +5,6 @@ import Intro from '@/components/pages/home/intro';
 import Header from '@/components/atoms/header';
 import HomeLayout from '@/layout/home';
 import LatestUpdateSection from '@/components/pages/home/LatestSection';
-import useTheme from '@/hooks/useTheme';
 
 interface Props {
   data: {
@@ -29,7 +28,6 @@ interface Props {
 }
 
 const IndexPage: React.FC<Props> = ({ data }) => {
-  const [, , , ReversedThemeClass] = useTheme();
   const firstSectionRef = useRef<HTMLDivElement>(null);
   const { allMarkdownRemark } = data;
 
@@ -40,7 +38,7 @@ const IndexPage: React.FC<Props> = ({ data }) => {
         <LatestUpdateSection posts={allMarkdownRemark.edges} />
       </ActiveScrollSection>
       <ActiveScrollSection forwardedRef={firstSectionRef} index={0}>
-        <Intro themeClass={ReversedThemeClass} />
+        <Intro />
       </ActiveScrollSection>
     </HomeLayout>
   );
