@@ -3,9 +3,12 @@ import { motion } from 'framer-motion';
 import { css, SerializedStyles } from '@emotion/react';
 import { breakPoints, gridPoints } from '@/styles/screen';
 import {
-  CaptionClass,
+  Body1Class,
+  Body2Class,
   H1Class,
   H3Class,
+  H4Class,
+  H5Class,
   Subtitle2Class,
 } from '@/styles/typography';
 import radius from '@/styles/radius';
@@ -17,20 +20,15 @@ export const IntroWrapper = styled.div<{
 }>`
   ${props => props.reversedThemeClass};
 
+  #wave-bottom {
+    position: absolute;
+    top: -10px;
+    left: 0;
+  }
+
   .intro-img {
     position: relative;
     height: 35vh;
-
-    &:before {
-      position: absolute;
-      top: -32px;
-      left: 0;
-      right: 0;
-      height: 100px;
-      content: '';
-      clip-path: path('M0,30 C400,70 750,0 1600,50 S1850,30 2600,30');
-      ${props => props.reversedThemeClass};
-    }
 
     video {
       width: 100%;
@@ -100,24 +98,24 @@ export const LatestSectionWrapper = styled.div<{
   themeClass: SerializedStyles;
   reversedThemeClass: SerializedStyles;
 }>`
+  position: relative;
   padding-block: 90px;
 
-  &:after {
+  #wave-top {
     position: absolute;
-    bottom: -70px;
+    bottom: -10px;
     left: 0;
-    right: 0;
-    height: 100px;
-    content: '';
-    clip-path: path('M0,30 C100,0 350,60 900,20 S1050,10 2600,30');
-    ${props => props.reversedThemeClass};
   }
 
   .title-group {
-    h4 {
+    h3 {
       text-align: center;
       font-weight: 700;
       text-decoration: underline;
+
+      @media (max-width: ${breakPoints.desktop}px) {
+        ${H4Class};
+      }
     }
   }
 
@@ -125,23 +123,27 @@ export const LatestSectionWrapper = styled.div<{
     margin-block: 60px;
     display: grid;
     grid-auto-flow: column dense;
-    grid-gap: ${gridPoints.gutter}px;
 
-    grid-template-columns: repeat(4, auto);
-    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(4, minmax(300px, auto));
+    grid-template-rows: repeat(2, 600px);
 
-    > :nth-of-type(3) {
+    > :nth-of-type(2) {
       grid-column-end: span 1;
       grid-row-end: span 2;
+    }
+
+    @media (max-width: ${breakPoints.desktop}px) {
+      grid-template-columns: repeat(2, minmax(300px, auto));
+      grid-template-rows: repeat(4, minmax(400px, auto));
     }
 
     @media (max-width: ${breakPoints.tablet}px) {
       grid-auto-flow: row dense;
 
       grid-template-columns: repeat(2, auto);
-      grid-template-rows: repeat(4, auto);
+      grid-template-rows: repeat(4, minmax(280px, auto));
 
-      > :nth-of-type(3) {
+      > :nth-of-type(2) {
         grid-column-end: span 1;
         grid-row-end: span 1;
       }
@@ -159,22 +161,75 @@ export const LatestSectionWrapper = styled.div<{
   }
 `;
 
-export const PostCardWrapper = styled(motion.div)<{ screen: ScreenType }>`
+export const PostCardWrapper = styled(motion.div)<{
+  reversedThemeClass: SerializedStyles;
+  screen: ScreenType;
+}>`
   border-style: solid;
   border-width: 1px;
-  padding: 12px 16px;
-  border-radius: ${radius['8']}px;
+  padding: 24px;
   width: 100%;
   height: 100%;
 
-  h6 {
+  &:hover {
+    ${props => props.reversedThemeClass};
+
+    .tag-group {
+      .tag {
+        ${props =>
+          props.screen === 'light' &&
+          css`
+            background-color: rgba(0, 0, 0, 0.5);
+          `};
+
+        ${props =>
+          props.screen === 'dark' &&
+          css`
+            background-color: rgba(255, 255, 255, 0.5);
+          `};
+      }
+    }
+  }
+
+  .title {
     font-weight: 700;
     margin-bottom: 8px;
+    word-break: keep-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-height: 1.5em;
+    max-height: 3em;
+
+    @media (max-width: ${breakPoints.desktop}px) {
+      ${H4Class};
+    }
+
+    @media (max-width: ${breakPoints.tablet}px) {
+      ${H5Class};
+    }
   }
 
   .description {
-    ${Subtitle2Class};
-    margin-block: 4px;
+    ${H5Class};
+    margin-bottom: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-height: 1.5em;
+    max-height: 4.5em;
+
+    @media (max-width: ${breakPoints.desktop}px) {
+      ${Body1Class};
+    }
+
+    @media (max-width: ${breakPoints.tablet}px) {
+      ${Body2Class};
+    }
   }
 
   .tag-group {
@@ -183,7 +238,7 @@ export const PostCardWrapper = styled(motion.div)<{ screen: ScreenType }>`
     align-items: center;
 
     .tag {
-      ${CaptionClass};
+      ${Subtitle2Class};
       font-weight: 700;
       border-radius: ${radius['8']}px;
       padding: 3px 6px;

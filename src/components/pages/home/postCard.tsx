@@ -21,11 +21,15 @@ interface Props {
 }
 
 const PostCard: React.FC<Props> = ({ node }) => {
-  const [, screen] = useTheme();
+  const [, screen, , ReversedThemeClass] = useTheme();
   return (
     <Link to={`/${node.frontmatter.category}/${node.frontmatter.slug}`}>
-      <PostCardWrapper screen={screen} variants={NormalShowingVariants}>
-        <h6>{node.frontmatter.title}</h6>
+      <PostCardWrapper
+        reversedThemeClass={ReversedThemeClass}
+        screen={screen}
+        variants={NormalShowingVariants}
+      >
+        <h3 className="title">{node.frontmatter.title}</h3>
         <p className="description">{node.frontmatter.description}</p>
         <p className="description">
           {dayjs(node.frontmatter.date).format('YYYY-MM-DD')} ∙{' '}
