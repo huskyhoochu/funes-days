@@ -41,9 +41,14 @@ const DevList: React.FC<Props> = ({ data }) => {
     <HomeLayout title="개발 포스트">
       <Header backgroundColor="transparent" />
       <DevListWrapper>
-        {edges.map(post => (
-          <PostCard key={post.node.id} node={post.node} />
-        ))}
+        <div className="title-group">
+          <h3>Dev Posts</h3>
+        </div>
+        <div className="post-list">
+          {edges.map(post => (
+            <PostCard key={post.node.id} node={post.node} />
+          ))}
+        </div>
       </DevListWrapper>
     </HomeLayout>
   );

@@ -1,6 +1,5 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
-import { ActiveScrollSection } from '@/components/templates/section';
 import Intro from '@/components/pages/home/intro';
 import Header from '@/components/atoms/header';
 import HomeLayout from '@/layout/home';
@@ -28,18 +27,12 @@ interface Props {
 }
 
 const IndexPage: React.FC<Props> = ({ data }) => {
-  const firstSectionRef = useRef<HTMLDivElement>(null);
   const { allMarkdownRemark } = data;
-
   return (
     <HomeLayout title="main">
       <Header backgroundColor="transparent" />
-      <ActiveScrollSection forwardedRef={firstSectionRef} index={0}>
-        <LatestUpdateSection posts={allMarkdownRemark.edges} />
-      </ActiveScrollSection>
-      <ActiveScrollSection forwardedRef={firstSectionRef} index={0}>
-        <Intro />
-      </ActiveScrollSection>
+      <LatestUpdateSection posts={allMarkdownRemark.edges} />
+      <Intro />
     </HomeLayout>
   );
 };

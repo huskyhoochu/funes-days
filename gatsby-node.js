@@ -34,7 +34,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? '/dev' : `/dev/${i + 1}`,
-      component: path.resolve('./src/pages/dev/index.tsx'),
+      component: path.resolve('./src/templates/devPosts/index.tsx'),
       context: {
         limit: postsPerPage,
         skip: i * postsPerPage,

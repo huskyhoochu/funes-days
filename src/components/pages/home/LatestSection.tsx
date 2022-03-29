@@ -1,6 +1,5 @@
 import React from 'react';
 import PostCard from '@/components/pages/home/postCard';
-import { ContainerWrapper } from '@/styles/container';
 import { LatestSectionWrapper } from './styled';
 import { motion } from 'framer-motion';
 import { PropagationShowingVariants } from '@/framer/variants';
@@ -32,21 +31,19 @@ const LatestSection: React.FC<Props> = ({ posts }) => {
       themeClass={ThemeClass}
       reversedThemeClass={ReversedThemeClass}
     >
-      <ContainerWrapper>
-        <div className="title-group">
-          <h3>Latest Updates</h3>
-        </div>
-        <motion.div
-          className="post-group"
-          variants={PropagationShowingVariants}
-          initial="hide"
-          animate="show"
-        >
-          {posts.map(post => (
-            <PostCard key={post.node.id} node={post.node} />
-          ))}
-        </motion.div>
-      </ContainerWrapper>
+      <div className="title-group">
+        <h3>Latest Updates</h3>
+      </div>
+      <motion.div
+        className="post-group"
+        variants={PropagationShowingVariants}
+        initial="hide"
+        animate="show"
+      >
+        {posts.map(post => (
+          <PostCard key={post.node.id} node={post.node} />
+        ))}
+      </motion.div>
       <svg
         id="wave-top"
         viewBox="0 0 1440 130"
