@@ -163,7 +163,7 @@ export const LatestSectionWrapper = styled.div<{
 `;
 
 export const PostCardWrapper = styled(motion.div)<{
-  reversedThemeClass: SerializedStyles;
+  reversed: SerializedStyles;
   themes: ThemeType;
   screen: ScreenType;
 }>`
@@ -173,7 +173,7 @@ export const PostCardWrapper = styled(motion.div)<{
   height: 100%;
 
   &:hover {
-    ${props => props.reversedThemeClass};
+    ${props => props.reversed};
 
     .tag-group {
       .tag {

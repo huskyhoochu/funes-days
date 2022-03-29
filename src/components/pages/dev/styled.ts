@@ -10,6 +10,10 @@ import { css } from '@emotion/react';
 import radius from '@/styles/radius';
 import { Gray } from '@/styles/theme';
 
+export const DevListWrapper = styled.div`
+  padding-block: 90px;
+`;
+
 export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
   padding-block: 120px;
   position: relative;

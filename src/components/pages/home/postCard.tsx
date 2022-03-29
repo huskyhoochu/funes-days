@@ -25,7 +25,7 @@ const PostCard: React.FC<Props> = ({ node }) => {
   return (
     <Link to={`/${node.frontmatter.category}/${node.frontmatter.slug}`}>
       <PostCardWrapper
-        reversedThemeClass={ReversedThemeClass}
+        reversed={ReversedThemeClass}
         screen={screen}
         themes={theme}
         variants={NormalShowingVariants}
