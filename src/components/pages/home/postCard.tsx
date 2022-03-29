@@ -21,12 +21,13 @@ interface Props {
 }
 
 const PostCard: React.FC<Props> = ({ node }) => {
-  const [, screen, , ReversedThemeClass] = useTheme();
+  const [, screen, theme, ReversedThemeClass] = useTheme();
   return (
     <Link to={`/${node.frontmatter.category}/${node.frontmatter.slug}`}>
       <PostCardWrapper
         reversedThemeClass={ReversedThemeClass}
         screen={screen}
+        themes={theme}
         variants={NormalShowingVariants}
       >
         <h3 className="title">{node.frontmatter.title}</h3>

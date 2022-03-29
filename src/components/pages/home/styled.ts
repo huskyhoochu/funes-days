@@ -12,7 +12,7 @@ import {
   Subtitle2Class,
 } from '@/styles/typography';
 import radius from '@/styles/radius';
-import { Gray } from '@/styles/theme';
+import { Gray, Theme } from '@/styles/theme';
 
 export const IntroWrapper = styled.div<{
   themeClass: SerializedStyles;
@@ -122,6 +122,7 @@ export const LatestSectionWrapper = styled.div<{
   .post-group {
     margin-block: 60px;
     display: grid;
+    grid-gap: 1px;
     grid-auto-flow: column dense;
 
     grid-template-columns: repeat(4, minmax(300px, auto));
@@ -163,10 +164,10 @@ export const LatestSectionWrapper = styled.div<{
 
 export const PostCardWrapper = styled(motion.div)<{
   reversedThemeClass: SerializedStyles;
+  themes: ThemeType;
   screen: ScreenType;
 }>`
-  border-style: solid;
-  border-width: 1px;
+  box-shadow: 0 0 0 1px ${({ themes, screen }) => Theme[screen][themes].text};
   padding: 24px;
   width: 100%;
   height: 100%;
