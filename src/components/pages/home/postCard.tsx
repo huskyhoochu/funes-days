@@ -4,6 +4,13 @@ import useTheme from '@/hooks/useTheme';
 import { PostCardWrapper } from './styled';
 import { NormalShowingVariants } from '@/framer/variants';
 import { Link } from 'gatsby';
+import {
+  motion,
+  useSpring,
+  useTransform,
+  useVelocity,
+  useViewportScroll,
+} from 'framer-motion';
 
 interface Props {
   node: {
@@ -22,6 +29,15 @@ interface Props {
 
 const PostCard: React.FC<Props> = ({ node }) => {
   const [, screen, theme, ReversedThemeClass] = useTheme();
+  const { scrollYProgress } = useViewportScroll();
+  const y = useVelocity(
+    useSpring(useTransform(scrollYProgress, [0, 1], [0, 20]), {
+      restSpeed: 0.1,
+      stiffness: 30,
+      damping: 10,
+    }),
+  );
+
   return (
     <Link to={`/${node.frontmatter.category}/${node.frontmatter.slug}`}>
       <PostCardWrapper
@@ -30,19 +46,21 @@ const PostCard: React.FC<Props> = ({ node }) => {
         themes={theme}
         variants={NormalShowingVariants}
       >
-        <h3 className="title">{node.frontmatter.title}</h3>
-        <p className="description">{node.frontmatter.description}</p>
-        <p className="description">
-          {dayjs(node.frontmatter.date).format('YYYY-MM-DD')} ∙{' '}
-          {node.timeToRead} min
-        </p>
-        <div className="tag-group">
-          {node.frontmatter.tags.map((tag, idx) => (
-            <p key={idx} className="tag">
-              #{tag}
-            </p>
-          ))}
-        </div>
+        <motion.div style={{ y }}>
+          <h3 className="title">{node.frontmatter.title}</h3>
+          <p className="description">{node.frontmatter.description}</p>
+          <p className="description">
+            {dayjs(node.frontmatter.date).format('YYYY-MM-DD')} ∙{' '}
+            {node.timeToRead} min
+          </p>
+          <div className="tag-group">
+            {node.frontmatter.tags.map((tag, idx) => (
+              <p key={idx} className="tag">
+                #{tag}
+              </p>
+            ))}
+          </div>
+        </motion.div>
       </PostCardWrapper>
     </Link>
   );

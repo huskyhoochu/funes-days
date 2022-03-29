@@ -1,9 +1,9 @@
-import { DevListWrapper } from '@/components/pages/dev/styled';
 import React from 'react';
 import { graphql } from 'gatsby';
 import PostCard from '@/components/pages/home/postCard';
 import HomeLayout from '@/layout/home';
 import Header from '@/components/atoms/header';
+import { DevListWrapper } from './styled';
 
 interface Props {
   data: {

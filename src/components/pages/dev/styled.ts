@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import {
   Body1Class,
   Body2Class,
-  H4Class,
   H6Class,
   Subtitle2Class,
 } from '@/styles/typography';
@@ -10,26 +9,6 @@ import { breakPoints, gridPoints } from '@/styles/screen';
 import { css } from '@emotion/react';
 import radius from '@/styles/radius';
 import { Gray } from '@/styles/theme';
-
-export const DevListWrapper = styled.div`
-  padding-block: 90px;
-
-  .title-group {
-    h3 {
-      text-align: center;
-      font-weight: 700;
-      text-decoration: underline;
-
-      @media (max-width: ${breakPoints.desktop}px) {
-        ${H4Class};
-      }
-    }
-  }
-
-  .post-list {
-    margin-block: 60px;
-  }
-`;
 
 export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
   padding-block: 120px;
