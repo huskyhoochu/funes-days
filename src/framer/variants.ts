@@ -4,7 +4,6 @@ export const PropagationShowingVariants: Variants = {
   show: {
     opacity: 1,
     transition: {
-      when: 'beforeChildren',
       staggerChildren: 0.3,
     },
   },

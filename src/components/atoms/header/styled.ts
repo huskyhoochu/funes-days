@@ -75,6 +75,23 @@ export const HeaderWrapper = styled.header<{
     .right-section {
       display: flex;
       align-items: center;
+      border-radius: ${radius['4']}px;
+      padding: 8px;
+
+      @media (min-width: ${breakPoints.tablet}px) {
+        ${props =>
+          props.backgroundColor &&
+          props.screen === 'light' &&
+          css`
+            background-color: rgba(255, 255, 255, 0.5);
+          `};
+
+        ${props =>
+          props.backgroundColor &&
+          props.screen === 'dark' &&
+          css`
+            background-color: rgba(0, 0, 0, 0.5);
+          `};
 
       .nav {
         margin-right: 16px;
@@ -87,7 +104,7 @@ export const HeaderWrapper = styled.header<{
           align-items: center;
 
           li {
-            margin-left: 16px;
+            margin-inline: 8px;
             height: 28px;
           }
         }

@@ -12,7 +12,7 @@ import {
   Subtitle2Class,
 } from '@/styles/typography';
 import radius from '@/styles/radius';
-import { Gray, Theme } from '@/styles/theme';
+import { Gray } from '@/styles/theme';
 
 export const IntroWrapper = styled.div<{
   themeClass: SerializedStyles;
