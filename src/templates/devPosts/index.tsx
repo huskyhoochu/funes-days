@@ -30,8 +30,6 @@ interface Props {
 
 const DevList: React.FC<Props> = ({ data }) => {
   const { edges, pageInfo } = data.allMarkdownRemark;
-  console.log(pageInfo);
-
   return (
     <HomeLayout title="Dev Posts">
       <Header backgroundColor="transparent" />

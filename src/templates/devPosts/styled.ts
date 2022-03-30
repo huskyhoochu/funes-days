@@ -3,7 +3,7 @@ import { breakPoints } from '@/styles/screen';
 import { H4Class } from '@/styles/typography';
 
 export const DevListWrapper = styled.div`
-  padding-block: 90px;
+  padding-block: 120px;
 
   .title-group {
     h3 {
@@ -18,7 +18,7 @@ export const DevListWrapper = styled.div`
   }
 
   .post-list {
-    margin-block: 60px;
+    margin-block: 30px;
     display: grid;
   }
 `;

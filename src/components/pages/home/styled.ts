@@ -4,11 +4,13 @@ import { css, SerializedStyles } from '@emotion/react';
 import { breakPoints, gridPoints } from '@/styles/screen';
 import {
   Body1Class,
-  Body2Class,
+  CaptionClass,
   H1Class,
   H3Class,
   H4Class,
   H5Class,
+  H6Class,
+  Subtitle1Class,
   Subtitle2Class,
 } from '@/styles/typography';
 import radius from '@/styles/radius';
@@ -99,7 +101,7 @@ export const LatestSectionWrapper = styled.div<{
   reversedThemeClass: SerializedStyles;
 }>`
   position: relative;
-  padding-block: 90px;
+  padding-block: 120px;
 
   #wave-top {
     position: absolute;
@@ -120,7 +122,7 @@ export const LatestSectionWrapper = styled.div<{
   }
 
   .post-group {
-    margin-block: 60px;
+    margin-block: 30px;
     display: grid;
     grid-auto-flow: column dense;
 
@@ -166,6 +168,7 @@ export const PostCardWrapper = styled(motion.div)<{
   themes: ThemeType;
   screen: ScreenType;
 }>`
+  margin-block: 16px;
   padding: 24px;
   width: 100%;
   height: 100%;
@@ -214,7 +217,7 @@ export const PostCardWrapper = styled(motion.div)<{
 
   .description {
     ${H5Class};
-    margin-bottom: 16px;
+    margin-bottom: 32px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -224,11 +227,25 @@ export const PostCardWrapper = styled(motion.div)<{
     max-height: 4.5em;
 
     @media (max-width: ${breakPoints.desktop}px) {
-      ${Body1Class};
+      ${H6Class};
     }
 
     @media (max-width: ${breakPoints.tablet}px) {
-      ${Body2Class};
+      ${Body1Class};
+      margin-bottom: 24px;
+    }
+  }
+
+  .date {
+    ${Subtitle1Class};
+    margin-bottom: 4px;
+
+    @media (max-width: ${breakPoints.desktop}px) {
+      ${Subtitle2Class};
+    }
+
+    @media (max-width: ${breakPoints.tablet}px) {
+      ${CaptionClass};
     }
   }
 
@@ -243,6 +260,10 @@ export const PostCardWrapper = styled(motion.div)<{
       border-radius: ${radius['8']}px;
       padding: 3px 6px;
       margin-right: ${gridPoints.gutter}px;
+
+      @media (max-width: ${breakPoints.tablet}px) {
+        ${CaptionClass};
+      }
 
       ${props =>
         props.screen === 'light' &&

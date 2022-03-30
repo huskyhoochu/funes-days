@@ -50,7 +50,7 @@ const PostCard: React.FC<Props> = ({ node }) => {
         <motion.div layout={true} style={{ y, opacity }}>
           <h3 className="title">{node.frontmatter.title}</h3>
           <p className="description">{node.frontmatter.description}</p>
-          <p className="description">
+          <p className="date">
             {dayjs(node.frontmatter.date).format('YYYY-MM-DD')} ∙{' '}
             {node.timeToRead} min
           </p>

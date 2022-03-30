@@ -76,9 +76,9 @@ export const HeaderWrapper = styled.header<{
       display: flex;
       align-items: center;
       border-radius: ${radius['4']}px;
-      padding: 8px;
 
       @media (min-width: ${breakPoints.tablet}px) {
+        padding: 8px;
         ${props =>
           props.backgroundColor &&
           props.screen === 'light' &&
@@ -92,6 +92,7 @@ export const HeaderWrapper = styled.header<{
           css`
             background-color: rgba(0, 0, 0, 0.5);
           `};
+      }
 
       .nav {
         margin-right: 16px;

@@ -3,7 +3,7 @@ import { H4Class } from '@/styles/typography';
 
 export const PaginationWrapper = styled.div`
   ${H4Class};
-  margin-block: 32px;
+  margin-block: 64px;
 
   ul {
     display: flex;
