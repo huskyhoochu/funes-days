@@ -20,6 +20,5 @@ export const DevListWrapper = styled.div`
   .post-list {
     margin-block: 60px;
     display: grid;
-    grid-gap: 1px;
   }
 `;

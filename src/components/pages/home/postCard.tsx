@@ -6,6 +6,7 @@ import { NormalShowingVariants } from '@/framer/variants';
 import { Link } from 'gatsby';
 import {
   motion,
+  motionValue,
   useSpring,
   useTransform,
   useVelocity,
@@ -37,6 +38,7 @@ const PostCard: React.FC<Props> = ({ node }) => {
       damping: 10,
     }),
   );
+  const opacity = useTransform(y, [-20, 0, 20], [0.5, 1, 0.5]);
 
   return (
     <Link to={`/${node.frontmatter.category}/${node.frontmatter.slug}`}>
@@ -46,7 +48,7 @@ const PostCard: React.FC<Props> = ({ node }) => {
         themes={theme}
         variants={NormalShowingVariants}
       >
-        <motion.div style={{ y }}>
+        <motion.div layout={true} style={{ y, opacity }}>
           <h3 className="title">{node.frontmatter.title}</h3>
           <p className="description">{node.frontmatter.description}</p>
           <p className="description">
