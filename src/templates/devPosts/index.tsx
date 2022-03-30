@@ -4,6 +4,7 @@ import PostCard from '@/components/pages/home/postCard';
 import HomeLayout from '@/layout/home';
 import Header from '@/components/atoms/header';
 import { DevListWrapper } from './styled';
+import Pagination from '@/components/templates/pagination';
 
 interface Props {
   data: {
@@ -22,13 +23,7 @@ interface Props {
           };
         };
       }[];
-      pageInfo: {
-        hasPreviousPage: boolean;
-        hasNextPage: boolean;
-        currentPage: number;
-        pageCount: number;
-        itemCount: number;
-      };
+      pageInfo: Pagination;
     };
   };
 }
@@ -38,7 +33,7 @@ const DevList: React.FC<Props> = ({ data }) => {
   console.log(pageInfo);
 
   return (
-    <HomeLayout title="개발 포스트">
+    <HomeLayout title="Dev Posts">
       <Header backgroundColor="transparent" />
       <DevListWrapper>
         <div className="title-group">
@@ -49,6 +44,7 @@ const DevList: React.FC<Props> = ({ data }) => {
             <PostCard key={post.node.id} node={post.node} />
           ))}
         </div>
+        <Pagination {...pageInfo} path="dev" />
       </DevListWrapper>
     </HomeLayout>
   );
