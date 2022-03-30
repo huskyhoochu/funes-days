@@ -22,7 +22,7 @@ const PostLayout: React.FC<Props> = ({ title, children }) => {
       </Helmet>
       <FaviconPackage screen={screen} theme={theme} />
       <Global styles={GlobalStyle} />
-      <Header />
+      <Header backgroundColor="transparent" />
       <MainWrapper themeClass={ThemeClass}>{children}</MainWrapper>
     </>
   );

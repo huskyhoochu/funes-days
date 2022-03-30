@@ -2,7 +2,10 @@ import styled from '@emotion/styled';
 import {
   Body1Class,
   Body2Class,
+  CaptionClass,
+  H5Class,
   H6Class,
+  Subtitle1Class,
   Subtitle2Class,
 } from '@/styles/typography';
 import { breakPoints, gridPoints } from '@/styles/screen';
@@ -14,37 +17,77 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
   padding-block: 120px;
   position: relative;
   display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 
   .title-group {
-    h3 {
+    .title {
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
     }
 
-    .tag-group {
-      margin-block: 16px;
-      display: flex;
-      align-items: center;
+    .description {
+      ${H5Class};
+      margin-bottom: 32px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      line-height: 1.5em;
+      max-height: 4.5em;
 
-      .tag {
+      @media (max-width: ${breakPoints.desktop}px) {
         ${H6Class};
-        font-weight: 700;
-        border-radius: ${radius['8']}px;
-        padding: 4px 8px;
-        margin-right: ${gridPoints.gutter}px;
-
-        ${props =>
-          props.screen === 'light' &&
-          css`
-            background-color: rgba(255, 255, 255, 0.5);
-          `};
-
-        ${props =>
-          props.screen === 'dark' &&
-          css`
-            background-color: rgba(0, 0, 0, 0.5);
-          `};
       }
+
+      @media (max-width: ${breakPoints.tablet}px) {
+        ${Body1Class};
+        margin-bottom: 24px;
+      }
+    }
+
+    .date {
+      ${Subtitle1Class};
+      margin-bottom: 4px;
+
+      @media (max-width: ${breakPoints.desktop}px) {
+        ${Subtitle2Class};
+      }
+
+      @media (max-width: ${breakPoints.tablet}px) {
+        ${CaptionClass};
+      }
+    }
+  }
+
+  .tag-group {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+
+    .tag {
+      ${Subtitle2Class};
+      font-weight: 700;
+      border-radius: ${radius['8']}px;
+      padding: 3px 6px;
+      margin-right: ${gridPoints.gutter}px;
+
+      @media (max-width: ${breakPoints.tablet}px) {
+        ${CaptionClass};
+      }
+
+      ${props =>
+        props.screen === 'light' &&
+        css`
+          background-color: rgba(255, 255, 255, 0.5);
+        `};
+
+      ${props =>
+        props.screen === 'dark' &&
+        css`
+          background-color: rgba(0, 0, 0, 0.5);
+        `};
     }
   }
 
@@ -146,10 +189,15 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
     min-width: 200px;
     max-width: 300px;
     height: 100%;
-    margin-inline: ${gridPoints.gutter}px;
+    margin-left: 16px;
+    margin-right: 64px;
     line-height: 2;
     word-break: keep-all;
     ${Subtitle2Class};
+
+    @media (max-width: ${breakPoints.desktop}px) {
+      min-width: 180px;
+    }
 
     @media (max-width: ${breakPoints.tablet}px) {
       display: none;
@@ -157,6 +205,10 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
 
     h5 {
       font-weight: 700;
+
+      @media (max-width: ${breakPoints.desktop}px) {
+        ${H6Class};
+      }
     }
 
     li {

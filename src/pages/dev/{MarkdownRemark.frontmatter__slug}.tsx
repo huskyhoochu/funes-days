@@ -37,18 +37,18 @@ const DevTemplate: React.FC<Props> = ({ data }) => {
       <MarkdownWrapper screen={screen}>
         <NarrowContainerWrapper>
           <div className="title-group">
-            <h3>{frontmatter.title}</h3>
-            <h5>{frontmatter.description}</h5>
-            <h5>
+            <h3 className="title">{frontmatter.title}</h3>
+            <p className="description">{frontmatter.description}</p>
+            <p className="date">
               {dayjs(frontmatter.date).format('YYYY-MM-DD')} ∙ {timeToRead} min
-            </h5>
-            <div className="tag-group">
-              {frontmatter.tags.map((tag, idx) => (
-                <p key={idx} className="tag">
-                  #{tag}
-                </p>
-              ))}
-            </div>
+            </p>
+          </div>
+          <div className="tag-group">
+            {frontmatter.tags.map((tag, idx) => (
+              <p key={idx} className="tag">
+                #{tag}
+              </p>
+            ))}
           </div>
           <div
             ref={mdContentRef}
