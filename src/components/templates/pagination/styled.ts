@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import { H4Class } from '@/styles/typography';
+import { H4Class, H5Class, H6Class } from '@/styles/typography';
+import { breakPoints } from '@/styles/screen';
 
 export const PaginationWrapper = styled.div`
   ${H4Class};
@@ -16,6 +17,16 @@ export const PaginationWrapper = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
+
+      @media (max-width: ${breakPoints.tablet}px) {
+        ${H5Class};
+        width: 36px;
+        height: 36px;
+      }
+
+      @media (max-width: ${breakPoints.mobile}px) {
+        ${H6Class};
+      }
 
       a {
         display: flex;
