@@ -105,7 +105,7 @@ export const LatestSectionWrapper = styled.div<{
 
   #wave-top {
     position: absolute;
-    bottom: -10px;
+    bottom: -6px;
     left: 0;
   }
 
