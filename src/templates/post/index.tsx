@@ -21,6 +21,14 @@ interface Props {
         slug: string;
       };
     };
+    sitePage: {
+      pageContext: {
+        slug: string;
+        fullPath: string;
+        next: string;
+        prev: string;
+      };
+    };
   };
 }
 
@@ -71,8 +79,8 @@ const DevTemplate: React.FC<Props> = ({ data }) => {
 export default DevTemplate;
 
 export const pageQuery = graphql`
-  query ($frontmatter__slug: String!) {
-    markdownRemark(frontmatter: { slug: { eq: $frontmatter__slug } }) {
+  query ($slug: String!, $fullPath: String!) {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       html
       timeToRead
       tableOfContents
@@ -83,6 +91,9 @@ export const pageQuery = graphql`
         slug
         tags
       }
+    }
+    sitePage(path: { eq: $fullPath }) {
+      pageContext
     }
   }
 `;

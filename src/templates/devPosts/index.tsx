@@ -46,7 +46,7 @@ const DevList: React.FC<Props> = ({ data }) => {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
-      ></div>
+      />
       <DevListWrapper screen={screen}>
         <div className="title-group">
           <h3>Dev Posts</h3>
@@ -67,7 +67,7 @@ export default DevList;
 export const query = graphql`
   query DevListQuery($skip: Int!, $limit: Int!) {
     allMarkdownRemark(
-      filter: { frontmatter: { draft: { eq: false }, category: { eq: "dev" } } }
+      filter: { frontmatter: { draft: { eq: false } } }
       sort: { order: DESC, fields: frontmatter___date }
       limit: $limit
       skip: $skip

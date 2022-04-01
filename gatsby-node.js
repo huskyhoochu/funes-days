@@ -10,11 +10,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
+          filter: { frontmatter: { category: { eq: "dev" } } }
         ) {
           edges {
             node {
-              fields {
+              frontmatter {
                 slug
+                category
               }
             }
           }
@@ -40,6 +42,23 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         skip: i * postsPerPage,
         numPages,
         currentPage: i + 1,
+      },
+    });
+  });
+
+  posts.forEach(({ node }, idx) => {
+    createPage({
+      path: `/${node.frontmatter.category}/${node.frontmatter.slug}`,
+      component: path.resolve('./src/templates/post/index.tsx'),
+      context: {
+        slug: node.frontmatter.slug,
+        fullPath: `/${node.frontmatter.category}/${node.frontmatter.slug}`,
+        next: `/${node.frontmatter.category}/${
+          idx === posts.length - 1 ? null : posts[idx + 1].node.frontmatter.slug
+        }`,
+        prev: `/${node.frontmatter.category}/${
+          idx === 0 ? null : posts[idx - 1].node.frontmatter.slug
+        }`,
       },
     });
   });
