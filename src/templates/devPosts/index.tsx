@@ -11,18 +11,7 @@ interface Props {
   data: {
     allMarkdownRemark: {
       edges: {
-        node: {
-          id: string;
-          timeToRead: number;
-          frontmatter: {
-            title: string;
-            description: string;
-            date: string;
-            tags: string[];
-            slug: string;
-            category: PostCategory;
-          };
-        };
+        node: PostNode;
       }[];
       pageInfo: Pagination;
     };

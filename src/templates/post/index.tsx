@@ -6,28 +6,13 @@ import { NarrowContainerWrapper } from '@/styles/container';
 import { MarkdownWrapper } from '@/components/pages/dev/styled';
 import useTheme from '@/hooks/useTheme';
 import useActiveToc from '@/hooks/useActiveToc';
+import Navigator from '@/components/templates/navigator';
 
 interface Props {
   data: {
-    markdownRemark: {
-      html: string;
-      timeToRead: number;
-      tableOfContents: string;
-      frontmatter: {
-        title: string;
-        description: string;
-        date: string;
-        tags: string[];
-        slug: string;
-      };
-    };
+    markdownRemark: PostNode;
     sitePage: {
-      pageContext: {
-        slug: string;
-        fullPath: string;
-        next: string;
-        prev: string;
-      };
+      pageContext: PageContext;
     };
   };
 }
@@ -62,6 +47,10 @@ const DevTemplate: React.FC<Props> = ({ data }) => {
             ref={mdContentRef}
             className="md-content"
             dangerouslySetInnerHTML={{ __html: html }}
+          />
+          <Navigator
+            currentListPath="/dev"
+            pageContext={data.sitePage.pageContext}
           />
         </NarrowContainerWrapper>
         <div className="toc-group">

@@ -17,6 +17,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               frontmatter {
                 slug
                 category
+                title
               }
             }
           }
@@ -53,12 +54,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: {
         slug: node.frontmatter.slug,
         fullPath: `/${node.frontmatter.category}/${node.frontmatter.slug}`,
-        next: `/${node.frontmatter.category}/${
-          idx === posts.length - 1 ? null : posts[idx + 1].node.frontmatter.slug
-        }`,
-        prev: `/${node.frontmatter.category}/${
-          idx === 0 ? null : posts[idx - 1].node.frontmatter.slug
-        }`,
+        next: idx === posts.length - 1 ? null : posts[idx + 1].node,
+        prev: idx === 0 ? null : posts[idx - 1].node,
       },
     });
   });
