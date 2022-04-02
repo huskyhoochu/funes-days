@@ -45,7 +45,7 @@ const JournalList: React.FC<Props> = ({ data }) => {
             <PostCard key={post.node.id} node={post.node} />
           ))}
         </div>
-        <Pagination {...pageInfo} path="dev" />
+        <Pagination {...pageInfo} path="journal" />
       </DevListWrapper>
     </HomeLayout>
   );
