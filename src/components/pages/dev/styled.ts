@@ -180,6 +180,28 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
     .anchor {
       fill: ${props => (props.screen === 'light' ? Gray['600'] : Gray['200'])};
     }
+
+    ul {
+      list-style: disc;
+      margin-bottom: 16px;
+
+      li {
+        list-style: inside;
+        text-align: justify;
+        line-height: 2;
+      }
+    }
+
+    ol {
+      list-style: decimal;
+      margin-bottom: 16px;
+
+      li {
+        list-style: inside;
+        text-align: justify;
+        line-height: 2;
+      }
+    }
   }
 
   .toc-group {
