@@ -1,8 +1,24 @@
 import { css } from '@emotion/react';
 
 const GlobalStyle = css`
+  @font-face {
+    font-family: 'LeferiPoint';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-WhiteObliqueA.woff')
+      format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'LeferiPoint';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-BlackObliqueA.woff')
+      format('woff');
+    font-weight: 700;
+    font-style: normal;
+  }
+
   * {
-    font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+    font-family: 'IBM Plex Mono', 'LeferiPoint', monospace;
   }
 
   html {

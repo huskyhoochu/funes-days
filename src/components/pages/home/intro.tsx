@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import * as Hangul from 'hangul-js';
 import GrapesVideo from '@/assets/grapes.mp4';
 import { IntroWrapper } from './styled';
 import useIntersect from '@/hooks/useIntersect';
@@ -24,8 +25,13 @@ const Intro: React.FC = () => {
 
     const delayAddText = async () => {
       for (let i = 0; i < text.length; i++) {
-        setTextState(state => state + text[i]);
-        await timer(100);
+        const dis = Hangul.disassemble(text[i]);
+
+        for (let j = 0; j < dis.length; j++) {
+          const middleChar = Hangul.assemble(dis.slice(0, j + 1));
+          setTextState(state => state.slice(0, i) + middleChar);
+          await timer(100);
+        }
       }
     };
 
