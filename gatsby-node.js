@@ -4,7 +4,7 @@ const { createFilePath } = require('gatsby-source-filesystem');
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
-  const result = await graphql(
+  const devResult = await graphql(
     `
       {
         allMarkdownRemark(
@@ -26,12 +26,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `,
   );
 
-  if (result.errors) {
+  if (devResult.errors) {
     reporter.panicOnBuild('Error while running GraphQL query.');
     return;
   }
 
-  const posts = result.data.allMarkdownRemark.edges;
+  const posts = devResult.data.allMarkdownRemark.edges;
   const postsPerPage = 12;
   const numPages = Math.ceil(posts.length / postsPerPage);
   Array.from({ length: numPages }).forEach((_, i) => {
@@ -48,6 +48,61 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   });
 
   posts.forEach(({ node }, idx) => {
+    createPage({
+      path: `/${node.frontmatter.category}/${node.frontmatter.slug}`,
+      component: path.resolve('./src/templates/post/index.tsx'),
+      context: {
+        slug: node.frontmatter.slug,
+        fullPath: `/${node.frontmatter.category}/${node.frontmatter.slug}`,
+        next: idx === posts.length - 1 ? null : posts[idx + 1].node,
+        prev: idx === 0 ? null : posts[idx - 1].node,
+      },
+    });
+  });
+
+  const journalResult = await graphql(
+    `
+      {
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
+          limit: 1000
+          filter: { frontmatter: { category: { eq: "journal" } } }
+        ) {
+          edges {
+            node {
+              frontmatter {
+                slug
+                category
+                title
+              }
+            }
+          }
+        }
+      }
+    `,
+  );
+
+  if (journalResult.errors) {
+    reporter.panicOnBuild('Error while running GraphQL query.');
+    return;
+  }
+
+  const journalPosts = journalResult.data.allMarkdownRemark.edges;
+  const numJournalPages = Math.ceil(journalPosts.length / postsPerPage);
+  Array.from({ length: numJournalPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? '/journal' : `/journal/${i + 1}`,
+      component: path.resolve('./src/templates/journalPosts/index.tsx'),
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1,
+      },
+    });
+  });
+
+  journalPosts.forEach(({ node }, idx) => {
     createPage({
       path: `/${node.frontmatter.category}/${node.frontmatter.slug}`,
       component: path.resolve('./src/templates/post/index.tsx'),

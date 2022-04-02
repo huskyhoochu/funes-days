@@ -274,7 +274,7 @@ public show(): string {
 
 Create-React-App 위에 간단하게 데모 코드로 테스트를 해 보았다.
 
-```typescript jsx
+```tsx
 import React, { useState, useMemo } from 'react';
 import './App.css';
 import parse from './dist';

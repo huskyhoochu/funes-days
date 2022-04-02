@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import PostCard from '@/components/pages/home/postCard';
 import HomeLayout from '@/layout/home';
 import Header from '@/components/atoms/header';
-import { DevListWrapper } from './styled';
+import { DevListWrapper } from '../devPosts/styled';
 import Pagination from '@/components/templates/pagination';
 import useTheme from '@/hooks/useTheme';
 
@@ -18,18 +18,18 @@ interface Props {
   };
 }
 
-const DevList: React.FC<Props> = ({ data }) => {
+const JournalList: React.FC<Props> = ({ data }) => {
   const [, screen] = useTheme();
   const { edges, pageInfo } = data.allMarkdownRemark;
   return (
-    <HomeLayout title="Dev Posts">
+    <HomeLayout title="Journal Posts">
       <Header backgroundColor="transparent" />
       <div
         style={{
           position: 'fixed',
           inset: 0,
           backgroundImage:
-            'url("https://images.unsplash.com/photo-1634247030997-6ea23b24ba63?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80")',
+            'url("https://images.unsplash.com/photo-1625499940894-8796928bf9c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1010&q=80")',
           zIndex: 0,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
@@ -38,7 +38,7 @@ const DevList: React.FC<Props> = ({ data }) => {
       />
       <DevListWrapper screen={screen}>
         <div className="title-group">
-          <h3>Dev Posts</h3>
+          <h3>Journal Posts</h3>
         </div>
         <div className="post-list">
           {edges.map(post => (
@@ -51,12 +51,14 @@ const DevList: React.FC<Props> = ({ data }) => {
   );
 };
 
-export default DevList;
+export default JournalList;
 
 export const query = graphql`
-  query DevListQuery($skip: Int!, $limit: Int!) {
+  query JournalListQuery($skip: Int!, $limit: Int!) {
     allMarkdownRemark(
-      filter: { frontmatter: { draft: { eq: false }, category: { eq: "dev" } } }
+      filter: {
+        frontmatter: { draft: { eq: false }, category: { eq: "journal" } }
+      }
       sort: { order: DESC, fields: frontmatter___date }
       limit: $limit
       skip: $skip
