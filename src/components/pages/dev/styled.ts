@@ -182,22 +182,20 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
     }
 
     ul {
-      list-style: disc;
       margin-bottom: 16px;
 
       li {
-        list-style: inside;
+        list-style: disc inside;
         text-align: justify;
         line-height: 2;
       }
     }
 
     ol {
-      list-style: decimal;
       margin-bottom: 16px;
 
       li {
-        list-style: inside;
+        list-style: decimal inside;
         text-align: justify;
         line-height: 2;
       }
