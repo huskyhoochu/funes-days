@@ -49,7 +49,7 @@ const DevTemplate: React.FC<Props> = ({ data }) => {
             dangerouslySetInnerHTML={{ __html: html }}
           />
           <Navigator
-            currentListPath="/dev"
+            currentListPath={`/${frontmatter.category}`}
             pageContext={data.sitePage.pageContext}
           />
         </NarrowContainerWrapper>
@@ -79,6 +79,7 @@ export const pageQuery = graphql`
         date
         slug
         tags
+        category
       }
     }
     sitePage(path: { eq: $fullPath }) {
