@@ -12,8 +12,6 @@ category: 'dev'
 
 [https://react-relay-github.vercel.app/](https://react-relay-github.vercel.app/)
 
-![github](github.gif)
-
 Github 저장소: [https://github.com/huskyhoochu/react-relay-github](https://github.com/huskyhoochu/react-relay-github)
 
 #### 공식 문서 외에는 정말 정보가 없다

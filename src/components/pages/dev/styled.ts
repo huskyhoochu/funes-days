@@ -3,6 +3,7 @@ import {
   Body1Class,
   Body2Class,
   CaptionClass,
+  H4Class,
   H5Class,
   H6Class,
   Subtitle1Class,
@@ -24,6 +25,10 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
     .title {
       font-weight: 700;
       margin-bottom: 8px;
+
+      @media (max-width: ${breakPoints.tablet}px) {
+        ${H4Class};
+      }
     }
 
     .description {
@@ -134,6 +139,12 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
       margin-bottom: 16px;
     }
 
+    h4 {
+      @media (max-width: ${breakPoints.tablet}px) {
+        ${H5Class};
+      }
+    }
+
     p {
       text-align: justify;
       line-height: 2;
@@ -179,6 +190,22 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
 
     .anchor {
       fill: ${props => (props.screen === 'light' ? Gray['600'] : Gray['200'])};
+    }
+
+    .language-text {
+      ${props =>
+        props.screen === 'light' &&
+        css`
+          background-color: rgba(255, 255, 255, 0.5);
+          color: inherit;
+        `};
+
+      ${props =>
+        props.screen === 'dark' &&
+        css`
+          background-color: rgba(0, 0, 0, 0.5);
+          color: inherit;
+        `};
     }
 
     ul {

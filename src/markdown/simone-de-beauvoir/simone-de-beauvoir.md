@@ -1,6 +1,6 @@
 ---
 title: '시몬 드 보부아르, <모든 사람은 혼자다>'
-description: '아직 태어나지 않은 아기들에 대해 생각해 봤어'
+description: '끝말잇기 같은 사유의 꼬리 물기'
 date: 2020-12-15T18:54:03+09:00
 draft: false
 tags: ['book']
