@@ -11,6 +11,20 @@ module.exports = {
         trackingId: 'G-BPT16P1WFP',
       },
     },
+    {
+      resolve: 'gatsby-plugin-next-seo',
+      options: {
+        openGraph: {
+          type: 'website',
+          locale: 'ko_KR',
+          url: 'https://funes-days.com',
+          site_name: 'funes-days',
+          title: 'funes-days',
+          description: '기억의 천재 푸네스와 함께하는 되새김의 여정',
+          canonical: 'https://funes-days.com',
+        },
+      },
+    },
     'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',

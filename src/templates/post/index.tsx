@@ -26,7 +26,16 @@ const DevTemplate: React.FC<Props> = ({ data }) => {
   useActiveToc(mdContentRef, tocRef);
 
   return (
-    <PostLayout title={frontmatter.title}>
+    <PostLayout
+      title={frontmatter.title}
+      description={frontmatter.description}
+      slug={`/${frontmatter.category}/${frontmatter.slug}`}
+      articleInfo={{
+        publishedTime: frontmatter.date,
+        authors: ['https://github.com/huskyhoochu'],
+        tags: frontmatter.tags,
+      }}
+    >
       <MarkdownWrapper screen={screen}>
         <NarrowContainerWrapper>
           <div className="title-group">

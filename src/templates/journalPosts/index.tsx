@@ -1,11 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PostCard from '@/components/pages/home/postCard';
-import HomeLayout from '@/layout/home';
-import Header from '@/components/atoms/header';
 import { DevListWrapper } from '../devPosts/styled';
 import Pagination from '@/components/templates/pagination';
 import useTheme from '@/hooks/useTheme';
+import ListLayout from '@/layout/list';
 
 interface Props {
   data: {
@@ -22,20 +21,12 @@ const JournalList: React.FC<Props> = ({ data }) => {
   const [, screen] = useTheme();
   const { edges, pageInfo } = data.allMarkdownRemark;
   return (
-    <HomeLayout title="Journal Posts">
-      <Header backgroundColor="transparent" />
-      <div
-        style={{
-          position: 'fixed',
-          inset: 0,
-          backgroundImage:
-            'url("https://images.unsplash.com/photo-1625499940894-8796928bf9c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1010&q=80")',
-          zIndex: 0,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      />
+    <ListLayout
+      title="Journal Posts"
+      category="journal"
+      backgroundUrl="https://images.unsplash.com/photo-1625499940894-8796928bf9c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1010&q=80"
+      posts={edges}
+    >
       <DevListWrapper screen={screen}>
         <div className="title-group">
           <h3>Journal Posts</h3>
@@ -47,7 +38,7 @@ const JournalList: React.FC<Props> = ({ data }) => {
         </div>
         <Pagination {...pageInfo} path="journal" />
       </DevListWrapper>
-    </HomeLayout>
+    </ListLayout>
   );
 };
 

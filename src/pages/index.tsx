@@ -9,18 +9,7 @@ interface Props {
   data: {
     allMarkdownRemark: {
       edges: {
-        node: {
-          id: string;
-          timeToRead: number;
-          frontmatter: {
-            title: string;
-            description: string;
-            date: string;
-            tags: string[];
-            slug: string;
-            category: PostCategory;
-          };
-        };
+        node: PostNode;
       }[];
     };
   };
@@ -29,7 +18,7 @@ interface Props {
 const IndexPage: React.FC<Props> = ({ data }) => {
   const { allMarkdownRemark } = data;
   return (
-    <HomeLayout title="main">
+    <HomeLayout title="main" posts={allMarkdownRemark.edges}>
       <Header backgroundColor="transparent" />
       <LatestUpdateSection posts={allMarkdownRemark.edges} />
       <Intro />
