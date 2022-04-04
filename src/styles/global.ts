@@ -73,6 +73,10 @@ const GlobalStyle = css`
     letter-spacing: 1.25px;
   }
 
+  strong {
+    font-weight: 700;
+  }
+
   /* Material Icons */
   /* https://google.github.io/material-design-icons/#icon-font-for-the-web */
   .material-icons-outlined {

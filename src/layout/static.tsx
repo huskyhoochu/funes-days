@@ -4,7 +4,6 @@ import { Global } from '@emotion/react';
 import FaviconPackage from '@/components/atoms/faviconPackage';
 import GlobalStyle from '@/styles/global';
 import useTheme from '@/hooks/useTheme';
-import { ContainerWrapper } from '@/styles/container';
 
 interface Props {
   title: string;
@@ -21,7 +20,7 @@ const StaticLayout: React.FC<Props> = ({ title, children }) => {
       </Helmet>
       <FaviconPackage screen={screen} theme={theme} />
       <Global styles={GlobalStyle} />
-      <ContainerWrapper>{children}</ContainerWrapper>
+      {children}
     </>
   );
 };
