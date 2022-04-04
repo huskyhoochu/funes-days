@@ -3,6 +3,7 @@ import StaticLayout from '@/layout/static';
 import WhyMe from '@/components/pages/resume/whyMe';
 import { ResumeWrapper } from '@/components/pages/resume/styled';
 import Because from '@/components/pages/resume/because';
+import LangPower from '@/components/pages/resume/langPower';
 
 const ResumePage: React.FC = () => {
   return (
@@ -10,6 +11,7 @@ const ResumePage: React.FC = () => {
       <ResumeWrapper>
         <WhyMe />
         <Because />
+        <LangPower />
       </ResumeWrapper>
     </StaticLayout>
   );

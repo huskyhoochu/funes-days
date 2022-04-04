@@ -11,20 +11,20 @@ import {
 const WhyMe: React.FC = () => {
   const { scrollYProgress } = useViewportScroll();
   const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.1, 0.3, 0.5], [1, 1, 1, 0]),
+    useTransform(scrollYProgress, [0, 0.05, 0.15, 0.33], [1, 1, 1, 0]),
     {
       restSpeed: 0.1,
       stiffness: 30,
       damping: 10,
     },
   );
-  const reversed = useSpring(useTransform(scrollYProgress, [0, 0.1], [0, 1]), {
+  const reversed = useSpring(useTransform(scrollYProgress, [0, 0.05], [0, 1]), {
     restSpeed: 0.1,
     stiffness: 30,
     damping: 10,
   });
   const bookOpacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.1, 0.3, 0.5], [0, 0, 1, 0]),
+    useTransform(scrollYProgress, [0, 0.05, 0.15, 0.33], [0, 0, 1, 0]),
     {
       restSpeed: 0.1,
       stiffness: 30,
@@ -32,7 +32,7 @@ const WhyMe: React.FC = () => {
     },
   );
   const brighter = useSpring(
-    useTransform(scrollYProgress, [0.3, 0.5], [0, 1]),
+    useTransform(scrollYProgress, [0.15, 0.33], [0, 1]),
     {
       restSpeed: 0.1,
       stiffness: 30,

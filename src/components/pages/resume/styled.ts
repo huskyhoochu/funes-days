@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { breakPoints, gridPoints } from '@/styles/screen';
-import { H2Class, H3Class } from '@/styles/typography';
+import { H2Class, H3Class, H4Class } from '@/styles/typography';
 import { Gray } from '@/styles/theme';
 
 export const ResumeWrapper = styled.div`
@@ -95,5 +95,50 @@ export const BecauseWrapper = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+  }
+`;
+
+export const LangPowerWrapper = styled.div`
+  position: relative;
+  height: 500vh;
+  display: grid;
+  margin-top: 200px;
+  padding-inline: ${gridPoints.gutter}px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: ${gridPoints.gutter * 2}px;
+
+  h1 {
+    word-break: keep-all;
+
+    @media (max-width: ${breakPoints.tablet}px) {
+      ${H3Class};
+    }
+
+    @media (max-width: ${breakPoints.mobile}px) {
+      ${H4Class};
+    }
+  }
+
+  .words {
+    flex: 1;
+    text-align: right;
+
+    h1 {
+      height: 50vh;
+      opacity: 0;
+      transition: opacity 2s ease;
+
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+
+  .needs {
+    flex: 1;
+    position: sticky;
+    top: 30%;
+    right: 0;
+    height: 100vh;
   }
 `;
