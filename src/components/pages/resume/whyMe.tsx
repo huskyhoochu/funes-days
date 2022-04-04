@@ -11,20 +11,28 @@ import {
 const WhyMe: React.FC = () => {
   const { scrollYProgress } = useViewportScroll();
   const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [1, 1, 1, 0]),
+    useTransform(scrollYProgress, [0, 0.1, 0.3, 0.5], [1, 1, 1, 0]),
     {
       restSpeed: 0.1,
       stiffness: 30,
       damping: 10,
     },
   );
-  const reversed = useSpring(useTransform(scrollYProgress, [0, 0.3], [0, 1]), {
+  const reversed = useSpring(useTransform(scrollYProgress, [0, 0.1], [0, 1]), {
     restSpeed: 0.1,
     stiffness: 30,
     damping: 10,
   });
   const bookOpacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.3, 0.5, 1], [0, 0, 1, 0]),
+    useTransform(scrollYProgress, [0, 0.1, 0.3, 0.5], [0, 0, 1, 0]),
+    {
+      restSpeed: 0.1,
+      stiffness: 30,
+      damping: 10,
+    },
+  );
+  const brighter = useSpring(
+    useTransform(scrollYProgress, [0.3, 0.5], [0, 1]),
     {
       restSpeed: 0.1,
       stiffness: 30,
@@ -41,7 +49,7 @@ const WhyMe: React.FC = () => {
         animate="show"
         style={{ opacity }}
       >
-        <h1>우리에겐 왜 굳이</h1>
+        <h1>우리에겐 왜</h1>
         <h1>
           <motion.strong
             initial={false}
@@ -60,6 +68,12 @@ const WhyMe: React.FC = () => {
         initial={false}
         style={{
           opacity: bookOpacity,
+        }}
+      />
+      <motion.div
+        className="bright"
+        style={{
+          opacity: brighter,
         }}
       />
     </WhyMeWrapper>
