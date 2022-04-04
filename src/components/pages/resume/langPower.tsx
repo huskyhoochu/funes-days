@@ -31,7 +31,7 @@ const LangPower: React.FC = () => {
       <div className="words" ref={wordIntersect}>
         <h1>정확한</h1>
         <h1>신뢰할 수 있는</h1>
-        <h1>배려깊은</h1>
+        <h1>배려의</h1>
         <h1>용기를 주는</h1>
         <h1>친절한</h1>
         <h1>실수를 인정하는</h1>

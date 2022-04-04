@@ -9,12 +9,12 @@ import {
 import useWrite from '@/hooks/useWrite';
 import useIntersect from '@/hooks/useIntersect';
 
-const text = '가 필요하죠.';
+const text = '가 필요합니다.';
 
 const Because: React.FC = () => {
   const { scrollYProgress } = useViewportScroll();
   const opacity = useSpring(
-    useTransform(scrollYProgress, [0.3, 0.45, 0.53, 0.55], [0, 1, 1, 0]),
+    useTransform(scrollYProgress, [0.3, 0.45, 0.55, 0.57], [0, 1, 1, 0]),
     {
       restSpeed: 0.1,
       stiffness: 30,
@@ -22,7 +22,7 @@ const Because: React.FC = () => {
     },
   );
   const afterOpacity = useSpring(
-    useTransform(scrollYProgress, [0.53, 0.55], [0, 1]),
+    useTransform(scrollYProgress, [0.55, 0.57], [0, 1]),
     {
       restSpeed: 0.1,
       stiffness: 30,
@@ -42,7 +42,7 @@ const Because: React.FC = () => {
               opacity,
             }}
           >
-            컴퓨터와 사람 사이엔
+            컴퓨터와 대화하려면
           </motion.h1>
           <h1>
             <strong>언어</strong>
@@ -53,7 +53,7 @@ const Because: React.FC = () => {
               opacity: afterOpacity,
             }}
           >
-            동료와 동료 사이도 그렇구요.
+            동료와 동료 사이도 마찬가지고요.
           </motion.h1>
         </div>
       </motion.div>
