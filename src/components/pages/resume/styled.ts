@@ -77,6 +77,8 @@ export const BecauseWrapper = styled.div`
     position: sticky;
     inset: 0;
     height: 100vh;
+    width: 60vw;
+    margin-inline: auto;
     z-index: 2;
     display: flex;
     align-items: center;
