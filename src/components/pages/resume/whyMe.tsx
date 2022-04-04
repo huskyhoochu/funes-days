@@ -49,7 +49,7 @@ const WhyMe: React.FC = () => {
         animate="show"
         style={{ opacity }}
       >
-        <h1>우리에겐 왜</h1>
+        <h1>왜 굳이</h1>
         <h1>
           <motion.strong
             initial={false}
@@ -61,7 +61,7 @@ const WhyMe: React.FC = () => {
           </motion.strong>
           &nbsp;개발자가
         </h1>
-        <h1>필요할까요?</h1>
+        <h1>필요하죠?</h1>
       </motion.div>
       <motion.div
         className="books"

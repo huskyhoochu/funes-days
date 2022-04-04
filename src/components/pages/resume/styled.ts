@@ -195,7 +195,7 @@ export const HelloWrapper = styled(motion.div)`
   }
 
   .hello {
-    padding: 32px 36px;
+    padding: 36px;
     border-radius: ${radius['16']}px;
     backdrop-filter: blur(10px) saturate(80%) contrast(60%);
 
@@ -219,8 +219,14 @@ export const HelloWrapper = styled(motion.div)`
       }
     }
 
-    .links {
+    .more {
       margin-top: 32px;
+      ${H6Class};
+      text-decoration: underline;
+    }
+
+    .links {
+      margin-top: 16px;
       width: 100%;
       display: grid;
       grid-template-columns: repeat(3, 1fr);

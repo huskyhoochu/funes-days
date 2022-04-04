@@ -12,6 +12,7 @@ import {
   NormalShowingVariants,
   PropagationShowingVariants,
 } from '@/framer/variants';
+import { Link } from 'gatsby';
 
 const Hello: React.FC = () => {
   const { scrollYProgress } = useViewportScroll();
@@ -69,6 +70,9 @@ const Hello: React.FC = () => {
           <motion.h4 variants={NormalShowingVariants}>
             본질은 소통에 있다고 믿는 개발자입니다.
           </motion.h4>
+          <motion.div variants={NormalShowingVariants} className="more">
+            <Link to="/career">경력 더 보러가기</Link>
+          </motion.div>
           <motion.div className="links" variants={NormalShowingVariants}>
             <a
               href="https://github.com/huskyhoochu"
