@@ -53,7 +53,7 @@ const Because: React.FC = () => {
               opacity: afterOpacity,
             }}
           >
-            동료와 동료 사이도 그렇잖아요.
+            동료와 동료 사이도 그렇구요.
           </motion.h1>
         </div>
       </motion.div>
