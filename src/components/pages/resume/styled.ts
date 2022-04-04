@@ -1,7 +1,16 @@
 import styled from '@emotion/styled';
 import { breakPoints, gridPoints } from '@/styles/screen';
-import { H2Class, H3Class, H4Class } from '@/styles/typography';
+import {
+  H2Class,
+  H3Class,
+  H4Class,
+  H5Class,
+  H6Class,
+  Subtitle1Class,
+} from '@/styles/typography';
 import { Gray } from '@/styles/theme';
+import { motion } from 'framer-motion';
+import radius from '@/styles/radius';
 
 export const ResumeWrapper = styled.div`
   background-color: ${Gray['700']};
@@ -140,5 +149,86 @@ export const LangPowerWrapper = styled.div`
     top: 30%;
     right: 0;
     height: 100vh;
+  }
+`;
+
+export const HelloWrapper = styled(motion.div)`
+  position: relative;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+  background-image: url('https://images.unsplash.com/photo-1632576883732-f131be0be48a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1635&q=80');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  h2 {
+    word-break: keep-all;
+
+    @media (max-width: ${breakPoints.tablet}px) {
+      ${H3Class};
+    }
+
+    @media (max-width: ${breakPoints.mobile}px) {
+      ${H4Class};
+    }
+  }
+
+  h4 {
+    word-break: keep-all;
+
+    @media (max-width: ${breakPoints.tablet}px) {
+      ${H5Class};
+    }
+
+    @media (max-width: ${breakPoints.mobile}px) {
+      ${H6Class};
+    }
+  }
+
+  .outer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hello {
+    padding: 32px 36px;
+    border-radius: ${radius['16']}px;
+    backdrop-filter: blur(10px) saturate(80%) contrast(60%);
+
+    @media (max-width: ${breakPoints.tablet}px) {
+      padding: 24px;
+      border-radius: 0;
+    }
+
+    @media (max-width: ${breakPoints.mobile}px) {
+      padding: 32px 16px;
+    }
+
+    .soo {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 9999px;
+      @media (max-width: ${breakPoints.mobile}px) {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    .links {
+      margin-top: 32px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      ${Subtitle1Class};
+
+      a {
+        text-decoration: underline;
+      }
+    }
   }
 `;
