@@ -220,9 +220,12 @@ export const HelloWrapper = styled(motion.div)`
     }
 
     .more {
-      margin-top: 32px;
-      ${H6Class};
+      margin-block: 32px;
+      ${H5Class};
       text-decoration: underline;
+      @media (max-width: ${breakPoints.mobile}px) {
+        ${H6Class};
+      }
     }
 
     .links {
