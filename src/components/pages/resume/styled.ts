@@ -111,7 +111,7 @@ export const LangPowerWrapper = styled.div`
   position: relative;
   height: 500vh;
   display: grid;
-  margin-top: 200px;
+  margin-top: 50vh;
   padding-inline: ${gridPoints.gutter}px;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: ${gridPoints.gutter * 2}px;

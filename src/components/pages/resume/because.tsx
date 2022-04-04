@@ -14,7 +14,7 @@ const text = '가 필요합니다.';
 const Because: React.FC = () => {
   const { scrollYProgress } = useViewportScroll();
   const opacity = useSpring(
-    useTransform(scrollYProgress, [0.3, 0.45, 0.55, 0.57], [0, 1, 1, 0]),
+    useTransform(scrollYProgress, [0.27, 0.4, 0.5, 0.55], [0, 1, 1, 0]),
     {
       restSpeed: 0.1,
       stiffness: 30,
@@ -22,7 +22,7 @@ const Because: React.FC = () => {
     },
   );
   const afterOpacity = useSpring(
-    useTransform(scrollYProgress, [0.55, 0.57], [0, 1]),
+    useTransform(scrollYProgress, [0.5, 0.55], [0, 1]),
     {
       restSpeed: 0.1,
       stiffness: 30,
