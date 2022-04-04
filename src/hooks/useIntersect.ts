@@ -1,6 +1,10 @@
 import { useCallback } from 'react';
 
-const useIntersect = (isOnlyOnce: boolean, callback: () => void) => {
+const useIntersect = (
+  isOnlyOnce: boolean,
+  callback: () => void,
+  resetFn: () => void,
+) => {
   return useCallback((node: HTMLElement | null) => {
     if (node) {
       const observer = new IntersectionObserver(entries => {
@@ -10,6 +14,8 @@ const useIntersect = (isOnlyOnce: boolean, callback: () => void) => {
             if (isOnlyOnce) {
               observer.unobserve(node);
             }
+          } else {
+            resetFn();
           }
         }
       });

@@ -76,7 +76,6 @@ export const BecauseWrapper = styled.div`
     text-align: center;
     position: sticky;
     inset: 0;
-    width: 100%;
     height: 100vh;
     z-index: 2;
     display: flex;
@@ -86,7 +85,7 @@ export const BecauseWrapper = styled.div`
   }
 
   .mac {
-    position: sticky;
+    position: relative;
     inset: 0;
     height: 400vh;
     z-index: 0;

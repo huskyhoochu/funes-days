@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import * as Hangul from 'hangul-js';
+import React from 'react';
 import GrapesVideo from '@/assets/grapes.mp4';
 import { IntroWrapper } from './styled';
 import useIntersect from '@/hooks/useIntersect';
 import useTheme from '@/hooks/useTheme';
 import { Theme } from '@/styles/theme';
+import useWrite from '@/hooks/useWrite';
 
 const text = `우리는 한 눈에 탁자 위에 있는 세 개의 컵을 감지하지만, 푸네스는 포도
 덩굴에 달린 모든 포도알과 포도줄기, 그리고 덩굴손을 감지할 수 있었다.
@@ -17,30 +17,8 @@ const text = `우리는 한 눈에 탁자 위에 있는 세 개의 컵을 감지
 
 const Intro: React.FC = () => {
   const [ThemeClass, screen, theme, ReversedThemeClass] = useTheme();
-  const [textState, setTextState] = useState<string>('');
-  const [isWrittenComplete, setIsWrittenComplete] = useState<boolean>(false);
-
-  const writeText = () => {
-    const timer = (ms: number) => new Promise(res => setTimeout(res, ms));
-
-    const delayAddText = async () => {
-      for (let i = 0; i < text.length; i++) {
-        const dis = Hangul.disassemble(text[i]);
-
-        for (let j = 0; j < dis.length; j++) {
-          const middleChar = Hangul.assemble(dis.slice(0, j + 1));
-          setTextState(state => state.slice(0, i) + middleChar);
-          await timer(100);
-        }
-      }
-    };
-
-    delayAddText()
-      .then(() => timer(100))
-      .then(() => setIsWrittenComplete(true));
-  };
-
-  const callIntersect = useIntersect(true, writeText);
+  const { textState, writeText, isWrittenComplete, reset } = useWrite();
+  const callIntersect = useIntersect(true, writeText(text, 100), reset);
 
   return (
     <IntroWrapper
