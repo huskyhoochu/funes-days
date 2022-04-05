@@ -23,6 +23,14 @@ const WhyMe: React.FC = () => {
     stiffness: 30,
     damping: 10,
   });
+  const arrowOpacity = useSpring(
+    useTransform(scrollYProgress, [0, 0.05], [1, 0]),
+    {
+      restSpeed: 0.1,
+      stiffness: 30,
+      damping: 10,
+    },
+  );
   const bookOpacity = useSpring(
     useTransform(scrollYProgress, [0, 0.05, 0.15, 0.27], [0, 0, 1, 0]),
     {
@@ -76,6 +84,14 @@ const WhyMe: React.FC = () => {
           opacity: brighter,
         }}
       />
+      <motion.div
+        className="arrow"
+        style={{
+          opacity: arrowOpacity,
+        }}
+      >
+        <span className="material-icons-outlined">keyboard_arrow_down</span>
+      </motion.div>
     </WhyMeWrapper>
   );
 };

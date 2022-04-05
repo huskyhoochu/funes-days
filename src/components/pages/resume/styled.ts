@@ -63,6 +63,34 @@ export const WhyMeWrapper = styled.div`
     background-color: ${Gray['200']};
     z-index: 2;
   }
+
+  .arrow {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .material-icons-outlined {
+      ${H3Class};
+      animation-name: wave;
+      animation-iteration-count: infinite;
+      animation-duration: 1.6s;
+      animation-timing-function: ease;
+    }
+
+    @keyframes wave {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15%);
+      }
+    }
+  }
 `;
 
 export const BecauseWrapper = styled.div`
