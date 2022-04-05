@@ -125,7 +125,6 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
     h4,
     h5,
     h6 {
-      padding-top: 60px;
       font-weight: 700;
     }
 
@@ -140,8 +139,20 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
     }
 
     h4 {
+      padding-top: 60px;
+
       @media (max-width: ${breakPoints.tablet}px) {
         ${H5Class};
+        padding-top: 40px;
+      }
+    }
+
+    h6 {
+      padding-top: 30px;
+
+      @media (max-width: ${breakPoints.tablet}px) {
+        ${Subtitle1Class};
+        padding-top: 20px;
       }
     }
 
