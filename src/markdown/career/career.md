@@ -43,8 +43,6 @@ category: 'career'
 
 ![90days_01](90days_01.png)
 
-![90days_02](90days_02.png)
-
 #### 프로젝트
 
 ###### num-to-korean, 2020
