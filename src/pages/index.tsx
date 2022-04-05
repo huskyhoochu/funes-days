@@ -31,7 +31,9 @@ export default IndexPage;
 export const query = graphql`
   {
     allMarkdownRemark(
-      filter: { frontmatter: { draft: { eq: false } } }
+      filter: {
+        frontmatter: { draft: { eq: false }, category: { ne: "career" } }
+      }
       sort: { order: DESC, fields: frontmatter___date }
       limit: 7
     ) {

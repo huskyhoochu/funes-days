@@ -115,6 +115,44 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       },
     });
   });
+
+  const careerResult = await graphql(
+    `
+      {
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
+          limit: 1000
+          filter: { frontmatter: { category: { eq: "career" } } }
+        ) {
+          edges {
+            node {
+              frontmatter {
+                slug
+                category
+                title
+              }
+            }
+          }
+        }
+      }
+    `,
+  );
+
+  if (careerResult.errors) {
+    reporter.panicOnBuild('Error while running GraphQL query.');
+    return;
+  }
+
+  const careerPosts = careerResult.data.allMarkdownRemark.edges;
+  careerPosts.forEach(({ node }) => {
+    createPage({
+      path: `/${node.frontmatter.slug}`,
+      component: path.resolve('./src/templates/career/index.tsx'),
+      context: {
+        slug: node.frontmatter.slug,
+      },
+    });
+  });
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

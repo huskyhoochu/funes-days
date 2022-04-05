@@ -216,6 +216,11 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
         text-align: justify;
         line-height: 2;
       }
+
+      ul,
+      ol {
+        margin-left: 16px;
+      }
     }
 
     ol {
@@ -225,6 +230,11 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
         list-style: decimal inside;
         text-align: justify;
         line-height: 2;
+      }
+
+      ul,
+      ol {
+        margin-left: 16px;
       }
     }
   }
