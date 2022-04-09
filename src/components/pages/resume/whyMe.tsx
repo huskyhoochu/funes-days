@@ -60,7 +60,6 @@ const WhyMe: React.FC = () => {
         <h1>왜 굳이</h1>
         <h1>
           <motion.strong
-            initial={false}
             style={{
               opacity: reversed,
             }}

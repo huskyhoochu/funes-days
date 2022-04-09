@@ -143,6 +143,19 @@ export const LangPowerWrapper = styled.div`
   padding-inline: ${gridPoints.gutter}px;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: ${gridPoints.gutter * 2}px;
+  background-image: linear-gradient(
+    180deg,
+    hsl(0deg 0% 21%) 0%,
+    hsl(58deg 11% 24%) 21%,
+    hsl(60deg 19% 27%) 30%,
+    hsl(61deg 27% 30%) 39%,
+    hsl(62deg 34% 33%) 46%,
+    hsl(63deg 41% 35%) 54%,
+    hsl(64deg 47% 38%) 61%,
+    hsl(64deg 54% 41%) 69%,
+    hsl(64deg 61% 43%) 79%,
+    hsl(65deg 69% 45%) 100%
+  );
 
   h1 {
     word-break: keep-all;

@@ -58,12 +58,7 @@ const Hello: React.FC = () => {
           initial="hide"
           animate={isToggle ? 'show' : 'hide'}
         >
-          <motion.img
-            src={Soo}
-            className="soo"
-            alt="soo"
-            variants={NormalShowingVariants}
-          />
+          <motion.img src={Soo} className="soo" alt="soo" />
           <motion.h2 variants={NormalShowingVariants}>
             안녕하세요, 승형수입니다.
           </motion.h2>

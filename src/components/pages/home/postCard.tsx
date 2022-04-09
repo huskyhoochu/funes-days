@@ -31,7 +31,7 @@ const PostCard: React.FC<Props> = ({ node }) => {
   const [, screen, theme, ReversedThemeClass] = useTheme();
   const { scrollYProgress } = useViewportScroll();
   const y = useVelocity(
-    useSpring(useTransform(scrollYProgress, [0, 1], [0, 20]), {
+    useSpring(useTransform(scrollYProgress, [0, 1], [20, 0]), {
       restSpeed: 0.1,
       stiffness: 30,
       damping: 10,

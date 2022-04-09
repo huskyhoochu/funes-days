@@ -1,5 +1,12 @@
 import React, { useCallback } from 'react';
 import { LangPowerWrapper } from './styled';
+import {
+  motion,
+  useSpring,
+  useTransform,
+  useVelocity,
+  useViewportScroll,
+} from 'framer-motion';
 
 const LangPower: React.FC = () => {
   const wordIntersect = useCallback((node: HTMLElement | null) => {
@@ -26,6 +33,15 @@ const LangPower: React.FC = () => {
     }
   }, []);
 
+  const { scrollYProgress } = useViewportScroll();
+  const y = useVelocity(
+    useSpring(useTransform(scrollYProgress, [0.55, 0.9], [20, 0]), {
+      restSpeed: 0.1,
+      stiffness: 30,
+      damping: 10,
+    }),
+  );
+
   return (
     <LangPowerWrapper>
       <div className="words" ref={wordIntersect}>
@@ -39,14 +55,14 @@ const LangPower: React.FC = () => {
         <h1>영감을 주는</h1>
         <h1>알맞은</h1>
       </div>
-      <div className="needs">
+      <motion.div className="needs" style={{ y }}>
         <h1>
           <strong>언어</strong>를
         </h1>
         <h1>쓰는 사람이</h1>
         <h1>팀에는</h1>
         <h1>필요합니다.</h1>
-      </div>
+      </motion.div>
     </LangPowerWrapper>
   );
 };
