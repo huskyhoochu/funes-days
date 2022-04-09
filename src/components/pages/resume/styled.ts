@@ -174,9 +174,13 @@ export const LangPowerWrapper = styled.div`
   .needs {
     flex: 1;
     position: sticky;
-    top: 30%;
+    top: 25vh;
     right: 0;
     height: 100vh;
+
+    @media (max-width: ${breakPoints.mobile}px) {
+      top: 35vh;
+    }
   }
 `;
 
