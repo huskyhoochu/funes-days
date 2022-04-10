@@ -24,7 +24,7 @@ const WhyMe: React.FC = () => {
     damping: 10,
   });
   const arrowOpacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.05], [1, 0]),
+    useTransform(scrollYProgress, [0, 0.05, 0.1], [1, 1, 0]),
     {
       restSpeed: 0.1,
       stiffness: 30,
@@ -89,6 +89,7 @@ const WhyMe: React.FC = () => {
           opacity: arrowOpacity,
         }}
       >
+        <p>스크롤을 내려주세요</p>
         <span className="material-icons-outlined">keyboard_arrow_down</span>
       </motion.div>
     </WhyMeWrapper>

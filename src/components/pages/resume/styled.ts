@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { breakPoints, gridPoints } from '@/styles/screen';
 import {
+  CaptionClass,
   H2Class,
   H3Class,
   H4Class,
@@ -69,16 +70,17 @@ export const WhyMeWrapper = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    z-index: 3;
+    margin-inline: auto;
+    text-align: center;
+    ${CaptionClass};
+    animation-name: wave;
+    animation-iteration-count: infinite;
+    animation-duration: 1.6s;
+    animation-timing-function: ease;
 
     .material-icons-outlined {
       ${H3Class};
-      animation-name: wave;
-      animation-iteration-count: infinite;
-      animation-duration: 1.6s;
-      animation-timing-function: ease;
     }
 
     @keyframes wave {
@@ -100,12 +102,16 @@ export const BecauseWrapper = styled.div`
   h1 {
     word-break: keep-all;
 
-    @media (max-width: ${breakPoints.tablet}px) {
+    @media (max-width: ${breakPoints.desktop}px) {
       ${H2Class};
     }
 
-    @media (max-width: ${breakPoints.mobile}px) {
+    @media (max-width: ${breakPoints.tablet}px) {
       ${H3Class};
+    }
+
+    @media (max-width: ${breakPoints.mobile}px) {
+      ${H4Class};
     }
   }
 
@@ -114,7 +120,7 @@ export const BecauseWrapper = styled.div`
     position: sticky;
     inset: 0;
     height: 100vh;
-    width: 60vw;
+    width: 80vw;
     margin-inline: auto;
     z-index: 2;
     display: flex;
@@ -159,6 +165,10 @@ export const LangPowerWrapper = styled.div`
 
   h1 {
     word-break: keep-all;
+
+    @media (max-width: ${breakPoints.desktop}px) {
+      ${H2Class};
+    }
 
     @media (max-width: ${breakPoints.tablet}px) {
       ${H3Class};
