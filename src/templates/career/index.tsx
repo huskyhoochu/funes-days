@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import PostLayout from '@/layout/post';
 import { NarrowContainerWrapper } from '@/styles/container';
 import { MarkdownWrapper } from '@/components/pages/dev/styled';
@@ -24,7 +24,7 @@ const CareerTemplate: React.FC<Props> = ({ data }) => {
     <PostLayout
       title={frontmatter.title}
       description={frontmatter.description}
-      slug={`/${frontmatter.category}/${frontmatter.slug}`}
+      slug={`/${frontmatter.slug}`}
       articleInfo={{
         publishedTime: frontmatter.date,
         authors: ['https://github.com/huskyhoochu'],
@@ -34,7 +34,9 @@ const CareerTemplate: React.FC<Props> = ({ data }) => {
       <MarkdownWrapper screen={screen}>
         <NarrowContainerWrapper>
           <div className="title-group">
-            <h3 className="title">{frontmatter.title}</h3>
+            <Link to={`/${frontmatter.slug}`}>
+              <h3 className="title">{frontmatter.title}</h3>
+            </Link>
             <p className="description">{frontmatter.description}</p>
           </div>
           <div

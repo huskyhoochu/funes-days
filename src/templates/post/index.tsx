@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import dayjs from 'dayjs';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import PostLayout from '@/layout/post';
 import { NarrowContainerWrapper } from '@/styles/container';
 import { MarkdownWrapper } from '@/components/pages/dev/styled';
@@ -39,7 +39,9 @@ const DevTemplate: React.FC<Props> = ({ data }) => {
       <MarkdownWrapper screen={screen}>
         <NarrowContainerWrapper>
           <div className="title-group">
-            <h3 className="title">{frontmatter.title}</h3>
+            <Link to={`/${frontmatter.category}/${frontmatter.slug}`}>
+              <h3 className="title">{frontmatter.title}</h3>
+            </Link>
             <p className="description">{frontmatter.description}</p>
             <p className="date">
               {dayjs(frontmatter.date).format('YYYY-MM-DD')} ∙ {timeToRead} min
