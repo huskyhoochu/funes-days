@@ -65,7 +65,8 @@ const useActiveToc = (
 
     headings.forEach((heading, idx, arr) => {
       const nextHeadingTop =
-        arr[idx + 1]?.offsetTop || document.documentElement.offsetHeight;
+        arr[idx + 1]?.getBoundingClientRect().top ||
+        document.documentElement.offsetHeight;
       const replacedText =
         '#' +
         heading.innerText
@@ -75,13 +76,15 @@ const useActiveToc = (
 
       // 스크롤이 해당 헤딩에 진입했을 때
       // 해당 nav를 active한다
-      if (curScroll >= heading.offsetTop - 1 && curScroll < nextHeadingTop) {
+      if (0 >= heading.getBoundingClientRect().top && 0 < nextHeadingTop) {
         toggleActiveNav(navArray, replacedText);
       }
 
+      console.log(curScroll, heading, heading.getBoundingClientRect().top);
+
       // 스크롤이 전체 컨텐츠보다 상위에 있을 때
       // 모든 nav를 inactive 시킨다
-      if (curScroll < arr[0].offsetTop - 1) {
+      if (curScroll < arr[0].getBoundingClientRect().top) {
         inactiveAllNav(navArray);
       }
     });
