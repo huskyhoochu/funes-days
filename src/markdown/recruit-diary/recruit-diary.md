@@ -3,7 +3,7 @@ title: '채용을 하며 느낀 점'
 description: '그저 평범한 직장에 불과한 개발자로서의 삶을 그들은 어떤 식으로 받아들이게 될까'
 date: 2022-03-19T15:28:03+09:00
 draft: false
-tags: ['poem']
+tags: ['diary']
 slug: 'recruit-diary'
 category: 'dev'
 ---
