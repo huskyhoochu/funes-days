@@ -80,8 +80,6 @@ const useActiveToc = (
         toggleActiveNav(navArray, replacedText);
       }
 
-      console.log(curScroll, heading, heading.getBoundingClientRect().top);
-
       // 스크롤이 전체 컨텐츠보다 상위에 있을 때
       // 모든 nav를 inactive 시킨다
       if (curScroll < arr[0].getBoundingClientRect().top) {
