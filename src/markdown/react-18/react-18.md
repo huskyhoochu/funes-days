@@ -1,6 +1,6 @@
 ---
-title: 'react v18 살펴보기'
-description: 'react의 방향성과 미래를 엿보는 시간'
+title: 'React v18 살펴보기'
+description: 'React의 방향성과 미래를 엿보는 시간'
 date: 2022-04-12T18:54:03+09:00
 draft: false
 tags: ['react']
