@@ -17,7 +17,7 @@ const localStorageEffect: <T>(key: string) => AtomEffect<T> =
 
 export const screenState = atom<ScreenType>({
   key: 'screenState',
-  default: 'light',
+  default: 'dark',
   effects_UNSTABLE: [localStorageEffect<ScreenType>('screen')],
 });
 
