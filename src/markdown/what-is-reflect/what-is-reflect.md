@@ -18,6 +18,31 @@ trap은 interceptor와 함께 운영체제에서 활용하는 개념 중 하나�
 
 ###### example
 
+```javascript
+var handler = {
+  get: function (target, prop) {
+    if (prop === 'secret') {
+      return 'cannot view';
+    }
+    return target[prop];
+  },
+};
+
+var box = {
+  secret: 'letter',
+  mirror: 'twinkle',
+};
+
+var p = new Proxy(box, handler);
+
+console.log(p.mirror);
+// 'twinkle'
+console.log(p.secret);
+// 'cannot view'
+```
+
+예제에서 쓰인 것은 get 트랩으로, 프로퍼티를 읽어들여 출력을 가로챌 때 쓰인다. 특정한 조건 ('secret' 프로퍼티를 읽어들이는 상황) 에서 프로퍼티의 원본 내용을 출력하지 않고 'cannot view' 사인을 출력하게 하는 것이다.
+
 #### Reflect 주요 기능 알아보기
 
 #### 이미 다 있는 기능인데 굳이 저걸 써야 하나요?
