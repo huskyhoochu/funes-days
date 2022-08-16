@@ -43,7 +43,24 @@ console.log(p.secret);
 
 예제에서 쓰인 것은 get 트랩으로, 프로퍼티를 읽어들여 출력을 가로챌 때 쓰인다. 특정한 조건 ('secret' 프로퍼티를 읽어들이는 상황) 에서 프로퍼티의 원본 내용을 출력하지 않고 'cannot view' 사인을 출력하게 하는 것이다.
 
-#### Reflect 주요 기능 알아보기
+#### Reflect 알아보기
+
+Reflect는 그 이름과 마찬가지로 특정 JavaScript 작업을 자기 내부로 굴절시켜 대신 처리하는 프록시 객체의 일종이다. Reflect는 사용자가 JavaScript 객체의 built-in 동작을 직접 사용하거나 재정의하지 않고도 해당 기능을 안전하고 편리하게 사용할 수 있게 해 준다.
+
+###### example: Object methods
+
+```javascript
+var box = {
+  secret: 'letter',
+  mirror: 'twinkle',
+};
+
+console.log(Reflect.has(box, 'mirror'));
+// true
+
+console.log(box.hasOwnProperty('mirror'));
+// true
+```
 
 #### 이미 다 있는 기능인데 굳이 저걸 써야 하나요?
 
