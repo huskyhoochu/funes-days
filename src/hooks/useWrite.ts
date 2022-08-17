@@ -27,10 +27,13 @@ const useWrite = () => {
         mergeAll(),
         concatMap(x => of(x).pipe(delayFn(delay))),
       )
-      .subscribe(middleChar => {
-        setTextState(
-          state => state.slice(0, middleChar[0] as number) + middleChar[1],
-        );
+      .subscribe({
+        next: middleChar => {
+          setTextState(
+            state => state.slice(0, middleChar[0] as number) + middleChar[1],
+          );
+        },
+        complete: () => setIsWrittenComplete(true),
       });
   };
 
