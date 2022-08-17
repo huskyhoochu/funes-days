@@ -18,7 +18,7 @@ const GlobalStyle = css`
   }
 
   * {
-    font-family: 'IBM Plex Mono', 'LeferiPoint', monospace;
+    font-family: 'Fira Code', 'LeferiPoint', monospace;
   }
 
   html {

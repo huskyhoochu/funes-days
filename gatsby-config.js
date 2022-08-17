@@ -82,7 +82,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
-        fonts: ['IBM Plex Mono:400,400i,700,700i', 'Material Icons'],
+        fonts: ['Fira Code:400,700', 'Material Icons'],
         display: 'swap',
       },
     },
