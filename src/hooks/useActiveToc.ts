@@ -1,20 +1,51 @@
 import React, { useEffect, useState } from 'react';
 
+type ScrollItem = {
+  text: string;
+  offset: number;
+};
+
 const useActiveToc = (
   mdContentRef: React.RefObject<HTMLDivElement>,
   tocRef: React.RefObject<HTMLDivElement>,
 ) => {
-  const [curScroll, setCurScroll] = useState<number>(0);
+  const [scrollList, setScrollList] = useState<ScrollItem[]>([]);
 
   useEffect(() => {
-    const getCurScroll = (e: Event) => {
-      const curScroll = (e.target as Document).documentElement.scrollTop;
-      setCurScroll(curScroll);
-    };
-
     const headings = Array.from(
       mdContentRef.current?.children as HTMLCollection,
     ).filter(el => el instanceof HTMLHeadingElement) as HTMLHeadingElement[];
+
+    const scrollList: ScrollItem[] = [];
+
+    headings.forEach(heading => {
+      const windowScrollY = window.scrollY;
+      const elementTopInViewPort = heading.getBoundingClientRect().top ?? 0;
+      const currentHeadingAbsoluteTop = Math.round(
+        windowScrollY + elementTopInViewPort - 1,
+      );
+      const replacedText =
+        '#' +
+        heading.innerText
+          .replace(/\s/g, '-')
+          .replace(/[^가-힣0-9a-zA-Z-]/g, '')
+          .toLowerCase();
+
+      scrollList.push({
+        text: replacedText,
+        offset: currentHeadingAbsoluteTop,
+      });
+    });
+
+    scrollList.push({
+      text: scrollList.slice(0, -1)?.pop()?.text ?? '',
+      offset: document.documentElement.offsetHeight,
+    });
+
+    setScrollList(scrollList);
+  }, []);
+
+  useEffect(() => {
     const navArray = Array.from(
       tocRef.current?.children[0].children as HTMLCollection,
     );
@@ -60,39 +91,22 @@ const useActiveToc = (
       );
     };
 
-    const inactiveAllNav = (navArr: Element[]) =>
-      navArr.forEach(nav => nav.classList.remove('active'));
+    const activeNav = () => {
+      const currentScrollArea = scrollList.find(
+        ({ offset }, index, arr) =>
+          window.scrollY >= offset &&
+          window.scrollY < arr?.[Math.min(index + 1, arr.length - 1)].offset,
+      );
 
-    headings.forEach((heading, idx, arr) => {
-      const nextHeadingTop =
-        arr[idx + 1]?.getBoundingClientRect().top ||
-        document.documentElement.offsetHeight;
-      const replacedText =
-        '#' +
-        heading.innerText
-          .replace(/\s/g, '-')
-          .replace(/[^가-힣0-9a-zA-Z-]/g, '')
-          .toLowerCase();
+      toggleActiveNav(navArray, currentScrollArea?.text ?? '');
+    };
 
-      // 스크롤이 해당 헤딩에 진입했을 때
-      // 해당 nav를 active한다
-      if (0 >= heading.getBoundingClientRect().top && 0 < nextHeadingTop) {
-        toggleActiveNav(navArray, replacedText);
-      }
-
-      // 스크롤이 전체 컨텐츠보다 상위에 있을 때
-      // 모든 nav를 inactive 시킨다
-      if (curScroll < arr[0].getBoundingClientRect().top) {
-        inactiveAllNav(navArray);
-      }
-    });
-
-    window.addEventListener('scroll', getCurScroll);
+    window.addEventListener('scroll', activeNav);
 
     return () => {
-      window.removeEventListener('scroll', getCurScroll);
+      window.removeEventListener('scroll', activeNav);
     };
-  }, [curScroll, setCurScroll]);
+  }, [scrollList]);
 };
 
 export default useActiveToc;
