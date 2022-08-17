@@ -1,8 +1,8 @@
 ---
 title: 'Reflect란 무엇일까?'
 description: '객체 관련 메서드를 안전하게 실행할 수 있는 새로운 방법'
-date: 2022-07-28T11:47:57+09:00
-draft: true
+date: 2022-08-17T11:27:57+09:00
+draft: false
 tags: ['javascript']
 slug: 'what-is-reflect'
 category: 'dev'
@@ -64,8 +64,9 @@ console.log(box.hasOwnProperty('mirror'));
 
 #### 이미 다 있는 기능인데 굳이 저걸 써야 하나요?
 
+[Comparing Reflect and Object methods - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect/Comparing_Reflect_and_Object_methods) 문서를 보면 더 자세한 내용을 확인할 수 있지만, 대체로 built-in Object method가 메서드 실행에 실패하거나 원하는 조건을 만족시키지 못하면 TypeError를 발생시키는 것에 비해 Reflect는 boolean을 반환하여 보다 깔끔하게 코드를 작성할 수 있다.
+
 #### 참고
 
 - [JavaScript Proxy. 근데 이제 Reflect를 곁들인 | TOAST UI :: Make Your Web Delicious!](https://ui.toast.com/weekly-pick/ko_20210413)
-- [Comparing Reflect and Object methods - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect/Comparing_Reflect_and_Object_methods)
 - [What Is the Difference Between Trap and Interrupt? | Baeldung on Computer Science](https://www.baeldung.com/cs/os-trap-vs-interrupt)
