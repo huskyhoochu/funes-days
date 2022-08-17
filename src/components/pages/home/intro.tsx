@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import GrapesVideo from '@/assets/grapes.mp4';
 import { IntroWrapper } from './styled';
 import useIntersect from '@/hooks/useIntersect';
@@ -19,6 +19,10 @@ const Intro: React.FC = () => {
   const [ThemeClass, screen, theme, ReversedThemeClass] = useTheme();
   const { textState, writeText, isWrittenComplete, reset } = useWrite();
   const callIntersect = useIntersect(true, writeText(text, 100), reset);
+
+  useEffect(() => {
+    return reset;
+  }, []);
 
   return (
     <IntroWrapper
