@@ -26,6 +26,39 @@ category: 'dev'
 
 다형성 개념 아래서, 컴퓨터는 각자가 무엇인지(‘Vehicles’로 구현된 클래스인지) 기억하고 ‘Vehicles’에 정의된 메서드를 실행할 수 있게 된다. 다형성은 개발자가 처할 수 있는 수많은 예외적 상황으로부터 많은 해결책을 제공해 왔다.
 
+```
+// pseudo code
+// 모든 탈 것은 Vehicle 인터페이스로 구현된 클래스이다.
+var vehicle1 : Vehicle = new Car();
+var vehicle2 : Vehicle = new Truck();
+var vehicle3 : Vehicle = new Bicycle();
+
+var vehicles : Array = new Array();
+
+vehicles.push( new Car() );    // 우리의 프로그램이 자동차 시뮬레이션 게임이라고 가정하자.
+vehicles.push( new Car() );    // 우리가 만든 자동차와 트럭이 탈 것 배열에 담긴다.
+vehicles.push( new Truck() );  // 보통이라면 우리는 자동차, 트럭 등등의 각 탈 것을 서로 다른 배열에 넣을 것이다.
+vehicles.push( new Car() );    // 하지만 그렇게 할 수 없는 상황이 있다고 치자.
+vehicles.push( new Truck() );
+vehicles.push( new Truck() );
+vehicles.push( new Truck() );
+vehicles.push( new Car() );
+vehicles.push( new Truck() );
+vehicles.push( new Car() );
+vehicles.push( new Bicycle() ); // 자전거도 탈 것에 들어간다고 치자...
+vehicles.push( new Car() );
+
+
+// 우리는 모든 탈 것을 작동시키길 원한다.
+// 우리는 Generic 프로그래밍을 사용할 수 있다.
+// 왜냐면 이들은 모두 Vehicles이므로, 우리는 배열 내 객체가 정확히 무엇인지 신경 쓸 필요가 없다!
+
+for each (var item : Vehicle in vehicles ) {
+    item.start_engine();
+    item.drive();
+}
+```
+
 #### 타입스크립트에서의 인터페이스
 
 인터페이스의 개념은 타입스크립트에서도 동일하게 사용된다. 다만 타입스크립트에서 자바스크립트로 트랜스파일되는 동안에 코드에서 완전히 사라져버린다는 차이가 있을 뿐이다.
