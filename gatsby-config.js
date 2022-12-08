@@ -39,6 +39,13 @@ module.exports = {
             },
           },
           {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              destinationDir: f => `static/${f.hash}/${f.name}`,
+              ignoreFileExtensions: ['jpg', 'png', 'jpeg'],
+            },
+          },
+          {
             resolve: 'gatsby-remark-autolink-headers',
             options: {
               offsetY: -90,
