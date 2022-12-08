@@ -10,17 +10,37 @@ category: 'career'
 
 #### 경력
 
-###### 레이지소사이어티, 2021.03 ~
+###### 노써치, 2022.06 ~ 현재
+
+[노써치](https://nosearch.com)는 가전제품 비교분석 컨텐츠를 제작하는 이커머스 스타트업입니다.
+
+프론트 / 백엔드 영역 전반에 걸쳐 서비스 품질을 향상시킬 수 있는 모든 feature를 개발하는 중입니다.
+
+- TypeScript Next.js 기반 스토어 웹사이트 리뉴얼
+  - 상품 상세 페이지 재설계
+  - 기존에 사용 중이었던 고도몰 쇼핑몰의 결제 컴포넌트만 iframe으로 가져와 유지 운영
+- Node.js 전자제품 스펙 데이터 크롤러 제작
+  - fastify, crawlee, prisma, postgreSQL 사용
+  - 다나와에서 사용자가 등록한 카테고리의 가전제품 전체를 크롤링
+  - 매일 자정마다 최신 최저가를 추가 저장하여 최저가 변동 추이를 확인할 수 있게 함
+  - GCP 환경 위에 terraform을 사용하여 전체 리소스 형상관리
+  - Cloud Run, Pub/sub, Cloud tasks, Cloud Scheduler 등 사용
+
+###### 레이지소사이어티, 2021.03 ~ 2022.05
 
 [레이지소사이어티](https://lazysociety.co.kr)는 면도기 구독 서비스를 제공하는 이커머스 스타트업입니다.
 
-기존의 백엔드 시스템을 재설계 배포하는 것을 목표로 백엔드 포지션으로 업무를 시작했고, 현재는 프론트엔드 관리까지 겸하고 있습니다.
+기존의 커머스 백엔드 시스템 재설계 배포하는 것을 목표로 업무를 진행했습니다.
 
-- MySQL을 이용한 커머스 시스템의 DB 설계 및 인프라 설계
+- 신규 커머스 시스템의 DB 설계 및 인프라 설계
+  - MySQL DB 설계
   - 리포지토리 패턴을 도입한 Golang 기반 백엔드 서버 설계
   - Kafka, Redis를 이용한 주문 및 장바구니 서비스의 비동기 처리 설계
-- 과도한 스펙으로 책정된 RDS 인스턴스를 알맞은 크기의 인스턴스로 마이그레이션하여 연간 약 2,600만 원 비용 절감
-- 마케팅 영역에서 관리해야 할 상품 데이터를 Ghost CMS로 분리 운영
+- AWS 인프라 재설계
+  - VPC 제작 후 Public/Private 서브넷 분리하여 민감한 리소스는 격리된 Private 서브넷에서 관리
+  - OpenVPN 도입하여 필요한 인원만 Private 서브넷 접근하도록 설계
+  - Auto Scaling Group을 활용해 트래픽에 따라 확장 가능한 백엔드 시스템 제작
+  - 과도한 스펙으로 책정된 AWS RDS 인스턴스를 알맞은 크기로 마이그레이션하여 연간 약 2,600만 원 비용 절감
 - Redash를 이용한 각종 서비스 지표 시각화 운영
   - RDBMS 데이터와 Google Analytics 데이터를 하나의 SQL 문법으로 통합 조회
   - 재구매율 코호트 차트, 구매 전환율, ARPPU 지표 측정
@@ -50,8 +70,8 @@ category: 'career'
 
 num-to-korean은 숫자를 한글 표기로 변환해주는 함수입니다. 간단한 하나의 함수만 있습니다. 일의자리부터 경 단위까지의 모든 숫자를 한글로 변환해줍니다. 은행 등 금액을 다루어야 하는 환경에서 편리하게 사용할 수 있습니다.
 
-- [Github](https://github.com/huskyhoochu/num-to-korean) | 2022년 현재 star 61
-- [npm](https://www.npmjs.com/package/num-to-korean) | 주간 평균 다운로드 250여 건
+- [Github](https://github.com/huskyhoochu/num-to-korean) | 2022년 현재 star 66
+- [npm](https://www.npmjs.com/package/num-to-korean) | 주간 평균 다운로드 480여 건
 - [Blog](/dev/num-to-korean) | 금액-한글 변환 프로젝트 npm 배포하기
 
 #### 강연
