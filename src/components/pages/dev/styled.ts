@@ -167,6 +167,8 @@ export const MarkdownWrapper = styled.div<{ screen: ScreenType }>`
       border-left-style: solid;
       border-left-width: 4px;
       padding-left: ${gridPoints.gutter}px;
+      ${Body2Class};
+      font-style: italic;
 
       @media (max-width: ${breakPoints.mobile}px) {
         margin-inline: ${gridPoints.gutter}px;
