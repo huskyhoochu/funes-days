@@ -18,11 +18,8 @@ category: 'career'
 
 - TypeScript Next.js 기반 스토어 웹사이트 리뉴얼
   - 상품 상세 페이지 재설계
-  - 기존에 사용 중이었던 고도몰 쇼핑몰의 결제 컴포넌트만 iframe으로 가져와 유지 운영
-- Node.js 전자제품 스펙 데이터 크롤러 제작
+- Node.js 크롤러 제작
   - fastify, crawlee, prisma, postgreSQL 사용
-  - 다나와에서 사용자가 등록한 카테고리의 가전제품 전체를 크롤링
-  - 매일 자정마다 최신 최저가를 추가 저장하여 최저가 변동 추이를 확인할 수 있게 함
   - GCP 환경 위에 terraform을 사용하여 전체 리소스 형상관리
   - Cloud Run, Pub/sub, Cloud tasks, Cloud Scheduler 등 사용
 
