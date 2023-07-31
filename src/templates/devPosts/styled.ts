@@ -24,7 +24,7 @@ export const DevListWrapper = styled.div<{
     `}
 
   .title-group {
-    h3 {
+    p {
       text-align: center;
       font-weight: 700;
       text-decoration: underline;

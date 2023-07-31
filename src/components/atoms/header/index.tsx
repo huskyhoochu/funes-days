@@ -33,7 +33,9 @@ const Header: React.FC<Props> = ({ backgroundColor = '' }) => {
       <ContainerWrapper>
         <div className="inner-wrapper">
           <div className="home">
-            <Link to="/">Funes</Link>
+            <Link to="/">
+              <h1>Funes</h1>
+            </Link>
           </div>
           <div className="right-section">
             <nav className="nav">

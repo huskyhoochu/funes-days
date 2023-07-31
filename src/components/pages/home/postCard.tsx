@@ -48,8 +48,8 @@ const PostCard: React.FC<Props> = ({ node }) => {
         variants={NormalShowingVariants}
       >
         <motion.div layout={true} style={{ y, opacity }}>
-          <h3 className="title">{node.frontmatter.title}</h3>
-          <p className="description">{node.frontmatter.description}</p>
+          <h1 className="title">{node.frontmatter.title}</h1>
+          <h2 className="description">{node.frontmatter.description}</h2>
           <p className="date">
             {dayjs(node.frontmatter.date).format('YYYY-MM-DD')} ∙{' '}
             {node.timeToRead} min

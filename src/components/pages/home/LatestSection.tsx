@@ -32,7 +32,7 @@ const LatestSection: React.FC<Props> = ({ posts }) => {
       reversedThemeClass={ReversedThemeClass}
     >
       <div className="title-group">
-        <h3>Latest Updates</h3>
+        <h2>Latest Updates</h2>
       </div>
       <motion.div
         className="post-group"
