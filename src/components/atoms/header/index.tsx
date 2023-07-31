@@ -34,7 +34,15 @@ const Header: React.FC<Props> = ({ backgroundColor = '' }) => {
         <div className="inner-wrapper">
           <div className="home">
             <Link to="/">
-              <h1>Funes</h1>
+              <h1
+                style={{
+                  display: 'inline',
+                  fontSize: '23px',
+                  letterSpacing: 0,
+                }}
+              >
+                Funes
+              </h1>
             </Link>
           </div>
           <div className="right-section">

@@ -24,7 +24,7 @@ export const DevListWrapper = styled.div<{
     `}
 
   .title-group {
-    p {
+    h2 {
       text-align: center;
       font-weight: 700;
       text-decoration: underline;
@@ -38,5 +38,9 @@ export const DevListWrapper = styled.div<{
   .post-list {
     margin-block: 30px;
     display: grid;
+
+    @media (max-width: ${breakPoints.mobile}px) {
+      display: block;
+    }
   }
 `;

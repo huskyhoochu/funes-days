@@ -116,12 +116,12 @@ export const LatestSectionWrapper = styled.div<{
   }
 
   .title-group {
-    h3 {
+    h2 {
       text-align: center;
       font-weight: 700;
       text-decoration: underline;
 
-      @media (max-width: ${breakPoints.desktop}px) {
+      @media (max-width: ${breakPoints.tablet}px) {
         ${H4Class};
       }
     }
@@ -179,6 +179,12 @@ export const PostCardWrapper = styled(motion.div)<{
   width: 100%;
   height: 100%;
   transition: all 0.3s ease;
+
+  @media (max-width: ${breakPoints.mobile}px) {
+    max-width: 100vw;
+    margin-inline: 0;
+    width: 100vw;
+  }
 
   &:hover {
     ${props => props.reversed};

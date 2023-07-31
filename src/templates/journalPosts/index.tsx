@@ -29,7 +29,7 @@ const JournalList: React.FC<Props> = ({ data }) => {
     >
       <DevListWrapper screen={screen}>
         <div className="title-group">
-          <h3>Journal Posts</h3>
+          <h2>Journal Posts</h2>
         </div>
         <div className="post-list">
           {edges.map(post => (
